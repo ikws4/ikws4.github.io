@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ikws4&#39;s tech blog</title>
+  
+  
+  <link href="http://ikws4.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://ikws4.github.io/"/>
+  <updated>2021-02-02T01:46:24.257Z</updated>
+  <id>http://ikws4.github.io/</id>
+  
+  <author>
+    <name>ikws4</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Enable vi keybinding in zsh</title>
+    <link href="http://ikws4.github.io/2021/02/02/enable-vim-mode-feature-in-zsh/"/>
+    <id>http://ikws4.github.io/2021/02/02/enable-vim-mode-feature-in-zsh/</id>
+    <published>2021-02-01T23:49:39.000Z</published>
+    <updated>2021-02-02T01:46:24.257Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Add-plugin"><a href="#Add-plugin" class="headerlink" title="Add plugin"></a>Add plugin</h3><p>First, you need add <code>vi-mode</code> plugin in zsh.</p><figure class="highlight vim"><figcaption><span>.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugin=&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">vi</span>-<span class="keyword">mode</span></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Remap-ESC"><a href="#Remap-ESC" class="headerlink" title="Remap ESC"></a>Remap ESC</h3><p>Use the <code>ESC</code> key for leaving insert mode is not that efficient, because you need to leave the home row. I prefer remap <code>ECS</code> to <code>jk</code> keys, you can remap it whatever you want.</p><figure class="highlight vim"><figcaption><span>.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bindkey <span class="string">&#x27;jk&#x27;</span> <span class="keyword">vi</span>-cmd-<span class="keyword">mode</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Add-plugin&quot;&gt;&lt;a href=&quot;#Add-plugin&quot; class=&quot;headerlink&quot; title=&quot;Add plugin&quot;&gt;&lt;/a&gt;Add plugin&lt;/h3&gt;&lt;p&gt;First, you need add &lt;code&gt;vi-mode&lt;/cod</summary>
+      
+    
+    
+    
+    
+    <category term="zsh" scheme="http://ikws4.github.io/tags/zsh/"/>
+    
+  </entry>
+  
+</feed>

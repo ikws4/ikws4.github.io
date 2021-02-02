@@ -1,1 +1,1 @@
-{"pages":[],"posts":[],"tags":[],"categories":[]}
+{"pages":[],"posts":[{"title":"Enable vi keybinding in zsh","text":"Add pluginFirst, you need add vi-mode plugin in zsh. .zshrc12345plugin={ ... vi-mode ...} Remap ESCUse the ESC key for leaving insert mode is not that efficient, because you need to leave the home row. I prefer remap ECS to jk keys, you can remap it whatever you want. .zshrc1bindkey 'jk' vi-cmd-mode","link":"/2021/02/02/enable-vim-mode-feature-in-zsh/"}],"tags":[{"name":"zsh","slug":"zsh","link":"/tags/zsh/"}],"categories":[]}
