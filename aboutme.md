@@ -1,5 +1,6 @@
 ---
 layout: page
+title: About Me
 ---
 <h1 align="center">Hi 👋, I'm Devin</h1>
 <h3 align="center">How beautiful it would be when you see detail that you'd never known you could see.</h3>

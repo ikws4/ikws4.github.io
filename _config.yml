@@ -212,7 +212,7 @@ markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
 paginate: 5
-remote_theme: daattali/beautiful-jekyll@5.0.0
+remote_theme: daattali/beautiful-jekyll
 
 kramdown:
   input: GFM
@@ -233,6 +233,7 @@ defaults:
 
 # Advance setting
 remove-ads: true
+post_search: true
 
 # Exclude these files from production site
 exclude:
