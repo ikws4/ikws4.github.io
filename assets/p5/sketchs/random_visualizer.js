@@ -17,7 +17,7 @@ function createGUI() {
 
   // define control button
   const buttonStyle = {
-    textSize: 8,
+    textSize: 12,
     rounding: 6,
   };
   const buttons = [
@@ -198,7 +198,7 @@ function drawHistogram() {
 
     rect(x, y, w, item.count);
 
-    textSize(8);
+    textSize(12);
     textAlign(CENTER);
     text(`${item.name}(${item.probability})`, x + w / 2, y - 4);
   });
