@@ -122,7 +122,7 @@ function drawPausedOverlay() {
 
 let data = [
   {
-    name: "gragon",
+    name: "dragon",
     probability: 1,
     count: 0,
   },
