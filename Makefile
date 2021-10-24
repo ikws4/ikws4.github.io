@@ -1,5 +1,5 @@
 serve:
-	bundle exec jekyll s -l -D --force_polling
+	bundle exec jekyll s -l -D -o
 
 build:
 	bundle exec jekyll build
