@@ -1,7 +1,8 @@
 ---
 title: "How to randomly pick an element in an array base on weights?"
 date: 2021-10-11 11:08:32 +0800
-layout: p5js_post
+layout: post
+use_p5js: true
 show_date: true
 tags: [random algorithm]
 ---
