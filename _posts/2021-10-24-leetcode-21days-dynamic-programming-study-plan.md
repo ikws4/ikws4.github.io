@@ -12,7 +12,16 @@ tags: [leetcode, dynamic programming, algorithm]
 
 ## Fibonacci Number
 
-斐波那契数列的定义 $$f_{n} = f_{n - 1} + f_{n - 2}$$
+斐波那契数列的定义如下：
+
+$$
+f_{n} =
+\begin{cases}
+0, &\text{n = 0} \\
+1, &\text{n = 1} \\
+f_{n - 1} + f_{n - 2}, &\text{n > 1} \\
+\end{cases}
+$$
 
 ### 基本版本
 
@@ -50,7 +59,7 @@ class Solution {
 
     for (int i = 2; i <= n; i++) {
       //
-      // dp[i] = dp[i - 1] + dp[i - 2];
+      // dp[i]     = dp[i - 1] + dp[i - 2];
       //               b         a
       //
       // dp[i + 1] = dp[i] + dp[i - 1];
@@ -236,7 +245,7 @@ class Solution {
 
 ## N-th Tribonacci Number
 
-它公式的定义是 $$f_{n} = f_{n - 1} + f_{n - 2} + f_{n - 3}$$ 和
+它状态转移公式是 $$f_{n} = f_{n - 1} + f_{n - 2} + f_{n - 3}$$ 和
 斐波那契数列没什么区别，就是多了一项，解法也是一样的。
 前面几种解法就不贴代码了，这里看一下关于矩阵快速幂的解法。
 
@@ -328,6 +337,118 @@ class Solution {
     }
 
     return C;
+  }
+}
+```
+
+# day 2
+
+## Climbing Stairs
+
+这一题是斐波那契的一个变形，它们的状态转移公式是一样的
+
+$$f_{n} = f_{n - 1} + f_{n - 2}$$
+
+但是 base case 稍微有点不同，怎么思考呢？如果只有一节台阶那么只能一步爬上去，两节的话可以一步一步爬上去
+或者两步跨上去。
+
+$$f_{1} = 1,\; f_{2} = 2$$
+
+### 空间优化版本
+
+```java
+class Solution {
+  public int climbStairs(int n) {
+    if (n == 1) return 1;
+
+    // int[] dp = new int[n + 1];
+    int a = 1;
+    int b = 2;
+
+    for (int i = 3; i <= n; i++) {
+      // dp[i]     = dp[i - 1] + dp[i - 2];
+      //   b           b         a
+      //
+      // dp[i + 1] = dp[i] + dp[i - 1];
+      //   b           b         a
+      //
+
+      int b_ = b;
+      b = b + a;
+      a = b_;
+    }
+
+    return b;
+  }
+}
+```
+
+## Min Cost Climbing Stairs
+
+### 空间优化版本
+
+$$dp[i] := \text{从 } i \text{ 层台阶跳到 } i + 1 \text{ 和 } i + 2 \text{ 层台阶的最小价值}$$
+
+```java
+class Solution {
+  public int minCostClimbingStairs(int[] cost) {  
+    int n = cost.length;
+
+    // int[] dp = new int[n]; // dp[i]: 从 i 层台阶跳到下一(二)层台阶的最小 cost
+    int a = cost[0]; // dp[0] = cost[0];
+    int b = cost[1]; // dp[1] = cost[1];
+    
+    for (int i = 2; i < n; i++) {
+      // dp[i]     = Math.min(dp[i - 1], dp[i - 2]) + cost[i];
+      //   b                   b           a
+      //
+      // dp[i + 1] = Math.min(dp[i], dp[i - 1]) + cost[i + 1];
+      //   b                   b           a
+      //                       
+      
+
+      int b_ = b;
+      b = Math.min(b, a) + cost[i];
+      a = b_;
+    }
+
+    // 可以在 n - 2 (a) 层两步上去或
+    //       n - 1 (b) 层一步上去
+    return Math.min(a, b);
+  }
+}
+```
+
+### 记忆化递归版本
+
+这是另一种对 $$dp[i]$$ 的定义。 按照这种定义的话，那么答案就存放在 $$dp[n]$$ 中。
+
+$$dp[i] := \text{跳到第 } i \text{ 节台的最小价值}$$
+
+```java
+class Solution {
+  private int[] cost;
+  private int[] memo;
+
+  public int minCostClimbingStairs(int[] cost) {
+    int n = cost.length;
+    this.cost = cost;
+    this.memo = new int[n + 1];
+
+    return dp(n);
+  }
+
+  private int dp(int n) {
+    if(n < 2) return 0; // 如果楼梯小于2，没办法爬上去
+    if(memo[n] != 0) return memo[n];
+
+    // 我们需要从 n - 1 或者 n - 2 层爬上来
+    //   1. 从 n - 1 层爬上来的 cost 是 cost[n - 1]
+    //   2. 从 n - 2 层爬上来的 cost 是 cost[n - 2]
+    //
+    // 因为我们想要付出 minimum cost 所以在 1 和 2 中去一个最小值作为 n 的结果
+    return memo[n] = Math.min(dp(n - 1) + cost[n - 1],
+                              dp(n - 2) + cost[n - 2]);
   }
 }
 ```
