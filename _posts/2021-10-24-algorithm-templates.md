@@ -327,7 +327,7 @@ class FenwickTree {
   }
 
   // 
-  // lsp stands for least significant bit
+  // lsb stands for least significant bit
   //
   //  x: 10111101000
   //  
