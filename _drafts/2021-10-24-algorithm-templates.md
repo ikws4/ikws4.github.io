@@ -197,3 +197,152 @@ List<int[]>[] toAdjacentList(int[][] edges) {
   return graph;
 }
 ```
+
+# Tree
+
+## Segment tree
+
+```java
+class SegmentTree {
+  class Node {
+    int val, l, r;
+    Node left, right;
+
+    Node(int l, int r) {
+      this(0, l, r);
+    }
+
+    Node(int val, int l, int r) {
+      this.val = val;
+      this.l = l;
+      this.r = r;
+    }
+  }
+
+  private Node root;
+
+  public SegmentTree(int[] nums) {
+    root = build(nums, 0, nums.length - 1);
+  }
+
+  private Node build(int[] nums, int l, int r) {
+    if (l == r)
+      return new Node(nums[l], l, r);
+
+    int m = l + (r - l) / 2;
+    Node root = new Node(l, r);
+    root.left = build(nums, l, m);
+    root.right = build(nums, m + 1, r);
+    root.val = root.left.val + root.right.val;
+
+    return root;
+  }
+
+  public void update(int index, int val) {
+    update(root, index, val);
+  }
+
+  private void update(Node root, int index, int val) {
+    if (root.l == index && root.r == index) {
+      root.val = val;
+      return;
+    }
+
+    int m = root.l + (root.r - root.l) / 2;
+
+    if (index <= m) {
+      update(root.left, index, val);
+    } else {
+      update(root.right, index, val);
+    }
+
+    root.val = root.left.val + root.right.val;
+  }
+
+  public int query(int left, int right) {
+    return query(root, left, right);
+  }
+
+  private int query(Node root, int l, int r) {
+    if (root.l == l && root.r == r)
+      return root.val;
+
+    int m = root.l + (root.r - root.l) / 2;
+
+    if (r <= m) {
+      return query(root.left, l, r);
+    } else if (l > m) {
+      return query(root.right, l, r);
+    } else {
+      return query(root.left, l, m) + query(root.right, m + 1, r);
+    }
+  }
+}
+```
+
+## Fenwick tree
+
+```java
+class FenwickTree {
+  // 1-indexed
+  private int[] tree;
+
+  public FenwickTree(int[] nums) {
+    int n = nums.length;
+    this.tree = new int[n + 1];
+
+    // deep copy nums[0:] to tree[1:]
+    System.arraycopy(nums, 0, tree, 1, n);
+
+    for (int i = 1; i <= n; i++) {
+      int j = i + lsb(i);
+      if (j <= n) tree[j] += tree[i];
+    }
+  }
+
+  //
+  // 1-indexed
+  // 
+  // delta = newVal - oldVal
+  // 
+  public void update(int i, int delta) {
+    while (i < tree.length) {
+      tree[i] += delta;
+      i += lsb(i);
+    }
+  }
+
+  //
+  // 1-indexed
+  //
+  // sumOfRange(l, r) == presum(r) - presum(l - 1)
+  // 
+  public int presum(int i) {
+    int sum = 0;
+    while (i > 0) {
+      sum += tree[i];
+      i -= lsb(i);
+    }
+    return sum;
+  }
+
+  // 
+  // lsp stands for least significant bit
+  //
+  //  x: 10111101000
+  //  
+  // -x: (Negative numbers are stored in the form of Twos' complement in the computer)
+  //     01000010111 (Ones' complement)
+  //     01000011000 (Twos' complement)
+  //     
+  //  
+  //     10111101000
+  //   & 01000011000
+  //   -------------
+  //     00000001000
+  //
+  private int lsb(int i) {
+    return i & -i;
+  }
+}
+```
