@@ -302,9 +302,9 @@ class FenwickTree {
 
   //
   // 1-indexed
-  // 
+  //
   // delta = newVal - oldVal
-  // 
+  //
   public void update(int i, int delta) {
     while (i < tree.length) {
       tree[i] += delta;
@@ -316,7 +316,7 @@ class FenwickTree {
   // 1-indexed
   //
   // sumOfRange(l, r) == presum(r) - presum(l - 1)
-  // 
+  //
   public int presum(int i) {
     int sum = 0;
     while (i > 0) {
@@ -326,16 +326,16 @@ class FenwickTree {
     return sum;
   }
 
-  // 
+  //
   // lsb stands for least significant bit
   //
   //  x: 10111101000
-  //  
+  //
   // -x: (Negative numbers are stored in the form of Twos' complement in the computer)
   //     01000010111 (Ones' complement)
   //     01000011000 (Twos' complement)
-  //     
-  //  
+  //
+  //
   //     10111101000
   //   & 01000011000
   //   -------------
@@ -343,6 +343,76 @@ class FenwickTree {
   //
   private int lsb(int i) {
     return i & -i;
+  }
+}
+```
+
+# DFS
+
+## Backtrack
+
+### Combination
+
+```java
+class Combination {
+  public List<List<Integer>> C(int[] nums, int k) {
+    List<List<Integer>> res = new ArrayList<>();
+
+    C(nums, k, 0, new ArrayList<>(), res);
+
+    return res;
+  }
+
+  private void C(int[] nums, int k, int s, List<Integer> temp, List<List<Integer>> res) {
+    if (temp.size() == k) {
+      res.add(new ArrayList<>(temp));
+      return;
+    }
+
+    for (int i = s; i < nums.length; i++) {
+      temp.add(nums[i]);
+
+      C(nums, k, i + 1, temp, res);
+
+      temp.remove(temp.size() - 1);
+    }
+  }
+}
+```
+
+### Permutation
+
+```java
+class Permutation {
+  public List<List<Integer>> P(int[] nums) {
+    List<List<Integer>> res = new ArrayList<>();
+
+    P(nums, new boolean[nums.length], new ArrayList<>(), res);
+
+    return res;
+  }
+
+  private void P(int[] nums, boolean[] used, List<Integer> temp, List<List<Integer>> res) {
+    if (temp.size() == nums.length) {
+      res.add(new ArrayList<>(temp));
+      return;
+    }
+
+    for (int i = 0; i < nums.length; i++) {
+      if (used[i]) continue;
+
+      // this line use to remove duplicates, 
+      // but `nums` needs to be sorted first
+      // if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+      temp.add(nums[i]);
+      used[i] = true;
+
+      P(nums, used, temp, res);
+
+      used[i] = false;
+      temp.remove(temp.size() - 1);
+    }
   }
 }
 ```
