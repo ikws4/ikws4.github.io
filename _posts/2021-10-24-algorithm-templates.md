@@ -480,8 +480,7 @@ class Permutation {
 [1137. N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/)
 [LC 1220.Count Vowels Permutation](https://leetcode.com/problems/count-vowels-permutation/submissions/)
 
-```class
-
+```java
 class MatrixFastPow {
   public int[][] pow(int[][] A, int n) {
     int[][] res = new int[A.length][A[0].length];
