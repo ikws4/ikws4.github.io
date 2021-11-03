@@ -414,6 +414,10 @@ class Combination {
     }
 
     for (int i = s; i < nums.length; i++) {
+      // this line use to remove duplicates,
+      // but `nums` needs to be sorted first
+      // if (i > s && nums[i] == nums[i - 1]) continue;
+
       temp.add(nums[i]);
 
       C(nums, k, i + 1, temp, res);
