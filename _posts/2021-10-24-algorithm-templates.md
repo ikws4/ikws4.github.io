@@ -435,6 +435,9 @@ class Combination {
 
 ### Permutation
 
+[LC 46.Permutations](https://leetcode.com/problems/permutations)<br>
+[LC 47.Permutations II](https://leetcode.com/problems/permutations-ii)<br>
+
 ```java
 class Permutation {
   public List<List<Integer>> P(int[] nums, int k) {
@@ -466,6 +469,56 @@ class Permutation {
       used[i] = false;
       temp.remove(temp.size() - 1);
     }
+  }
+}
+```
+
+
+# Matrix Fast Power (Matrix Binary Exponentiation)
+
+[LC 509.Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)
+[1137. N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/)
+[LC 1220.Count Vowels Permutation](https://leetcode.com/problems/count-vowels-permutation/submissions/)
+
+```class
+
+class MatrixFastPow {
+  public int[][] pow(int[][] A, int n) {
+    int[][] res = new int[A.length][A[0].length];
+
+    // identity matrix
+    for (int i = 0; i < A.length; i++) {
+      res[i][i] = 1;
+    } 
+
+    while (n > 0) {
+      if ((n & 1) == 1) {
+        // res *= A;
+        res = dot(res, A);
+      }      
+
+      // A *= A;
+      A = dot(A, A);
+      n >>= 1;
+    }
+    
+    return res;
+  }
+
+  private int[][] dot(int[][] A, int[][] B) {
+    int[][] C = new int[A.length][B[0].length];
+
+    for (int i = 0; i < C.length; i++) {
+      for (int j = 0; j < C[0].length; j++) {
+        for (int k = 0; k < B.length; k++) {
+          // modular if needed
+          // C[i][j] += A[i][k] % MOD * B[k][j] % MOD;
+          C[i][j] += A[i][k] * B[k][j];
+        }
+      }
+    }
+
+    return C;
   }
 }
 ```
