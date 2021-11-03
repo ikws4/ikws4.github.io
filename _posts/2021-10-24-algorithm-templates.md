@@ -428,16 +428,16 @@ class Combination {
 
 ```java
 class Permutation {
-  public List<List<Integer>> P(int[] nums) {
+  public List<List<Integer>> P(int[] nums, int k) {
     List<List<Integer>> res = new ArrayList<>();
 
-    P(nums, new boolean[nums.length], new ArrayList<>(), res);
+    P(nums, k, new boolean[nums.length], new ArrayList<>(), res);
 
     return res;
   }
 
-  private void P(int[] nums, boolean[] used, List<Integer> temp, List<List<Integer>> res) {
-    if (temp.size() == nums.length) {
+  private void P(int[] nums, int k, boolean[] used, List<Integer> temp, List<List<Integer>> res) {
+    if (temp.size() == k) {
       res.add(new ArrayList<>(temp));
       return;
     }
@@ -452,7 +452,7 @@ class Permutation {
       temp.add(nums[i]);
       used[i] = true;
 
-      P(nums, used, temp, res);
+      P(nums, k, used, temp, res);
 
       used[i] = false;
       temp.remove(temp.size() - 1);
