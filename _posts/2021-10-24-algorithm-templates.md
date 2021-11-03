@@ -200,6 +200,11 @@ List<int[]>[] toAdjacentList(int[][] edges) {
 
 ## Union Find
 
+[LC 547.Number of Provinces](https://leetcode.com/problems/number-of-provinces/)<br>
+[LC 1584.Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points)<br>
+[LC 684.Redundant Connection](https://leetcode.com/problems/redundant-connection/)<br>
+[LQ 110.合根植物](https://www.lanqiao.cn/problems/110/learning/)
+
 ```java
 class UnionFind {
   private int[] parent;
@@ -219,8 +224,7 @@ class UnionFind {
     int pu = find(u);
     int pv = find(v);
 
-    if (pu == pv)
-      return false;
+    if (pu == pv) return false;
 
     if (rank[pu] < rank[pv]) {
       parent[pu] = pv;
@@ -228,15 +232,16 @@ class UnionFind {
       parent[pv] = pu;
     }
 
-    if (rank[pu] == rank[pv])
+    if (rank[pu] == rank[pv]) {
       rank[pu]++;
+    }
 
     return true;
   }
 
   public int find(int u) {
-    if (parent[u] == u)
-      return u;
+    if (parent[u] == u) return u;
+
     return parent[u] = find(parent[u]);
   }
 }
