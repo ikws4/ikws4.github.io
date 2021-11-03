@@ -251,6 +251,8 @@ class UnionFind {
 
 ## Segment tree
 
+[LC 307.Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)<br>
+
 ```java
 class SegmentTree {
   class Node {
@@ -330,6 +332,8 @@ class SegmentTree {
 ```
 
 ## Fenwick tree
+
+[LC 307.Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)<br>
 
 ```java
 class FenwickTree {
