@@ -198,6 +198,50 @@ List<int[]>[] toAdjacentList(int[][] edges) {
 }
 ```
 
+## Union Find
+
+```java
+class UnionFind {
+  private int[] parent;
+  private int[] rank;
+
+  public UnionFind(int n) {
+    this.parent = new int[n];
+    this.rank = new int[n];
+
+    for (int i = 0; i < n; i++) {
+      parent[i] = i;
+      rank[i] = 0;
+    }
+  }
+
+  public boolean union(int u, int v) {
+    int pu = find(u);
+    int pv = find(v);
+
+    if (pu == pv)
+      return false;
+
+    if (rank[pu] < rank[pv]) {
+      parent[pu] = pv;
+    } else {
+      parent[pv] = pu;
+    }
+
+    if (rank[pu] == rank[pv])
+      rank[pu]++;
+
+    return true;
+  }
+
+  public int find(int u) {
+    if (parent[u] == u)
+      return u;
+    return parent[u] = find(parent[u]);
+  }
+}
+```
+
 # Tree
 
 ## Segment tree
@@ -401,7 +445,7 @@ class Permutation {
     for (int i = 0; i < nums.length; i++) {
       if (used[i]) continue;
 
-      // this line use to remove duplicates, 
+      // this line use to remove duplicates,
       // but `nums` needs to be sorted first
       // if (i > 0 && nums[i] == nums[i - 1]) continue;
 
