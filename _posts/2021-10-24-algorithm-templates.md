@@ -486,7 +486,7 @@ class Permutation {
 # Matrix Fast Power (Matrix Binary Exponentiation)
 
 [LC 509.Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)<br>
-[1137. N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/)<br>
+[LC 1137.N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/)<br>
 [LC 1220.Count Vowels Permutation](https://leetcode.com/problems/count-vowels-permutation/submissions/)<br>
 
 ```java
