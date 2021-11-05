@@ -96,8 +96,8 @@ int knapsack(int[] W, int[] V, int n, int capacity) {
 
 ### LCS (Longest Common Subsequence)
 
-[LC 1143.Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
-[LC 516.Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)
+[LC 1143.Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)<br>
+[LC 516.Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)<br>
 
 ```java
 int LCS(String s, String t) {
@@ -510,7 +510,6 @@ class Permutation {
 }
 ```
 
-
 # Matrix Fast Power (Matrix Binary Exponentiation)
 
 [LC 509.Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)<br>
@@ -525,19 +524,19 @@ class MatrixFastPow {
     // identity matrix
     for (int i = 0; i < A.length; i++) {
       res[i][i] = 1;
-    } 
+    }
 
     while (n > 0) {
       if ((n & 1) == 1) {
         // res *= A;
         res = dot(res, A);
-      }      
+      }
 
       // A *= A;
       A = dot(A, A);
       n >>= 1;
     }
-    
+
     return res;
   }
 
