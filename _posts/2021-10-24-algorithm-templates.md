@@ -92,6 +92,34 @@ int knapsack(int[] W, int[] V, int n, int capacity) {
 }
 ```
 
+## String
+
+### LCS (Longest Common Subsequence)
+
+[LC 1143.Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
+[LC 516.Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)
+
+```java
+int LCS(String s, String t) {
+  int n = s.length(), m = t.length();
+
+  // dp[i][j] := the longest common subsequence length of s[0:i] and t[0:j]
+  int[][] dp = new int[n + 1][m + 1];
+
+  for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= m; j++) {
+      if (s.charAt(i - 1) == t.charAt(j - 1)) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  return dp[n][m];
+}
+```
+
 # Graph
 
 ## Shortest Path
