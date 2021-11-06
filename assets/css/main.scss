@@ -4,8 +4,6 @@
 
 @charset "utf-8";
 
-$code-background-color: #f3f3f3;
-
 $base00: #232136;
 $base01: #2a273f;
 $base02: #393552;
@@ -22,6 +20,23 @@ $base0c: #3e8fb0;
 $base0d: #9ccfd8;
 $base0e: #c4a7e7;
 $base0f: #b9b9bc;
+
+$background-color: #faf4ed;
+$code-background-color: #eee9e6;
+$text-color: #575279;
+$muted-text-color: #6e6a86;
+$footer-background-color: $background-color;
+
+$primary-color: #575279;
+$focus-color: #d7827e;
+$active-color: $focus-color;
+
+$link-color: #d7827e;
+$link-color-hover: $link-color;
+$link-color-visited: $link-color;
+
+
+$x-large: 1386px;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
