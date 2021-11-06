@@ -178,7 +178,7 @@ kramdown:
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
   syntax_highlighter_opts:
-    disable : true
+    disable : false
 
 
 # Sass/SCSS
