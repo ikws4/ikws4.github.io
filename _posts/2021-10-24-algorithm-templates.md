@@ -232,7 +232,8 @@ List<int[]>[] toAdjacentList(int[][] edges) {
 [LC 1584.Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points)<br>
 [LC 684.Redundant Connection](https://leetcode.com/problems/redundant-connection/)<br>
 [LC 1971.Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/)<br>
-[LQ 110.合根植物](https://www.lanqiao.cn/problems/110/learning/)
+[LC 959.Regions Cut By Slashes](https://leetcode.com/problems/regions-cut-by-slashes/)<br>
+[LQ 110.合根植物](https://www.lanqiao.cn/problems/110/learning/)<br>
 
 ```java
 class UnionFind {
