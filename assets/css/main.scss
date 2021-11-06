@@ -26,6 +26,7 @@ $code-background-color: #eee9e6;
 $text-color: #575279;
 $muted-text-color: #6e6a86;
 $footer-background-color: $background-color;
+$border-color: rgba(110, 106, 134, 0.08);
 
 $primary-color: #575279;
 $focus-color: #d7827e;
@@ -35,9 +36,25 @@ $link-color: #d7827e;
 $link-color-hover: $link-color;
 $link-color-visited: $link-color;
 
-
 $x-large: 1386px;
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap');
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
-@import "highlight"
+@import "highlight";
+
+a {
+  text-decoration: none;
+}
+
+.archive__item {
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.page__content {
+  font-family: 'Cormorant Garamond', serif;
+}
