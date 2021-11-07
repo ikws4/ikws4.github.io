@@ -121,6 +121,48 @@ int LCS(String s, String t) {
 }
 ```
 
+### Edit Distance
+
+![72_edit_distance](/assets/img/leetcode/72_edit_distance.png)
+
+[LC 72.Edit Distance](https://leetcode.com/problems/edit-distance/submissions/)<br>
+
+```java
+int minDistance(String s, String t) {
+  int n = s.length(), m = t.length();
+  int[][] dp = new int[n + 1][m + 1];
+
+  // s is empty
+  for (int j = 0; j <= m; j++) {
+    dp[0][j] = j;
+  }
+
+  // t is empty
+  for (int i = 0; i <= n; i++) {
+    dp[i][0] = i;
+  }
+
+  for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= m; j++) {
+      if (s.charAt(i - 1) == t.charAt(j - 1)) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        //
+        // s [xxxxx] A
+        // 
+        // t [xxxxx] B
+        // 
+        dp[i][j] = Math.min(dp[i - 1][j] + 1,        // delete(A)
+                   Math.min(dp[i][j - 1] + 1,        // insert(B)
+                            dp[i - 1][j - 1] + 1));  // replace(A, B)
+      }
+    }
+  }
+
+  return dp[n][m];
+}
+```
+
 # Graph
 
 ## Shortest Path
