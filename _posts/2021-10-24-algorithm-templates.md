@@ -514,6 +514,32 @@ class Permutation {
 
 # Binary Exponentiation
 
+## Basic
+
+[LC 50.Pow(x, n)](https://leetcode.com/problems/powx-n/)<br>
+[ACWING 89.a^b](https://www.acwing.com/problem/content/91/)<br>
+[ACWING 90.64位整数乘法](https://www.acwing.com/problem/content/92/)<br>
+
+```java
+long pow(int a, int n) {
+  // a %= MOD;
+  long res = 1;
+
+  while (n > 0) {
+    if ((n & 1) == 1) {
+      // res = res * a % MOD;
+      res *= a;
+    }
+
+    // a = a * a % MOD;
+    a *= a;
+    n >>= 1;
+  }
+
+  return res;
+}
+```
+
 ## Matrix
 
 [LC 509.Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)<br>
