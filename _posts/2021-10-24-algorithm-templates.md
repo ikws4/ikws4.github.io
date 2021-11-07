@@ -98,6 +98,7 @@ int knapsack(int[] W, int[] V, int n, int capacity) {
 
 [LC 1143.Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)<br>
 [LC 516.Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)<br>
+[LC 392.Is Subsequence](https://leetcode.com/problems/is-subsequence/)<br>
 
 ```java
 int LCS(String s, String t) {
