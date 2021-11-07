@@ -512,7 +512,9 @@ class Permutation {
 }
 ```
 
-# Matrix Fast Power (Matrix Binary Exponentiation)
+# Binary Exponentiation
+
+## Matrix
 
 [LC 509.Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)<br>
 [LC 1137.N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/)<br>
