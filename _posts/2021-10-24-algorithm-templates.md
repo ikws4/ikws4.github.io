@@ -154,9 +154,9 @@ int minDistance(String s, String t) {
       } else {
         //
         // s [xxxxx] A
-        // 
+        //
         // t [xxxxx] B
-        // 
+        //
         dp[i][j] = Math.min(dp[i - 1][j] + 1,        // delete(A)
                    Math.min(dp[i][j - 1] + 1,        // insert(B)
                             dp[i - 1][j - 1] + 1));  // replace(A, B)
@@ -567,7 +567,7 @@ class Permutation {
 
 [LC 50.Pow(x, n)](https://leetcode.com/problems/powx-n/)<br>
 [ACWING 89.a^b](https://www.acwing.com/problem/content/91/)<br>
-[ACWING 90.64位整数乘法](https://www.acwing.com/problem/content/92/)<br>
+[ACWING 90.64 位整数乘法](https://www.acwing.com/problem/content/92/)<br>
 
 ```java
 long pow(int a, int n) {
@@ -633,6 +633,40 @@ class MatrixFastPow {
     }
 
     return C;
+  }
+}
+```
+
+# Monotonic Stack
+
+[LC 316.Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/)<br>
+[LC 402.Remove K Digits](https://leetcode.com/problems/remove-k-digits/)<br>
+[LC 496.Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/)<br>
+[LC 496.Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/)<br>
+[LC 739.Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)<br>
+[LC 1673.Find the Most Competitive Subsequence](https://leetcode.com/problems/find-the-most-competitive-subsequence/)<br>
+[LC 2030.Smallest K-Length Subsequence With Occurrences of a Letter](https://leetcode.com/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter/)<br>
+[LC 84.Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)<br>
+
+```java
+void monotonicStack(int[] nums) {
+  Stack<Integer> stack = new Stack<>();
+
+  for (int num : nums) {
+    // We want to keep a monotonously increasing sequence, so when `num` is
+    // less than the top element of the stack, that means the balance is
+    // broken, and we need pop the top element in order to fix the its
+    // monotonicity.
+    //
+    // HINT: If you want to keep a monotonously decreasing sequence, just
+    // change `num < stack.peek()` to `num > stack.peek()`
+    while (!stack.isEmpty() && num < stack.peek()) {
+      stack.pop();
+    }
+
+    // As we can go here, means that `num` is greater or equal than
+    // `stack.peek()`, just push it into the stack.
+    stack.push(num);
   }
 }
 ```
