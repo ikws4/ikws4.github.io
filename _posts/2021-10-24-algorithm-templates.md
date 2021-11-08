@@ -81,6 +81,8 @@ int knapsack(int[] W, int[] V, int[] S, int n, int capacity) {
 [LC 322.Coin Change](https://leetcode.com/problems/coin-change/)<br>
 [LC 518.Coin Change 2](https://leetcode.com/problems/coin-change-2/)<br>
 
+![unbounded_knapsack](/assets/img/algorithm_templates/unbounded_knapsack.png)
+
 ```java
 // dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - W[i]] + V[i])
 int knapsack(int[] W, int[] V, int n, int capacity) {
@@ -127,7 +129,7 @@ int LCS(String s, String t) {
 
 ### Edit Distance
 
-![72_edit_distance](/assets/img/leetcode/72_edit_distance.png)
+![edit_distance](/assets/img/algorithm_templates/edit_distance.png)
 
 [LC 72.Edit Distance](https://leetcode.com/problems/edit-distance/submissions/)<br>
 
