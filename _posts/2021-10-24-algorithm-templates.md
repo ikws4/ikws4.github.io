@@ -637,7 +637,9 @@ class MatrixFastPow {
 }
 ```
 
-# Monotonic Stack
+# Stack
+
+## Monotonic Stack
 
 [LC 316.Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/)<br>
 [LC 402.Remove K Digits](https://leetcode.com/problems/remove-k-digits/)<br>
