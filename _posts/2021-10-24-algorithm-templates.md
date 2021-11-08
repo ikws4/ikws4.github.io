@@ -77,6 +77,9 @@ int knapsack(int[] W, int[] V, int[] S, int n, int capacity) {
 
 ### Unbounded knapsack
 
+[ACWING 3.完全背包问题](https://www.acwing.com/problem/content/3/)<br>
+[LC 322.Coin Change](https://leetcode.com/problems/coin-change/)<br>
+
 ```java
 // dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - W[i]] + V[i])
 int knapsack(int[] W, int[] V, int n, int capacity) {
