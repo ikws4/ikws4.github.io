@@ -79,6 +79,7 @@ int knapsack(int[] W, int[] V, int[] S, int n, int capacity) {
 
 [ACWING 3.完全背包问题](https://www.acwing.com/problem/content/3/)<br>
 [LC 322.Coin Change](https://leetcode.com/problems/coin-change/)<br>
+[LC 518.Coin Change 2](https://leetcode.com/problems/coin-change-2/)<br>
 
 ```java
 // dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - W[i]] + V[i])
