@@ -58,3 +58,10 @@ a {
 .page__content {
   font-family: 'Cormorant Garamond', serif;
 }
+
+.toc {
+  .toc__menu {
+    overflow-y: auto;
+    max-height: calc(100vh - 8.5em);
+  }
+}
