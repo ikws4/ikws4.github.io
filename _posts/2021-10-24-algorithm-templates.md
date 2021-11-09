@@ -282,6 +282,7 @@ List<int[]>[] toAdjacentList(int[][] edges) {
 [LC 1971.Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/)<br>
 [LC 959.Regions Cut By Slashes](https://leetcode.com/problems/regions-cut-by-slashes/)<br>
 [LQ 110.合根植物](https://www.lanqiao.cn/problems/110/learning/)<br>
+[LC 130.Surrounded Regions](https://leetcode.com/problems/surrounded-regions/)
 
 ```java
 class UnionFind {
