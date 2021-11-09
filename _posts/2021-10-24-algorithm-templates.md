@@ -295,7 +295,7 @@ class UnionFind {
 
     for (int i = 0; i < n; i++) {
       parent[i] = i;
-      rank[i] = 0;
+      /* rank[i] = 0; */
     }
   }
 
