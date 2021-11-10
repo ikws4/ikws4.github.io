@@ -681,7 +681,6 @@ void monotonicStack(int[] nums) {
 }
 ```
 
-
 # Binary Search
 
 ## Basic
@@ -709,11 +708,11 @@ int bSearch(int l, int r, int x) {
 ```java
 //
 // [l, r)
-// 
+//
 //    l                     r
 // A: 1 2 3 4 5 5 5 5 5 6 7
 // x: 5
-//           
+//
 //            r
 //            l
 // A: 1 2 3 4 5 5 5 5 5 6 7
@@ -740,11 +739,11 @@ int lowerBound(int l, int r, int x) {
 ```java
 //
 // [l, r)
-// 
+//
 //    l                     r
 // A: 1 2 3 4 5 5 5 5 5 6 7
 // x: 5
-//           
+//
 //                      r
 //                      l
 // A: 1 2 3 4 5 5 5 5 5 6 7
@@ -762,3 +761,49 @@ int upperBound(int l, int r, int x) {
   return l;
 }
 ```
+
+# Bit Manipulation
+
+## Least significant bits
+
+```java
+//
+//  x: 10111101000
+//
+// -x: (Negative numbers are stored in the form of Twos' complement in the computer)
+//     01000010111 (Ones' complement)
+//     01000011000 (Twos' complement)
+//
+//
+//     10111101000
+//   & 01000011000
+//   -------------
+//     00000001000
+//
+int lsb(x) {
+  return x & -x;
+}
+```
+
+## Submask Enumeration
+
+[LC 1178.Number of Valid Words for Each Puzzle](https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/)<br>
+
+I took this template and explination from [here](https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/solution/).
+
+```java
+for (int subset = bitmask; subset > 0; subset = (submask - 1) & bitmask) {
+  // do what you want with the current subset...
+}
+```
+
+Why does this work? The subsets must be included in range `[0, bitmask]`, and if
+we iterate from `bitmask` to `0` one by one, we are guaranteed to visit the `bitmask`
+of every subset along the way.
+
+But we can also meet those that are not a subset of `bitmask`. Fortunately,
+instead of decrementing `subset` by one at each iteration, we can use `subset = (subset - 1) & bitmask` to ensure that each `subset` only contains characters that
+exist in `bitmask`.
+
+Also, we will not miss any subset because `subset - 1` turns at most one `1` into
+`0`.
