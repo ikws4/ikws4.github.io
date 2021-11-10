@@ -28,6 +28,13 @@ void sort(int[] arr, int l, int r) {
       t++;
     }
   }
+  //
+  // After t > j we can partition arr to [L L L L L L L L | E E E E E E E | G G G G G G G G G ]
+  //                                      l                 i           j                   r
+  // L: Number that less than pivot
+  // E: Number that equals to pivot
+  // G: Number that greater than pivot
+  //
 
   sort(arr, l, i - 1);
   sort(arr, j + 1, r);
