@@ -673,3 +673,85 @@ void monotonicStack(int[] nums) {
   }
 }
 ```
+
+
+# Binary Search
+
+## Basic
+
+```java
+// [l, r]
+int bSearch(int l, int r, int x) {
+  while (l <= r) {
+    int m = l + (r - l) / 2;
+    if (f(m) < x) {
+      l = m + 1;
+    } else if (f(m) > x){
+      r = m - 1;
+    } else {
+      return m;
+    }
+  }
+
+  return -1;
+}
+```
+
+## Lower Bound
+
+```java
+//
+// [l, r)
+// 
+//    l                     r
+// A: 1 2 3 4 5 5 5 5 5 6 7
+// x: 5
+//           
+//            r
+//            l
+// A: 1 2 3 4 5 5 5 5 5 6 7
+// x: 5
+//
+int lowerBound(int l, int r, int x) {
+  while (l < r) {
+    int m = l + (r - l) / 2;
+    if (f(m) < x) {
+      l = m + 1;
+    } else {
+      r = m;
+    }
+  }
+
+  return l;
+}
+```
+
+## Upper Bound
+
+[LC 441.Arranging Coins](https://leetcode.com/problems/arranging-coins/)
+
+```java
+//
+// [l, r)
+// 
+//    l                     r
+// A: 1 2 3 4 5 5 5 5 5 6 7
+// x: 5
+//           
+//                      r
+//                      l
+// A: 1 2 3 4 5 5 5 5 5 6 7
+// x: 5
+//
+int upperBound(int l, int r, int x) {
+  while (l < r) {
+    int m = l + (r - l) / 2;
+    if (f(m) <= x) {
+      l = m + 1;
+    } else {
+      r = m;
+    }
+  }
+  return l;
+}
+```
