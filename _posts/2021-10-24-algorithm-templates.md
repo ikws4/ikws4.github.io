@@ -657,6 +657,7 @@ class MatrixFastPow {
 [LC 1673.Find the Most Competitive Subsequence](https://leetcode.com/problems/find-the-most-competitive-subsequence/)<br>
 [LC 2030.Smallest K-Length Subsequence With Occurrences of a Letter](https://leetcode.com/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter/)<br>
 [LC 84.Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)<br>
+[LC 1475.Final Prices With a Special Discount in a Shop](https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/)<br>
 
 ```java
 void monotonicStack(int[] nums) {
