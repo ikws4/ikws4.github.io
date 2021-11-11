@@ -458,10 +458,12 @@ class FenwickTree {
   //
   public int presum(int i) {
     int sum = 0;
+
     while (i > 0) {
       sum += tree[i];
       i -= lsb(i);
     }
+
     return sum;
   }
 
