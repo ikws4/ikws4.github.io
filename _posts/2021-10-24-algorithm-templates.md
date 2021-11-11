@@ -11,7 +11,10 @@ tags: [algorithm, templates]
 
 ## 3-way quick sort
 
+[LC 1356.Sort Integers by The Number of 1 Bits](https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/)<br>
+
 ```java
+// [l, r)
 void sort(int[] arr, int l, int r) {
   if (l > r) return;
 
@@ -28,6 +31,7 @@ void sort(int[] arr, int l, int r) {
       t++;
     }
   }
+
   //
   // After t > j we can partition arr to [L L L L L L L L | E E E E E E E | G G G G G G G G G ]
   //                                      l                 i           j                   r
