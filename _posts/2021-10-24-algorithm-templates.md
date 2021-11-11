@@ -23,7 +23,7 @@ void sort(int[] arr, int l, int r) {
   int t = l;
   int pivot = arr[l + (r - l) / 2] // or arr[l + random.nextInt(r - l)];
 
-  while (t < j) {
+  while (t <= j) {
     if (arr[t] < pivot) {
       swap(arr, t++, i++);
     } else if (arr[t] > pivot) {
