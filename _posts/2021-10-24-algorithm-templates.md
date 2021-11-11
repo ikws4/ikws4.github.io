@@ -881,3 +881,36 @@ exist in `bitmask`.
 
 Also, we will not miss any subset because `subset - 1` turns at most one `1` into
 `0`.
+
+
+# Sliding Window
+
+## Window without repeat
+
+[LC 3.Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)<br>
+[LC 1876.Substrings of Size Three with Distinct Characters](https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/)<br>
+
+```java
+class Solution {
+  public int lengthOfLongestSubstring(String s) {
+    int[] next = new int[128];
+    Arrays.fill(next, -1);
+
+    int ans = 0;
+
+    for (int i = 0, j = 0; j < s.length(); j++) {
+      int index = s.charAt(j);
+      i = Math.max(i, next[index] + 1);
+
+      //
+      // window [i, j] has no repeating elements
+      //
+      ans = Math.max(ans, j - i + 1);
+
+      next[index] = j;
+    }
+
+    return ans;
+  }
+}
+```
