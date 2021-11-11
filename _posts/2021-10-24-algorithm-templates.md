@@ -12,6 +12,7 @@ tags: [algorithm, templates]
 ## 3-way quick sort
 
 [LC 1356.Sort Integers by The Number of 1 Bits](https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/)<br>
+[LC 1636.Sort Array by Increasing Frequency](https://leetcode.com/problems/sort-array-by-increasing-frequency/)<br>
 
 ```java
 // [l, r)
