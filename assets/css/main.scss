@@ -38,6 +38,9 @@ $link-color-visited: $link-color;
 
 $x-large: 1386px;
 
+$monospace: 'JetBrains Mono', monospace;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;1,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap');
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
