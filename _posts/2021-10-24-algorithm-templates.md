@@ -486,6 +486,62 @@ class FenwickTree {
 }
 ```
 
+## Prefix Tree (Trie)
+
+[LC 208.Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)<br>
+[LC 1935.Maximum Number of Words You Can Type](https://leetcode.com/problems/maximum-number-of-words-you-can-type/)<br>
+
+```java
+class Trie {
+  class Node {
+    boolean isWord;
+    Node[] children = new Node[26];
+  }
+
+  Node root;
+
+  public Trie() {
+    root = new Node();
+  }
+
+  public void insert(String word) {
+    Node node = root;
+    for (int i = 0; i < word.length(); i++) {
+      int index = word.charAt(i) - 'a';
+      if (node.children[index] == null) {
+        node.children[index] = new Node();
+      }
+      node = node.children[index];
+    }
+    node.isWord = true;
+  }
+
+  public boolean search(String word) {
+    Node node = root;
+    for (int i = 0; i < word.length(); i++) {
+      int index = word.charAt(i) - 'a';
+      if (node.children[index] == null) {
+        return false;
+      }
+      node = node.children[index];
+    }
+    return node.isWord; // !!!!
+  }
+
+  public boolean startsWith(String prefix) {
+    Node node = root;
+    for (int i = 0; i < prefix.length(); i++) {
+      int index = prefix.charAt(i) - 'a';
+      if (node.children[index] == null) {
+        return false;
+      }
+      node = node.children[index];
+    }
+    return true; // !!!!
+  }
+}
+```
+
 # DFS
 
 ## Backtrack
