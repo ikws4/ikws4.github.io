@@ -491,7 +491,6 @@ class FenwickTree {
 ## Prefix Tree (Trie)
 
 [LC 208.Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)<br>
-[LC 1935.Maximum Number of Words You Can Type](https://leetcode.com/problems/maximum-number-of-words-you-can-type/)<br>
 
 ```java
 class Trie {
