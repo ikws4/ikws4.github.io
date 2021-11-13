@@ -759,7 +759,9 @@ void monotonicStack(int[] nums) {
 
 # Binary Search
 
-## Basic
+## Classic
+
+### Single target
 
 ```java
 // [l, r]
@@ -776,6 +778,30 @@ int bSearch(int l, int r, int x) {
   }
 
   return -1;
+}
+```
+
+### Range target
+
+[LC 1385.Find the Distance Value Between Two Arrays](https://leetcode.com/problems/find-the-distance-value-between-two-arrays/)<br>
+
+This is use to check there is a value between `lower` and `upper`.
+```java
+// [l, r]
+boolean rangeQuery(int l, int r, int lower, int upper) {
+  while (l <= r) {
+    int m = l + (r - l) / 2;
+    
+    if (f(m) < lower) {
+      l = m + 1;
+    } else if (f(m) > upper) {
+      r = m - 1;
+    } else {
+      return true;
+    }
+  }
+
+  return false;
 }
 ```
 
