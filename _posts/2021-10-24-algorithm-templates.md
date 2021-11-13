@@ -555,7 +555,7 @@ class Trie {
 
       node = node.children[index];
     }
-    
+
     return true; // !!!!
   }
 }
@@ -786,12 +786,13 @@ int bSearch(int l, int r, int x) {
 [LC 1385.Find the Distance Value Between Two Arrays](https://leetcode.com/problems/find-the-distance-value-between-two-arrays/)<br>
 
 This is use to check there is a value between `lower` and `upper`.
+
 ```java
 // [l, r]
 boolean rangeQuery(int l, int r, int lower, int upper) {
   while (l <= r) {
     int m = l + (r - l) / 2;
-    
+
     if (f(m) < lower) {
       l = m + 1;
     } else if (f(m) > upper) {
@@ -909,7 +910,6 @@ exist in `bitmask`.
 
 Also, we will not miss any subset because `subset - 1` turns at most one `1` into
 `0`.
-
 
 # Sliding Window
 
