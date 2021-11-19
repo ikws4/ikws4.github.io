@@ -268,6 +268,53 @@ int[] bellmanFord(int n, int s, int[][] edges) {
 }
 ```
 
+## Toplogical sort
+
+[LC 207.Course Schedule](https://leetcode.com/problems/course-schedule/)
+[lC 210.Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
+[LC 310.Minimum Height Trees](https://leetcode.com/problems/minimum-height-trees/)
+
+```java
+void toplogicalSort(int n, int[][] edges) {
+  // build graph
+  List<Integer>[] graph = new ArrayList[n];
+  for (int i = 0; i < n; i++) {
+    graph[i] = new ArrayList<>();
+  }
+  int[] inDegree = new int[n];
+  for (var edge : edges) {
+    int u = edge[0], v = edge[1];
+    // u -> v
+    graph[u].add(v);
+    inDegree[v]++;
+  }
+
+  Queue<Integer> queue = new LinkedList<>();
+  for (int i = 0; i < n; i++) {
+    // leaf node don't have pre requirements, add it to the queue
+    if (inDegree[i] == 0) {
+      queue.offer(i);
+    }
+  }
+
+  while (!queue.isEmpty()) {
+    int size = queue.size();
+    for (int i = 0; i < size; i++) {
+      int u = queue.poll();
+
+      for (var v : graph[u]) {
+        inDegree[v]--;
+
+        // if node v don't have pre requirements anymore, add it to the queue
+        if (inDegree[v] == 0) {
+          queue.offer(v);
+        }
+      }
+    }
+  }
+}
+```
+
 ### Help functions
 
 ```java
