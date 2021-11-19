@@ -194,8 +194,17 @@ int minDistance(String s, String t) {
 // s: the start vertex
 // edge: [u, v, w]
 int[] dijkstra(int n, int s, int[][] edges) {
-  List<int[]>[] graph = toAdjacentList(edges);
-  // Initial
+  // build graph
+  List<int[]>[] graph = new ArrayList[n];
+  for (int i = 0; i < n; i++) {
+    graph[i] = new ArrayList<>();
+  }
+  for (int[] edge : edges) {
+    int u = edge[0], v = edge[1], w = edge[2];
+    graph[u].add(new int[]{v, w});
+  }
+
+  // initial
   Queue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
   int[] dist = new int[n];
   int[] prev = new int[n];
@@ -270,9 +279,9 @@ int[] bellmanFord(int n, int s, int[][] edges) {
 
 ## Toplogical sort
 
-[LC 207.Course Schedule](https://leetcode.com/problems/course-schedule/)
-[lC 210.Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
-[LC 310.Minimum Height Trees](https://leetcode.com/problems/minimum-height-trees/)
+[LC 207.Course Schedule](https://leetcode.com/problems/course-schedule/)<br>
+[lC 210.Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)<br>
+[LC 310.Minimum Height Trees](https://leetcode.com/problems/minimum-height-trees/)<br>
 
 ```java
 void toplogicalSort(int n, int[][] edges) {
@@ -312,25 +321,6 @@ void toplogicalSort(int n, int[][] edges) {
       }
     }
   }
-}
-```
-
-### Help functions
-
-```java
-List<int[]>[] toAdjacentList(int[][] edges) {
-  List<int[]>[] graph = new ArrayList[n];
-
-  for (int i = 0; i < n; i++) {
-    graph[i] = new ArrayList<>();
-  }
-
-  for (int[] edge : edges) {
-    int u = edge[0], v = edge[1], w = edge[2];
-    graph[u].add(new int[]{v, w});
-  }
-
-  return graph;
 }
 ```
 
