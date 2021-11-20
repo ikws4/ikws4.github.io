@@ -796,7 +796,7 @@ void monotonicStack(int[] nums) {
 
 # Binary Search
 
-## Classic
+## Find a exact value
 
 ### Single target
 
@@ -843,7 +843,11 @@ boolean rangeQuery(int l, int r, int lower, int upper) {
 }
 ```
 
-## Lower Bound
+## Approach a value
+
+[LC 540.Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)<br>
+
+### Lower Bound
 
 ```java
 //
@@ -872,7 +876,7 @@ int lowerBound(int l, int r, int x) {
 }
 ```
 
-## Upper Bound
+### Upper Bound
 
 [LC 441.Arranging Coins](https://leetcode.com/problems/arranging-coins/)
 
