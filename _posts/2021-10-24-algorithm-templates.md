@@ -984,3 +984,35 @@ class Solution {
   }
 }
 ```
+
+## Window size have relation with its sum
+
+[LC 485.Max Consecutive Ones](https://leetcode.com/problems/max-consecutive-ones/)<br>
+[LC 1004.Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)<br>
+
+```java
+class Solution {
+
+  public int findMaxConsecutiveOnes(int[] nums) {
+    int ans = 0;
+    int save = 0;
+
+    for (int i = 0, j = 0; j < nums.length; j++) {
+      save += nums[j];
+
+      // make sure the window is valid
+      if (j - i + 1 > save) {
+        i = j + 1;
+        save = 0;
+      }
+
+      // update
+      ans = Math.max(ans, j - i + 1);
+
+      // other things
+    }
+
+    return ans;
+  }
+}
+```
