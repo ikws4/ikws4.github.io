@@ -11,6 +11,7 @@ tags: [algorithm, templates]
 
 ## 3-way quick sort
 
+[LC 75.Sort Colors](https://leetcode.com/problems/sort-colors/)<br>
 [LC 1356.Sort Integers by The Number of 1 Bits](https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/)<br>
 [LC 1636.Sort Array by Increasing Frequency](https://leetcode.com/problems/sort-array-by-increasing-frequency/)<br>
 [LC 1122.Relative Sort Array](https://leetcode.com/problems/relative-sort-array/)<br>
@@ -333,6 +334,7 @@ void toplogicalSort(int n, int[][] edges) {
 [LC 959.Regions Cut By Slashes](https://leetcode.com/problems/regions-cut-by-slashes/)<br>
 [LQ 110.合根植物](https://www.lanqiao.cn/problems/110/learning/)<br>
 [LC 130.Surrounded Regions](https://leetcode.com/problems/surrounded-regions/)
+[LC 952.Largest Component Size by Common Factor](https://leetcode.com/problems/largest-component-size-by-common-factor/)
 
 ```java
 class UnionFind {
