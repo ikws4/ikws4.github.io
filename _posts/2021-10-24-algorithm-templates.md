@@ -848,10 +848,12 @@ boolean rangeQuery(int l, int r, int lower, int upper) {
 
 ## Approach a value
 
-[LC 540.Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)<br>
 [LC 2080.Range Frequency Queries](https://leetcode.com/problems/range-frequency-queries/)<br>
 
 ### Lower Bound
+
+[LC 35.Search Insert Position](https://leetcode.com/problems/search-insert-position/)<br>
+[LC 540.Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)<br>
 
 ```java
 //
