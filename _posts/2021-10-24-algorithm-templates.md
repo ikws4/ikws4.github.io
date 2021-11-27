@@ -54,6 +54,8 @@ void sort(int[] arr, int l, int r) {
 
 ### 0-1 knapsack
 
+[LQ 186.糖果](https://www.lanqiao.cn/problems/186/learning/)<br>
+
 ```java
 // dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - W[i]] + V[i])
 int knapsack(int[] W, int[] V, int n, int capacity) {
