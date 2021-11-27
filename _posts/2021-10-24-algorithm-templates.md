@@ -945,7 +945,7 @@ int lsb(x) {
 I took this template and explination from [here](https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/solution/).
 
 ```java
-for (int subset = bitmask; subset > 0; subset = (submask - 1) & bitmask) {
+for (int subset = bitmask; subset > 0; subset = (subset - 1) & bitmask) {
   // do what you want with the current subset...
 }
 ```
