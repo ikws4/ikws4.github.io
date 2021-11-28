@@ -338,6 +338,7 @@ void toplogicalSort(int n, int[][] edges) {
 [LC 130.Surrounded Regions](https://leetcode.com/problems/surrounded-regions/)<br>
 [LC 952.Largest Component Size by Common Factor](https://leetcode.com/problems/largest-component-size-by-common-factor/)<br>
 [LQ 185.修改数组](https://www.lanqiao.cn/problems/185/learning/)<br>
+[LC 2092.Find All People With Secret](https://leetcode.com/problems/find-all-people-with-secret/)<br>
 
 ```java
 class UnionFind {
