@@ -184,6 +184,43 @@ int minDistance(String s, String t) {
 }
 ```
 
+## Sparse Table
+
+[ACWING 1270.数列区间最大值](https://www.acwing.com/problem/content/description/1272/)<br>
+
+```java
+class SparseTable {
+  private int[] log2;
+  private int[][] dp;
+
+  public SparseTable(int[] arr) {
+    int n = arr.length;
+    int P = (int) (Math.log(n) / Math.log(2));
+    this.dp = new int[P + 1][n];
+    this.log2 = new int[n + 1];
+
+    for (int i = 2; i <= n; i++) {
+      log2[i] = log2[i / 2] + 1;
+    }
+
+    for (int i = 0; i < n; i++) {
+      dp[0][i] = arr[i];
+    }
+
+    for (int p = 1; p <= P; p++) {
+      for (int i = 0; i + (1 << p - 1) < n; i++) {
+        dp[p][i] = Math.max(dp[p - 1][i], dp[p - 1][i + (1 << p - 1)]);
+      }
+    }
+  }
+
+  public int query(int l, int r) {
+    int p = log2[r - l + 1];
+    return Math.max(dp[p][l], dp[p][r - (1 << p) + 1]);
+  }
+}
+```
+
 # Graph
 
 ## Shortest Path
