@@ -188,29 +188,38 @@ int minDistance(String s, String t) {
 
 [ACWING 1270.数列区间最大值](https://www.acwing.com/problem/content/description/1272/)<br>
 
+It can be used for (min, max, gcd) range query, below is the MinSparseTable implementation.
+
 ```java
 class SparseTable {
   private int[] log2;
+  
+  //
+  // dp[p][i] := minimum number in arr[i: i + 2**p - 1]
+  //
   private int[][] dp;
 
   public SparseTable(int[] arr) {
+    computeLog2(arr.length);
+    
     int n = arr.length;
-    int P = (int) (Math.log(n) / Math.log(2));
-    this.dp = new int[P + 1][n];
-    this.log2 = new int[n + 1];
-
-    for (int i = 2; i <= n; i++) {
-      log2[i] = log2[i / 2] + 1;
-    }
-
+    this.dp = new int[log2[n] + 1][n];
+    
     for (int i = 0; i < n; i++) {
       dp[0][i] = arr[i];
     }
-
-    for (int p = 1; p <= P; p++) {
+    
+    for (int p = 1; p < dp.length; p++) {
       for (int i = 0; i + (1 << p - 1) < n; i++) {
         dp[p][i] = Math.max(dp[p - 1][i], dp[p - 1][i + (1 << p - 1)]);
       }
+    }
+  }
+
+  private void computeLog2(int n) {
+    this.log2 = new int[n + 1];
+    for (int i = 2; i <= n; i++) {
+      log2[i] = log2[i / 2] + 1;
     }
   }
 
