@@ -451,6 +451,7 @@ class SegmentTree {
     }
   }
 
+  private static final int INVALID_VALUE = 0;
   private Node root;
 
   public SegmentTree(int[] nums) {
@@ -458,14 +459,15 @@ class SegmentTree {
   }
 
   private Node build(int[] nums, int l, int r) {
-    if (l == r)
+    if (l == r) {
       return new Node(nums[l], l, r);
+    }
 
-    int m = l + (r - l) / 2;
+    int m = (l + r) / 2;
     Node root = new Node(l, r);
     root.left = build(nums, l, m);
     root.right = build(nums, m + 1, r);
-    root.val = root.left.val + root.right.val;
+    root.val = combine(root.left.val, root.right.val);
 
     return root;
   }
@@ -480,7 +482,7 @@ class SegmentTree {
       return;
     }
 
-    int m = root.l + (root.r - root.l) / 2;
+    int m = (root.l + root.r) / 2;
 
     if (index <= m) {
       update(root.left, index, val);
@@ -488,7 +490,7 @@ class SegmentTree {
       update(root.right, index, val);
     }
 
-    root.val = root.left.val + root.right.val;
+    root.val = combine(root.left.val, root.right.val);
   }
 
   public int query(int left, int right) {
@@ -496,18 +498,102 @@ class SegmentTree {
   }
 
   private int query(Node root, int l, int r) {
-    if (root.l == l && root.r == r)
+    if (l > r) return INVALID_VALUE;
+    if (root.l == l && root.r == r) {
       return root.val;
-
-    int m = root.l + (root.r - root.l) / 2;
-
-    if (r <= m) {
-      return query(root.left, l, r);
-    } else if (l > m) {
-      return query(root.right, l, r);
-    } else {
-      return query(root.left, l, m) + query(root.right, m + 1, r);
     }
+
+    int m = (root.l + root.r) / 2;
+
+    return combine(query(root.left, l, Math.min(m, r)),
+                   query(root.right, Math.max(m + 1, l), r));
+  }
+
+  private int combine(int left, int right) {
+    return left + right;
+  }
+}
+```
+
+```java
+class SegmentTree {
+  private static final int INVALID_VALUE = Integer.MIN_VALUE;
+  private int[] tree;
+  private int[] leaf;
+  private int n;
+
+  public SegmentTree(int[] arr) {
+    this.n = arr.length;
+    this.leaf = arr;
+    this.tree = new int[(n << 2) + 1];
+
+    build(0, 0, n - 1);
+  }
+
+  private void build(int root, int l, int r) {
+    if (l == r) {
+      tree[root] = leaf[l];
+      return;
+    }
+
+    int m = (l + r) >> 1;
+    int left = left(root), right = right(root);
+    build(left, l, m);
+    build(right, m + 1, r);
+
+    tree[root] = combine(tree[left], tree[right]);
+  }
+
+  public int query(int l, int r) {
+    return query(0, 0, n - 1, l, r);
+  }
+
+  private int query(int root, int l, int r, int L, int R) {
+    if (L > R) return INVALID_VALUE;
+    if (l == L && r == R) {
+      return tree[root];
+    }
+
+    int m = (l + r) >> 1;
+    int left = left(root), right = right(root);
+
+    return combine(query(left, l, m, L, Math.min(m, R)), 
+                   query(right, m + 1, r, Math.max(m + 1, L), R));
+  }
+
+  public void update(int i, int val) {
+    update(0, 0, n - 1, i, val);
+  }
+
+  private void update(int root, int l, int r, int i, int val) {
+    if (l == i && r == i) {
+      leaf[i] = val;
+      tree[root] = val;
+      return;
+    }
+
+    int m = (l + r) >> 1;
+    int left = left(root), right = right(root);
+
+    if (i <= m) {
+      update(left, l, m, i, val);
+    } else {
+      update(right, m + 1, r, i, val);
+    }
+
+    tree[root] = combine(tree[left], tree[right]);
+  }
+
+  private int combine(int left, int right) {
+    return Math.max(left, right);
+  }
+
+  private int left(int root) {
+    return (root << 1) + 1;
+  }
+
+  private int right(int root) {
+    return (root << 1) + 2;
   }
 }
 ```
