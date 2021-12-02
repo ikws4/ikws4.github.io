@@ -254,7 +254,7 @@ int[] dijkstra(int n, int s, int[][] edges) {
   }
 
   // initial
-  Queue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+  Queue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
   int[] dist = new int[n];
   int[] prev = new int[n];
 
