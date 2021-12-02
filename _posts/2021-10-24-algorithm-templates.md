@@ -234,6 +234,8 @@ class SparseTable {
 
 ## Shortest Path
 
+[LC 45.Jump Game II](https://leetcode.com/problems/jump-game-ii)<br>
+
 ### Dijkstra
 
 ```java
