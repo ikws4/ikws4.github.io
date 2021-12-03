@@ -261,7 +261,7 @@ int[] dijkstra(int n, int s, int[][] edges) {
   int[] prev = new int[n];
 
   for (int i = 0; i < n; i++) {
-    dist[i] = Integer.MAX_VALUE;
+    dist[i] = Integer.MAX_VALUE >> 1;
     prev[i] = -1;
   }
   dist[s] = 0;
