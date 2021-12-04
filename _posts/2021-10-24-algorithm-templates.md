@@ -676,6 +676,7 @@ class FenwickTree {
 ## Prefix Tree (Trie)
 
 [LC 208.Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)<br>
+[LC 1032.Stream of Characters](https://leetcode.com/problems/stream-of-characters/)<br>
 
 ```java
 class Trie {
