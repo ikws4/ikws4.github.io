@@ -291,6 +291,8 @@ int[] dijkstra(int n, int s, int[][] edges) {
 
 ### Bellman-Ford
 
+[LQ 609.最短路](https://www.lanqiao.cn/problems/609/learning/)<br>
+
 ```java
 int[] bellmanFord(int n, int s, int[][] edges) {
   int[] dist = new int[n];
