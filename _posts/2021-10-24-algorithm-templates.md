@@ -790,6 +790,7 @@ class Combination {
 
 [LC 46.Permutations](https://leetcode.com/problems/permutations)<br>
 [LC 47.Permutations II](https://leetcode.com/problems/permutations-ii)<br>
+[LQ 2995.数字游戏](http://lx.lanqiao.cn/problem.page?gpid=T2995)<br>
 
 ```java
 class Permutation {
