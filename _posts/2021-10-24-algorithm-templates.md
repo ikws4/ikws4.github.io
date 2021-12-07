@@ -607,6 +607,7 @@ class SegmentTree {
 
 [LC 307.Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)<br>
 [LC 1409.Queries on a Permutation With Key](https://leetcode.com/problems/queries-on-a-permutation-with-key/)<br>
+[LC 1395.Count Number of Teams](https://leetcode.com/problems/count-number-of-teams/)<br>
 
 ```java
 class FenwickTree {
