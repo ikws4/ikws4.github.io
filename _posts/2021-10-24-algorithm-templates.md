@@ -15,7 +15,6 @@ tags: [algorithm, templates]
 [LC 1356.Sort Integers by The Number of 1 Bits](https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/)<br>
 [LC 1636.Sort Array by Increasing Frequency](https://leetcode.com/problems/sort-array-by-increasing-frequency/)<br>
 [LC 1122.Relative Sort Array](https://leetcode.com/problems/relative-sort-array/)<br>
-[LC 1387.Sort Integers by The Power Value](https://leetcode.com/problems/sort-integers-by-the-power-value/)<br>
 
 ```java
 // [l, r)
@@ -46,6 +45,44 @@ void sort(int[] arr, int l, int r) {
 
   sort(arr, l, i - 1);
   sort(arr, j + 1, r);
+}
+```
+
+### Quick Select
+
+[LC 1387.Sort Integers by The Power Value](https://leetcode.com/problems/sort-integers-by-the-power-value/)<br>
+
+```java
+private int[] kth(int[][] arr, int l, int r, int k) {
+  if (l == r) return arr[l];
+
+  int i = l, j = r;
+  int t = l;
+  int[] pivot = arr[(l + r) >> 1];
+
+  while (t <= j) {
+    if (compareTo(arr[t], pivot) < 0) {
+      swap(arr, i++, t++);
+    } else if (compareTo(arr[t], pivot) > 0) {
+      swap(arr, j--, t);
+    } else {
+      t++;
+    }
+  }
+
+  if (i - l >= k) {
+    //         k
+    // L L L L L L E E E E E G G G G G G G
+    //             i       j
+    return kth(arr, l, i - 1, k);
+  } else if (j - l + 1 < k) {
+    //                         k
+    // L L L L L L E E E E E G G G G G G G
+    //             i       j
+    return kth(arr, j + 1, r, k - (j - l + 1));
+  } else {
+    return pivot;
+  }
 }
 ```
 
@@ -194,7 +231,7 @@ It can be used for (min, max, gcd) range query, below is the MinSparseTable impl
 ```java
 class SparseTable {
   private int[] log2;
-  
+
   //
   // dp[p][i] := minimum number in arr[i: i + 2**p - 1]
   //
@@ -202,14 +239,14 @@ class SparseTable {
 
   public SparseTable(int[] arr) {
     computeLog2(arr.length);
-    
+
     int n = arr.length;
     this.dp = new int[log2[n] + 1][n];
-    
+
     for (int i = 0; i < n; i++) {
       dp[0][i] = arr[i];
     }
-    
+
     for (int p = 1; p < dp.length; p++) {
       for (int i = 0; i + (1 << p - 1) < n; i++) {
         dp[p][i] = Math.max(dp[p - 1][i], dp[p - 1][i + (1 << p - 1)]);
@@ -563,7 +600,7 @@ class SegmentTree {
     int m = (l + r) >> 1;
     int left = left(root), right = right(root);
 
-    return combine(query(left, l, m, L, Math.min(m, R)), 
+    return combine(query(left, l, m, L, Math.min(m, R)),
                    query(right, m + 1, r, Math.max(m + 1, L), R));
   }
 
