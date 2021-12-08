@@ -15,6 +15,7 @@ tags: [algorithm, templates]
 [LC 1356.Sort Integers by The Number of 1 Bits](https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/)<br>
 [LC 1636.Sort Array by Increasing Frequency](https://leetcode.com/problems/sort-array-by-increasing-frequency/)<br>
 [LC 1122.Relative Sort Array](https://leetcode.com/problems/relative-sort-array/)<br>
+[LC 1387.Sort Integers by The Power Value](https://leetcode.com/problems/sort-integers-by-the-power-value/)<br>
 
 ```java
 // [l, r)
