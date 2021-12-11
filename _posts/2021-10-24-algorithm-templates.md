@@ -1036,6 +1036,7 @@ boolean rangeQuery(int l, int r, int lower, int upper) {
 
 [LC 35.Search Insert Position](https://leetcode.com/problems/search-insert-position/)<br>
 [LC 540.Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)<br>
+[LC 878.Nth Magical Number](https://leetcode.com/problems/nth-magical-number/)<br>
 
 ```java
 //
