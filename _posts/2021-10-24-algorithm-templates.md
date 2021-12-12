@@ -93,6 +93,7 @@ private int[] kth(int[][] arr, int l, int r, int k) {
 ### 0-1 knapsack
 
 [LQ 186.糖果](https://www.lanqiao.cn/problems/186/learning/)<br>
+[LC 416.Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)<br>
 
 ```java
 // dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - W[i]] + V[i])
