@@ -428,7 +428,8 @@ void toplogicalSort(int n, int[][] edges) {
 [LC 952.Largest Component Size by Common Factor](https://leetcode.com/problems/largest-component-size-by-common-factor/)<br>
 [LQ 185.修改数组](https://www.lanqiao.cn/problems/185/learning/)<br>
 [LC 2092.Find All People With Secret](https://leetcode.com/problems/find-all-people-with-secret/)<br>
-[LQ 1505.剪邮票](https://www.lanqiao.cn/problems/1505/learning/)
+[LQ 1505.剪邮票](https://www.lanqiao.cn/problems/1505/learning/)<br>
+[LC 2076.Process Restricted Friend Requests](https://leetcode.com/problems/process-restricted-friend-requests/)<br>
 
 ```java
 class UnionFind {
