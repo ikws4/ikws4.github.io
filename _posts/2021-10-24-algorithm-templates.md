@@ -959,6 +959,7 @@ class MatrixFastPow {
 [LC 1475.Final Prices With a Special Discount in a Shop](https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/)<br>
 [LC 907.Sum of Subarray Minimums](https://leetcode.com/problems/sum-of-subarray-minimums/)<br>
 [LC 2104.Sum of Subarray Ranges](https://leetcode.com/problems/sum-of-subarray-ranges/)<br>
+[LC 1856.Maximum Subarray Min-Product](https://leetcode.com/problems/maximum-subarray-min-product/)<br>
 
 ```java
 void monotonicStack(int[] nums) {
