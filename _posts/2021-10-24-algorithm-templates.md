@@ -375,6 +375,7 @@ int[] bellmanFord(int n, int s, int[][] edges) {
 [LC 207.Course Schedule](https://leetcode.com/problems/course-schedule/)<br>
 [lC 210.Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)<br>
 [LC 310.Minimum Height Trees](https://leetcode.com/problems/minimum-height-trees/)<br>
+[LC 2115.Find All Possible Recipes from Given Supplies](https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies/)<br>
 
 ```java
 void toplogicalSort(int n, int[][] edges) {
