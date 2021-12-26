@@ -51,6 +51,7 @@ void sort(int[] arr, int l, int r) {
 ### Quick Select
 
 [LC 1387.Sort Integers by The Power Value](https://leetcode.com/problems/sort-integers-by-the-power-value/)<br>
+[LC 973.K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/)<br>
 
 ```java
 private int[] kth(int[][] arr, int l, int r, int k) {
