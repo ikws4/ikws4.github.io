@@ -1214,3 +1214,130 @@ class Solution {
   }
 }
 ```
+
+# Diff Array
+
+## 1D
+
+[LC 1109.Corporate Flight Bookings](https://leetcode.com/problems/corporate-flight-bookings/)<br>
+[LC 732.My Calendar III](https://leetcode.com/problems/my-calendar-iii/)<br>
+[LQ 1276.小明的彩灯](https://www.lanqiao.cn/problems/1276/learning/)<br>
+
+```java
+// updates[i] = [x1, x2, delta]
+//
+//   x1      x2 
+//    +------+
+//
+void f(int[][] updates) {
+  int[] diff = new int[N];
+  
+  for (var update : updates) {
+    int x1 = update[0], x2 = update[1];
+    int delta = update[2];
+    
+    diff[x1    ] += delta;
+    diff[x1 + 1] -= delta;
+  }
+
+  // convert diff to presum
+  for (int i = 0; i < N - 1; i++) {
+    diff[i + 1] += diff[i];
+  }
+}
+```
+
+## 2D
+
+```java
+// updates[i] = [x1, y1, x2, y2, delta]
+//
+// (x1, y1)
+//    +------+
+//    |      |
+//    |      |
+//    +------+
+//        (x2, y2)
+//
+void f(int[][] updates) {
+  int[][] diff = new int[N][N];
+  
+  for (var update : updates) {
+    int x1 = update[0], y1 = update[1];
+    int x2 = update[2], y2 = update[3];
+    int delta = update[4];
+    
+    diff[x1    ][y1    ] += delta;
+    diff[x1 + 1][y2    ] -= delta;
+    diff[x2    ][y1 + 1] -= delta;
+    diff[x2 + 1][y2 + 1] += delta;
+  }
+
+  // convert diff to presum
+  for (int i = 0; i < N - 1; i++) {
+    for (int j = 0; j < N; j++) {
+      diff[i + 1][j] += diff[i][j];
+    }
+  }
+  
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N - 1; j++) {
+      diff[i][j + 1] += diff[i][j];
+    }
+  }
+}
+```
+
+## 3D
+
+[LQ 180.三体攻击](https://www.lanqiao.cn/problems/180/learning/)<br>
+
+```java
+// updates[i] = [x1, y1, z1, x2, y2, z2, delta]
+void f(int[][] updates) {
+  int[][][] diff = new int[N][N][N];
+  
+  for (var update : updates) {
+    int x1 = update[0], y1 = update[1], z1 = update[2];
+    int x2 = update[3], y2 = update[4], z2 = update[5];
+    int delta = update[6];
+    
+    diff[x1    ][y1    ][z1    ] += delta; // 000
+    diff[x1    ][y1    ][z2 + 1] -= delta; // 001
+    diff[x1    ][y2 + 1][z1    ] -= delta; // 010
+    diff[x1    ][y2 + 1][z2 + 1] += delta; // 011
+    diff[x2 + 1][y1    ][z1    ] -= delta; // 100
+    diff[x2 + 1][y1    ][z2 + 1] += delta; // 101
+    diff[x2 + 1][y2 + 1][z1    ] += delta; // 110
+    diff[x2 + 1][y2 + 1][z2 + 1] -= delta; // 111
+
+    // Apply `+` when there is even bit ones
+    // otherwise apply `-`
+  }
+
+  // convert diff to presum
+  for (int i = 0; i < N - 1; i++) {
+    for (int j = 0; j < N; j++) {
+      for (int k = 0; k < N; k++) {
+        diff[i + 1][j][k] += diff[i][j][k];
+      }
+    }
+  }
+  
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N - 1; j++) {
+      for (int k = 0; k < N; k++) {
+        diff[i][j + 1][k] += diff[i][j][k];
+      }
+    }
+  }
+  
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N; j++) {
+      for (int k = 0; k < N - 1; k++) {
+        diff[i][j][k + 1] += diff[i][j][k];
+      }
+    }
+  }
+}
+```
