@@ -1258,7 +1258,7 @@ class Solution {
 }
 ```
 
-# Diff Array
+# Diff Array & Sweep Line
 
 ## 1D
 
