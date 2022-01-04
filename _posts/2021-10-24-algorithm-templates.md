@@ -224,6 +224,48 @@ int minDistance(String s, String t) {
 }
 ```
 
+### LIS (Longest Increasing Subsequence)
+
+[LC 300.Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)<br>
+[LC 1964.Find the Longest Valid Obstacle Course at Each Position](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/)<br>
+
+```java
+class Solution {
+  public int lengthOfLIS(int[] nums) {
+    List<Integer> list = new ArrayList<>();
+
+    for (var num : nums) {
+      int m = lowerBound(list, num);
+    
+      if (m == list.size()) {
+        list.add(num);
+      } else {
+        list.set(m, num);
+      }
+    }
+    
+    return list.size();
+  }
+
+  private int lowerBound(List<Integer> list, int x) {
+    int l = 0, r = list.size();
+
+    while (l < r) {
+      int m = l + (r - l) / 2;
+      if (list.get(m) < x) {
+        l = m + 1;
+      } else {
+        r = m;
+      }
+    }
+    
+    return l;
+  }
+}
+
+
+```
+
 ## Sparse Table
 
 [ACWING 1270.数列区间最大值](https://www.acwing.com/problem/content/description/1272/)<br>
@@ -650,6 +692,7 @@ class SegmentTree {
 [LC 307.Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)<br>
 [LC 1409.Queries on a Permutation With Key](https://leetcode.com/problems/queries-on-a-permutation-with-key/)<br>
 [LC 1395.Count Number of Teams](https://leetcode.com/problems/count-number-of-teams/)<br>
+[LC 1375.Number of Times Binary String Is Prefix-Aligned](https://leetcode.com/problems/number-of-times-binary-string-is-prefix-aligned/)<br>
 
 ```java
 class FenwickTree {
