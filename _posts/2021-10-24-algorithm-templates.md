@@ -1281,7 +1281,7 @@ void f(int[][] updates) {
     int delta = update[2];
     
     diff[x1    ] += delta;
-    diff[x1 + 1] -= delta;
+    diff[x2 + 1] -= delta;
   }
 
   // convert diff to presum
@@ -1312,8 +1312,8 @@ void f(int[][] updates) {
     int delta = update[4];
     
     diff[x1    ][y1    ] += delta;
-    diff[x1 + 1][y2    ] -= delta;
-    diff[x2    ][y1 + 1] -= delta;
+    diff[x1    ][y2 + 1] -= delta;
+    diff[x2 + 1][y1    ] -= delta;
     diff[x2 + 1][y2 + 1] += delta;
   }
 
