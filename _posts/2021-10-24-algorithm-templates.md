@@ -1264,6 +1264,7 @@ class Solution {
 
 [LC 1109.Corporate Flight Bookings](https://leetcode.com/problems/corporate-flight-bookings/)<br>
 [LC 732.My Calendar III](https://leetcode.com/problems/my-calendar-iii/)<br>
+[LC 56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)<br>
 [LQ 1276.小明的彩灯](https://www.lanqiao.cn/problems/1276/learning/)<br>
 
 ```java
