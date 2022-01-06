@@ -1266,6 +1266,7 @@ class Solution {
 [LC 732.My Calendar III](https://leetcode.com/problems/my-calendar-iii/)<br>
 [LC 56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)<br>
 [LQ 1276.小明的彩灯](https://www.lanqiao.cn/problems/1276/learning/)<br>
+[LC 1094.Car Pooling](https://leetcode.com/problems/car-pooling/)<br>
 
 ```java
 // updates[i] = [x1, x2, delta]
