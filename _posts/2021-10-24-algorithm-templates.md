@@ -236,14 +236,14 @@ class Solution {
 
     for (var num : nums) {
       int m = lowerBound(list, num);
-    
+
       if (m == list.size()) {
         list.add(num);
       } else {
         list.set(m, num);
       }
     }
-    
+
     return list.size();
   }
 
@@ -258,12 +258,10 @@ class Solution {
         r = m;
       }
     }
-    
+
     return l;
   }
 }
-
-
 ```
 
 ## 2D Grid Path
@@ -313,13 +311,13 @@ class Solution {
         grid[y2][x2] == -1) return Integer.MIN_VALUE >> 1;
     if (x1 == n - 1 && y1 == m - 1) return grid[y1][x1];
     if (memo[x1][y1][x2] != null) return memo[x1][y1][x2];
-    
+
     int res = Integer.MIN_VALUE >> 1;
-    
+
     for (var move : moves) {
       res = Math.max(res, dp(x1 + move[0], y1 + move[1], x2 + move[2]));
     }
-    
+
     res += grid[y1][x1];
     if (y1 != y2 && x1 != x2) res += grid[y2][x2];
 
@@ -1333,16 +1331,16 @@ class Solution {
 ```java
 // updates[i] = [x1, x2, delta]
 //
-//   x1      x2 
+//   x1      x2
 //    +------+
 //
 void f(int[][] updates) {
   int[] diff = new int[N];
-  
+
   for (var update : updates) {
     int x1 = update[0], x2 = update[1];
     int delta = update[2];
-    
+
     diff[x1    ] += delta;
     diff[x2 + 1] -= delta;
   }
@@ -1373,7 +1371,7 @@ void f(int[][] updates) {
     int x1 = update[0], y1 = update[1];
     int x2 = update[2], y2 = update[3];
     int delta = update[4];
-    
+
     diff[x1    ][y1    ] += delta;
     diff[x1    ][y2 + 1] -= delta;
     diff[x2 + 1][y1    ] -= delta;
@@ -1386,7 +1384,7 @@ void f(int[][] updates) {
       diff[i + 1][j] += diff[i][j];
     }
   }
-  
+
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N - 1; j++) {
       diff[i][j + 1] += diff[i][j];
@@ -1403,12 +1401,12 @@ void f(int[][] updates) {
 // updates[i] = [x1, y1, z1, x2, y2, z2, delta]
 void f(int[][] updates) {
   int[][][] diff = new int[N][N][N];
-  
+
   for (var update : updates) {
     int x1 = update[0], y1 = update[1], z1 = update[2];
     int x2 = update[3], y2 = update[4], z2 = update[5];
     int delta = update[6];
-    
+
     diff[x1    ][y1    ][z1    ] += delta; // 000
     diff[x1    ][y1    ][z2 + 1] -= delta; // 001
     diff[x1    ][y2 + 1][z1    ] -= delta; // 010
@@ -1430,7 +1428,7 @@ void f(int[][] updates) {
       }
     }
   }
-  
+
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N - 1; j++) {
       for (int k = 0; k < N; k++) {
@@ -1438,7 +1436,7 @@ void f(int[][] updates) {
       }
     }
   }
-  
+
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
       for (int k = 0; k < N - 1; k++) {
