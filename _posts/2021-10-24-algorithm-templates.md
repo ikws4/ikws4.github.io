@@ -266,6 +266,68 @@ class Solution {
 
 ```
 
+## 2D Grid Path
+
+[LC 741.Cherry Pickup](https://leetcode.com/problems/cherry-pickup/)<br>
+[LC 1463.Cherry Pickup II](https://leetcode.com/problems/cherry-pickup-ii/)<br>
+[LQ 3000.拿金币](http://lx.lanqiao.cn/problem.page?gpid=T3000)<br>
+[LQ 79.方格取数](http://lx.lanqiao.cn/problem.page?gpid=T79)<br>
+
+```java
+class Solution {
+  private int m, n;
+  private int[][] grid;
+  private Integer[][][] memo;
+  private int[][] moves = {
+  // x1 y1 x2
+    {1, 0, 1, 0},
+    {1, 0, 0, 1},
+    {0, 1, 1, 0},
+    {0, 1, 0, 1}
+  //         y2(useless)
+  };
+
+	public int cherryPickup(int[][] grid) {
+    this.m = grid.length;
+    this.n = grid[0].length;
+    this.grid = grid;
+    this.memo = new Integer[n][m][n];
+
+    // robot 1: (0, 0)
+    // robot 2: (0, 0)
+    //              ^
+    //             don't need
+    //
+    //
+    // x1 + y1 = x2 + y2
+    // y2      = x1 + y1 - x2
+    return Math.max(0, dp(0, 0, 0));
+  }
+
+  private int dp(int x1, int y1, int x2) {
+    int y2 = x1 + y1 - x2;
+
+    if (x1 >= m || x2 >= m ||
+        y1 >= n || y2 >= n) return Integer.MIN_VALUE >> 1;
+    if (grid[y1][x1] == -1 ||
+        grid[y2][x2] == -1) return Integer.MIN_VALUE >> 1;
+    if (x1 == n - 1 && y1 == m - 1) return grid[y1][x1];
+    if (memo[x1][y1][x2] != null) return memo[x1][y1][x2];
+    
+    int res = Integer.MIN_VALUE >> 1;
+    
+    for (var move : moves) {
+      res = Math.max(res, dp(x1 + move[0], y1 + move[1], x2 + move[2]));
+    }
+    
+    res += grid[y1][x1];
+    if (y1 != y2 && x1 != x2) res += grid[y2][x2];
+
+    return memo[x1][y1][x2] = res;
+  }
+}
+```
+
 ## Sparse Table
 
 [ACWING 1270.数列区间最大值](https://www.acwing.com/problem/content/description/1272/)<br>
@@ -1264,7 +1326,7 @@ class Solution {
 
 [LC 1109.Corporate Flight Bookings](https://leetcode.com/problems/corporate-flight-bookings/)<br>
 [LC 732.My Calendar III](https://leetcode.com/problems/my-calendar-iii/)<br>
-[LC 56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)<br>
+[LC 56.Merge Intervals](https://leetcode.com/problems/merge-intervals/)<br>
 [LQ 1276.小明的彩灯](https://www.lanqiao.cn/problems/1276/learning/)<br>
 [LC 1094.Car Pooling](https://leetcode.com/problems/car-pooling/)<br>
 
@@ -1306,7 +1368,7 @@ void f(int[][] updates) {
 //
 void f(int[][] updates) {
   int[][] diff = new int[N][N];
-  
+
   for (var update : updates) {
     int x1 = update[0], y1 = update[1];
     int x2 = update[2], y2 = update[3];
