@@ -1354,6 +1354,8 @@ void f(int[][] updates) {
 
 ## 2D
 
+[2132.Stamping the Grid](https://leetcode.com/problems/stamping-the-grid/)<br>
+
 ```java
 // updates[i] = [x1, y1, x2, y2, delta]
 //
