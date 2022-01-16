@@ -42,7 +42,7 @@ void sort(int[] arr, int l, int r) {
   // E: Number that equals to pivot
   // G: Number that greater than pivot
   //
-
+  
   sort(arr, l, i - 1);
   sort(arr, j + 1, r);
 }
@@ -534,6 +534,7 @@ void toplogicalSort(int n, int[][] edges) {
 [LC 2092.Find All People With Secret](https://leetcode.com/problems/find-all-people-with-secret/)<br>
 [LQ 1505.剪邮票](https://www.lanqiao.cn/problems/1505/learning/)<br>
 [LC 2076.Process Restricted Friend Requests](https://leetcode.com/problems/process-restricted-friend-requests/)<br>
+[LC 1722.Minimize Hamming Distance After Swap Operations](https://leetcode.com/problems/minimize-hamming-distance-after-swap-operations/)<br>
 
 ```java
 class UnionFind {
@@ -1066,6 +1067,7 @@ class MatrixFastPow {
 [LC 907.Sum of Subarray Minimums](https://leetcode.com/problems/sum-of-subarray-minimums/)<br>
 [LC 2104.Sum of Subarray Ranges](https://leetcode.com/problems/sum-of-subarray-ranges/)<br>
 [LC 1856.Maximum Subarray Min-Product](https://leetcode.com/problems/maximum-subarray-min-product/)<br>
+[LC 849.Maximize Distance to Closest Person](https://leetcode.com/problems/maximize-distance-to-closest-person/)<br>
 
 ```java
 void monotonicStack(int[] nums) {
