@@ -1151,6 +1151,8 @@ boolean rangeQuery(int l, int r, int lower, int upper) {
 [LC 540.Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)<br>
 [LC 878.Nth Magical Number](https://leetcode.com/problems/nth-magical-number/)<br>
 [LC 1201.Ugly Number III](https://leetcode.com/problems/ugly-number-iii/)<br>
+[LC 875.Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)<br>
+[LC 2141.Maximum Running Time of N Computers](https://leetcode.com/problems/maximum-running-time-of-n-computers/)<br>
 
 ```java
 //
