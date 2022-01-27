@@ -828,6 +828,7 @@ class FenwickTree {
 
 [LC 208.Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)<br>
 [LC 1032.Stream of Characters](https://leetcode.com/problems/stream-of-characters/)<br>
+[LC 421.Maximum XOR of Two Numbers in an Array](https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/)<br>
 
 ```java
 class Trie {
