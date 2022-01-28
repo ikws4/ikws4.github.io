@@ -480,6 +480,7 @@ int[] bellmanFord(int n, int s, int[][] edges) {
 [LC 2115.Find All Possible Recipes from Given Supplies](https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies/)<br>
 [LC 1857.Largest Color Value in a Directed Graph](https://leetcode.com/problems/largest-color-value-in-a-directed-graph/)<br>
 [LC 1591.Strange Printer II](https://leetcode.com/problems/strange-printer-ii/)<br>
+[LC 2127.Maximum Employees to Be Invited to a Meeting](https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting/)<br>
 
 ```java
 void toplogicalSort(int n, int[][] edges) {
