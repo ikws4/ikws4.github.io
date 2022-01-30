@@ -538,6 +538,7 @@ void toplogicalSort(int n, int[][] edges) {
 [LQ 1505.剪邮票](https://www.lanqiao.cn/problems/1505/learning/)<br>
 [LC 2076.Process Restricted Friend Requests](https://leetcode.com/problems/process-restricted-friend-requests/)<br>
 [LC 1722.Minimize Hamming Distance After Swap Operations](https://leetcode.com/problems/minimize-hamming-distance-after-swap-operations/)<br>
+[LC 2157.Groups of Strings](https://leetcode.com/problems/groups-of-strings/)<br>
 
 ```java
 class UnionFind {
