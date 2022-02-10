@@ -1263,6 +1263,23 @@ exist in `bitmask`.
 Also, we will not miss any subset because `subset - 1` turns at most one `1` into
 `0`.
 
+## Gosper's Hack
+
+```java
+int limit = 1 << n;
+for (int k = n; k >= 1; k--) {
+  int state = (1 << k) - 1;
+
+  while (state < limit) {
+    // do what you want with the current state...
+
+    int c = state & -state;
+    int r = state + c;
+    state = (((r ^ state) >> 2) / c) | r;
+  }
+} 
+```
+
 # Sliding Window
 
 ## Window without repeat
