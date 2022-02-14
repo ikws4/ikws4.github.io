@@ -376,9 +376,10 @@ class SparseTable {
 
 ## Shortest Path
 
-[LC 45.Jump Game II](https://leetcode.com/problems/jump-game-ii)<br>
-
 ### Dijkstra
+
+[LC 45.Jump Game II](https://leetcode.com/problems/jump-game-ii)<br>
+[LC 1879.Minimum XOR Sum of Two Arrays](https://leetcode.com/problems/minimum-xor-sum-of-two-arrays/)<br>
 
 ```java
 // vertex are 0-indexed
