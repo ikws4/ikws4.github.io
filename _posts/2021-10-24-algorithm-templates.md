@@ -42,7 +42,7 @@ void sort(int[] arr, int l, int r) {
   // E: Number that equals to pivot
   // G: Number that greater than pivot
   //
-  
+
   sort(arr, l, i - 1);
   sort(arr, j + 1, r);
 }
@@ -1278,7 +1278,7 @@ for (int k = n; k >= 1; k--) {
     int r = state + c;
     state = (((r ^ state) >> 2) / c) | r;
   }
-} 
+}
 ```
 
 # Sliding Window
