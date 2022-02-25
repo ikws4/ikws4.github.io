@@ -759,6 +759,7 @@ class SegmentTree {
 [LC 1409.Queries on a Permutation With Key](https://leetcode.com/problems/queries-on-a-permutation-with-key/)<br>
 [LC 1395.Count Number of Teams](https://leetcode.com/problems/count-number-of-teams/)<br>
 [LC 1375.Number of Times Binary String Is Prefix-Aligned](https://leetcode.com/problems/number-of-times-binary-string-is-prefix-aligned/)<br>
+[LC 2179.Count Good Triplets in an Array](https://leetcode.com/problems/count-good-triplets-in-an-array/)<br>
 
 ```java
 class FenwickTree {
@@ -1190,7 +1191,7 @@ int lowerBound(int l, int r, int x) {
 
 ### Upper Bound
 
-[LC 441.Arranging Coins](https://leetcode.com/problems/arranging-coins/)
+[LC 441.Arranging Coins](https://leetcode.com/problems/arranging-coins/)<br>
 
 ```java
 //
