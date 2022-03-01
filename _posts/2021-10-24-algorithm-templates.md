@@ -1479,3 +1479,89 @@ void f(int[][] updates) {
   }
 }
 ```
+
+# Check From The Middle
+
+## Count smaller/greater before/after self (Merge sort or [FenwickTree](#fenwick-tree))
+
+[LC 315.Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)<br>
+[LC 2179.Count Good Triplets in an Array](https://leetcode.com/problems/count-good-triplets-in-an-array/)<br>
+
+```java
+int[] nums;
+int[] temp;
+int[] smallerAfterSelf;
+
+// l: inclusive
+// r: exclusive
+void sort(int[] sorted, int l, int r) {
+  if (l >= r - 1) return;
+
+  int m = l + (r - l) / 2;
+  sort(sorted, l, m);
+  sort(sorted, m, r);
+
+  for (int i = l; i < m; i++) {
+    smallerAfterSelf[i] += lowerBound(sorted, m, r, nums[i]) - m;
+  }
+
+  // merge
+  int i = l, j = m, k = 0;
+  while (i < m && j < r) {
+    if (sorted[i] < sorted[j]) {
+      temp[k++] = sorted[i++];
+    } else {
+      temp[k++] = sorted[j++];
+    }
+  }
+  while (i < m) temp[k++] = sorted[i++];
+  while (j < r) temp[k++] = sorted[j++];
+
+  for (i = l, j = 0; i < r; i++, j++) {
+    sorted[i] = temp[j];
+  }
+}
+```
+
+```java
+void f(int[] nums) {
+  int[] map = new int[n];
+
+  for (int i = 0; i < n; i++) {
+    map[nums[i]] = i;
+  }
+
+  int[] prevSmaller = new int[n];
+
+  FenwickTree bit = new FenwickTree(n);
+  for (int i = 0; i < n; i++) {
+    int a = map[nums[i]];
+    bit.update(a, 1);
+    prevSmaller[i] = bit.sumOfRange(0, a - 1);
+  }
+}
+```
+
+## Find the first index that smaller/greater before/after self (Monotonic stack)
+
+[Monotonic Stack](#monotonic-stack)
+
+## Min/Max sum of n-th elements before/after self (PriorityQueue)
+
+[LC 2163.Minimum Difference in Sums After Removal of Elements](https://leetcode.com/problems/minimum-difference-in-sums-after-removal-of-elements/)
+
+```java
+void f(int[] nums, int n) {
+  Queue<Integer> leftQueue = new PriorityQueue<>(Collections.reverseOrder());
+  long[] leftMin = new long[nums.length];
+  long sum = 0;
+  for (int i = 0; i < n << 1; i++) {
+    leftQueue.offer(nums[i]);
+    sum += nums[i];
+    if (leftQueue.size() > n) {
+      sum -= leftQueue.poll();
+    }
+    leftMin[i] = sum;
+  }
+}
+```
