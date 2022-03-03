@@ -475,6 +475,45 @@ int[] bellmanFord(int n, int s, int[][] edges) {
 }
 ```
 
+## Floyd-Warshall
+
+```java
+class Solution {
+  // Floyd
+  public int networkDelayTime(int[][] times, int n, int k) {
+    int[][] dp = new int[n + 1][n + 1];
+    for (int i = 1; i <= n; i++) {
+      for (int j = 1; j <= n; j++) {
+        if (i == j) dp[i][j] = 0;
+        else dp[i][j] = Integer.MAX_VALUE >> 1;
+      }
+    }
+
+    for (var time : times) {
+      int u = time[0], v = time[1], w = time[2];
+      dp[u][v] = w;
+    }
+
+    for (int l = 1; l <= n; l++) {
+      for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+          dp[i][j] = Math.min(dp[i][j], dp[i][l] + dp[l][j]);
+        }
+      }
+    }
+
+    int maxTime = 0;
+    for (int j = 1; j <= n; j++) {
+      maxTime = Math.max(maxTime, dp[k][j]);
+    }
+
+    if (maxTime == Integer.MAX_VALUE >> 1) return -1;
+
+    return maxTime;
+  }
+}
+```
+
 ## Toplogical sort
 
 [LC 207.Course Schedule](https://leetcode.com/problems/course-schedule/)<br>
