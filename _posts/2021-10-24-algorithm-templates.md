@@ -379,6 +379,7 @@ class SparseTable {
 ### Dijkstra
 
 [LC 45.Jump Game II](https://leetcode.com/problems/jump-game-ii)<br>
+[LC 743.Network Delay Time](https://leetcode.com/problems/network-delay-time/)<br>
 [LC 1879.Minimum XOR Sum of Two Arrays](https://leetcode.com/problems/minimum-xor-sum-of-two-arrays/)<br>
 
 ```java
@@ -435,6 +436,7 @@ int[] dijkstra(int n, int s, int[][] edges) {
 ### Bellman-Ford
 
 [LQ 609.最短路](https://www.lanqiao.cn/problems/609/learning/)<br>
+[LC 743.Network Delay Time](https://leetcode.com/problems/network-delay-time/)<br>
 
 ```java
 int[] bellmanFord(int n, int s, int[][] edges) {
