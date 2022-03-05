@@ -228,6 +228,7 @@ int minDistance(String s, String t) {
 
 [LC 300.Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)<br>
 [LC 1964.Find the Longest Valid Obstacle Course at Each Position](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/)<br>
+[LC 1671.Minimum Number of Removals to Make Mountain Array](https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/)<br>
 
 ```java
 class Solution {
