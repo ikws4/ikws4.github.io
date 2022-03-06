@@ -524,6 +524,7 @@ class Solution {
 [LC 1857.Largest Color Value in a Directed Graph](https://leetcode.com/problems/largest-color-value-in-a-directed-graph/)<br>
 [LC 1591.Strange Printer II](https://leetcode.com/problems/strange-printer-ii/)<br>
 [LC 2127.Maximum Employees to Be Invited to a Meeting](https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting/)<br>
+[LC 2192.All Ancestors of a Node in a Directed Acyclic Graph](https://leetcode.com/problems/all-ancestors-of-a-node-in-a-directed-acyclic-graph/)<br>
 
 ```java
 void toplogicalSort(int n, int[][] edges) {
