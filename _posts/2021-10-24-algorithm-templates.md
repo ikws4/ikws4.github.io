@@ -1610,3 +1610,115 @@ void f(int[] nums, int n) {
   }
 }
 ```
+
+# FastScanner
+
+```java
+class FastScanner {
+  private static final int NULL = '\0';
+  private static final int BUFFER_CAPACITY = 1 << 18;
+  private InputStream in;
+  private byte[] buffer = new byte[BUFFER_CAPACITY];
+  private int bufferPtr, bufferSize;
+
+  public FastScanner(InputStream in) {
+    this.in = in;
+    this.bufferPtr = 0;
+    this.bufferSize = 0;
+  }
+
+  public String next() throws IOException {
+    byte[] res = new byte[1 << 16];
+    int len = 0;
+
+    byte b = read();
+    while (b != ' ' && b != '\n' && b != NULL) {
+      res[len++] = b;
+      b = read();
+    }
+    
+    return new String(res, 0, len);
+  }
+
+  public int nextInt() throws IOException {
+    int res = 0;
+
+    // skip leading non-printable characters
+    byte b = read();
+    while (b <= ' ') b = read();
+
+    boolean neg = b == '-';
+    if (neg) b = read();
+
+    while (b >= '0' && b <= '9') {
+      res = res * 10 + b - '0';
+      b = read();
+    }
+
+    return neg ? res * -1 : res;
+  }
+  
+  public long nextLong() throws IOException {
+    long res = 0;
+
+    // skip leading non-printable characters
+    byte b = read();
+    while (b <= ' ') b = read();
+
+    boolean neg = b == '-';
+    if (neg) b = read();
+
+    while (b >= '0' && b <= '9') {
+      res = res * 10 + b - '0';
+      b = read();
+    }
+
+    return neg ? res * -1 : res;
+  }
+  
+  public double nextDouble() throws IOException {
+    double res = 0;
+
+    // skip leading non-printable characters
+    byte b = read();
+    while (b <= ' ') b = read();
+
+    boolean neg = b == '-';
+    if (neg) b = read();
+
+    while (b >= '0' && b <= '9') {
+      res = res * 10 + b - '0';
+      b = read();
+    }
+
+    // read decimal part
+    if (b == '.') {
+      double w = 10;
+      b = read();
+      while (b >= '0' && b <= '9') {
+        res += (b - '0') / (w);
+        b = read();
+        w *= 10;
+      }
+    }
+    
+    return neg ? res * -1 : res;
+  }
+  
+  private byte read() throws IOException {
+    if (bufferPtr >= bufferSize) {
+      fillBuffer();
+    }
+
+    return buffer[bufferPtr++];
+  }
+
+  private void fillBuffer() throws IOException {
+    bufferSize = in.read(buffer, 0, BUFFER_CAPACITY);
+    bufferPtr = 0;
+    if (bufferSize == -1) {
+      buffer[0] = NULL;
+    }
+  }
+}
+```
