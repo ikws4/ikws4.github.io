@@ -384,6 +384,7 @@ class SparseTable {
 [LC 45.Jump Game II](https://leetcode.com/problems/jump-game-ii)<br>
 [LC 743.Network Delay Time](https://leetcode.com/problems/network-delay-time/)<br>
 [LC 1879.Minimum XOR Sum of Two Arrays](https://leetcode.com/problems/minimum-xor-sum-of-two-arrays/)<br>
+[LC 2203.Minimum Weighted Subgraph With the Required Paths](https://leetcode.com/problems/minimum-weighted-subgraph-with-the-required-paths/)<br>
 
 ```java
 // vertex are 0-indexed
@@ -1531,6 +1532,7 @@ void f(int[][] updates) {
 
 [LC 315.Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)<br>
 [LC 2179.Count Good Triplets in an Array](https://leetcode.com/problems/count-good-triplets-in-an-array/)<br>
+[LC 493.Reverse Pairs](https://leetcode.com/problems/reverse-pairs/)<br>
 
 ```java
 int[] nums;
