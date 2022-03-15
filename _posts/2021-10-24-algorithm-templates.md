@@ -436,8 +436,9 @@ int[] dijkstra(int n, int s, int[][] edges) {
     graph[u].add(new int[]{v, w});
   }
 
-  // initial
-  Queue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
+  // init
+  // {node, distance}
+  Queue<int[]> queue = new PriorityQueue<>((a, b) -> Integer.compare(a[1], b[1]));
   int[] dist = new int[n];
   int[] prev = new int[n];
 
@@ -447,21 +448,21 @@ int[] dijkstra(int n, int s, int[][] edges) {
   }
   dist[s] = 0;
 
-  // {vertex, dist}
-  pq.offer(new int[]{s, 0});
+  pq.offer(new int[] {s, 0});
 
   while (!pq.isEmpty()) {
-    int[] curr = pq.poll();
+    int[] curr = queue.poll();
     int u = curr[0], d = curr[1];
 
     if (dist[u] != d) continue;
 
-    for (int[] nei : graph[u]) {
-      int v = nei[0], w = nei[1];
+    for (int[] next : graph[u]) {
+      int v = next[0], w = next[1];
+      
       if (d + w < dist[v]) {
         dist[v] = d + w;
         prev[v] = u;
-        pq.offer(new int[]{v, dist[v]});
+        queue.offer(new int[]{v, dist[v]});
       }
     }
   }
@@ -512,7 +513,7 @@ int[] bellmanFord(int n, int s, int[][] edges) {
 }
 ```
 
-## Floyd-Warshall
+### Floyd-Warshall
 
 ```java
 class Solution {
