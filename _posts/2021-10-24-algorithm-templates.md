@@ -448,7 +448,7 @@ int[] dijkstra(int n, int s, int[][] edges) {
   }
   dist[s] = 0;
 
-  pq.offer(new int[] {s, 0});
+  queue.offer(new int[] {s, 0});
 
   while (!queue.isEmpty()) {
     int[] curr = queue.poll();
