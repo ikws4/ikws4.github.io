@@ -1802,31 +1802,26 @@ class Solution {
 ```java
 class Solution {
   public boolean checkValidString(String s) {
-    int stackMin = 0;
-    int stackMax = 0;
-
+    int min = 0, max = 0;
     for (int i = 0; i < s.length(); i++) {
       char c = s.charAt(i);
+      
       if (c == '(') {
-        stackMin++;
-        stackMax++;
+        min++;
+        max++;
       } else if (c == ')') {
-        stackMin--;
-        stackMax--;
-      } else {
-        stackMin--; // treat * as )
-        stackMax++; // treat * as (
+        min--;
+        max--;
+      } else /* if (c == '*') */ {
+        min--; // treat * as )
+        max++; // treat * as (
       }
 
-      if (stackMax < 0) {
-        return false;
-      }
-      if (stackMin < 0) {
-        stackMin = 0;
-      }
+      if (max < 0) break;
+      if (min < 0) min = 0; // * allow empty
     }
 
-    return stackMin == 0;
+    return min == 0;
   }
 }
 ```
