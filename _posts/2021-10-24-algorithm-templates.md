@@ -1795,3 +1795,38 @@ class Solution {
   }
 }
 ```
+
+[LC 678.Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/)<br>
+[LC 2116.Check if a Parentheses String Can Be Valid](https://leetcode.com/problems/check-if-a-parentheses-string-can-be-valid/)<br>
+
+```java
+class Solution {
+  public boolean checkValidString(String s) {
+    int stackMin = 0;
+    int stackMax = 0;
+
+    for (int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+      if (c == '(') {
+        stackMin++;
+        stackMax++;
+      } else if (c == ')') {
+        stackMin--;
+        stackMax--;
+      } else {
+        stackMin--; // treat * as )
+        stackMax++; // treat * as (
+      }
+
+      if (stackMax < 0) {
+        return false;
+      }
+      if (stackMin < 0) {
+        stackMin = 0;
+      }
+    }
+
+    return stackMin == 0;
+  }
+}
+```
