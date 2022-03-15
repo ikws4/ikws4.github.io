@@ -125,6 +125,39 @@ int knapsack(int[] W, int[] V, int[] S, int n, int capacity) {
         if (W[i] * k > j) break;
         dp[j] = Math.max(dp[j], dp[j - W[i] * k] + V[i] * k);
       }
+class Solution {
+  public String minRemoveToMakeValid(String s) {
+    int n = s.length();
+    Stack<Integer> stack = new Stack<>();
+    boolean[] invalid = new boolean[n];
+
+    for (int i = 0; i < n; i++) {
+      char c = s.charAt(i);
+
+      if (c == '(') {
+        stack.push(i);
+      } else if (c == ')') {
+        if (stack.isEmpty()) {
+          invalid[i] = true;
+        } else {
+          stack.pop();
+        }
+      }
+    }
+
+    while (!stack.isEmpty()) {
+      invalid[stack.pop()] = true;
+    }
+
+    StringBuilder builder = new StringBuilder();
+    for (int i = 0; i < n; i++) {
+      if (invalid[i]) continue;
+
+      builder.append(s.charAt(i));
+    }
+    return builder.toString();
+  }
+}
     }
   }
 
@@ -1638,7 +1671,7 @@ class FastScanner {
       res[len++] = b;
       b = read();
     }
-    
+
     return new String(res, 0, len);
   }
 
@@ -1659,7 +1692,7 @@ class FastScanner {
 
     return neg ? res * -1 : res;
   }
-  
+
   public long nextLong() throws IOException {
     long res = 0;
 
@@ -1677,7 +1710,7 @@ class FastScanner {
 
     return neg ? res * -1 : res;
   }
-  
+
   public double nextDouble() throws IOException {
     double res = 0;
 
@@ -1703,10 +1736,10 @@ class FastScanner {
         w *= 10;
       }
     }
-    
+
     return neg ? res * -1 : res;
   }
-  
+
   private byte read() throws IOException {
     if (bufferPtr >= bufferSize) {
       fillBuffer();
@@ -1721,6 +1754,43 @@ class FastScanner {
     if (bufferSize == -1) {
       buffer[0] = NULL;
     }
+  }
+}
+```
+
+# Parentheses
+
+[LC 20.Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)</br>
+[LC 921.Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/)</br>
+[LC 1249.Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)</br>
+[LC 1541.Minimum Insertions to Balance a Parentheses String](https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/)</br>
+[LC 1963.Minimum Number of Swaps to Make the String Balanced](https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/)</br>
+
+```java
+class Solution {
+  public int minAddToMakeValid(String s) {
+    int stack = 0;
+    int cnt = 0;
+
+    for (int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+
+      if (c == '(') {
+        stack++; // push '('
+      } else {
+        if (stack > 0) {
+          stack--; // pop '('
+        } else {
+          cnt++; // need insert a '(' to make s valid
+        }
+      }
+    }
+
+    //
+    //           if stack = 3, means we need to insert 3 ')' to make s valid
+    //
+    //             v
+    return cnt + stack;
   }
 }
 ```
