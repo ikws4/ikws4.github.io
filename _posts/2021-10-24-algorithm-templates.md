@@ -1760,11 +1760,12 @@ class FastScanner {
 
 # Parentheses
 
-[LC 20.Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)</br>
-[LC 921.Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/)</br>
-[LC 1249.Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)</br>
-[LC 1541.Minimum Insertions to Balance a Parentheses String](https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/)</br>
-[LC 1963.Minimum Number of Swaps to Make the String Balanced](https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/)</br>
+[LC 20.Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)<br>
+[LC 32.Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/)<br>
+[LC 921.Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/)<br>
+[LC 1249.Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)<br>
+[LC 1541.Minimum Insertions to Balance a Parentheses String](https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/)<br>
+[LC 1963.Minimum Number of Swaps to Make the String Balanced](https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/)<br>
 
 ```java
 class Solution {
