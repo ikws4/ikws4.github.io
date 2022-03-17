@@ -1764,6 +1764,7 @@ class FastScanner {
 
 [LC 20.Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)<br>
 [LC 32.Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/)<br>
+[LC 856.Score of Parentheses](https://leetcode.com/problems/score-of-parentheses/)<br>
 [LC 921.Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/)<br>
 [LC 946.Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/)<br>
 [LC 1249.Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)<br>
