@@ -125,39 +125,6 @@ int knapsack(int[] W, int[] V, int[] S, int n, int capacity) {
         if (W[i] * k > j) break;
         dp[j] = Math.max(dp[j], dp[j - W[i] * k] + V[i] * k);
       }
-class Solution {
-  public String minRemoveToMakeValid(String s) {
-    int n = s.length();
-    Stack<Integer> stack = new Stack<>();
-    boolean[] invalid = new boolean[n];
-
-    for (int i = 0; i < n; i++) {
-      char c = s.charAt(i);
-
-      if (c == '(') {
-        stack.push(i);
-      } else if (c == ')') {
-        if (stack.isEmpty()) {
-          invalid[i] = true;
-        } else {
-          stack.pop();
-        }
-      }
-    }
-
-    while (!stack.isEmpty()) {
-      invalid[stack.pop()] = true;
-    }
-
-    StringBuilder builder = new StringBuilder();
-    for (int i = 0; i < n; i++) {
-      if (invalid[i]) continue;
-
-      builder.append(s.charAt(i));
-    }
-    return builder.toString();
-  }
-}
     }
   }
 
