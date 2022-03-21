@@ -96,6 +96,7 @@ private int[] kth(int[][] arr, int l, int r, int k) {
 
 [LQ 186.糖果](https://www.lanqiao.cn/problems/186/learning/)<br>
 [LC 416.Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)<br>
+[LC 2212.Maximum Points in an Archery Competition](https://leetcode.com/problems/maximum-points-in-an-archery-competition/)<br>
 
 ```java
 // dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - W[i]] + V[i])
