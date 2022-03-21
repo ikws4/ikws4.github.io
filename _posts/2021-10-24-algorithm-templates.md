@@ -387,6 +387,8 @@ class SparseTable {
 [LC 1879.Minimum XOR Sum of Two Arrays](https://leetcode.com/problems/minimum-xor-sum-of-two-arrays/)<br>
 [LC 2203.Minimum Weighted Subgraph With the Required Paths](https://leetcode.com/problems/minimum-weighted-subgraph-with-the-required-paths/)<br>
 [LC 1514.Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/)<br>
+[LC 1976.Number of Ways to Arrive at Destination](https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/)<br>
+[LC 1786.Number of Restricted Paths From First to Last Node](https://leetcode.com/problems/number-of-restricted-paths-from-first-to-last-node/)<br>
 
 ```java
 // vertex are 0-indexed
