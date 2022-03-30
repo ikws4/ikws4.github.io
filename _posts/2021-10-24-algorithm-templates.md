@@ -90,6 +90,11 @@ private int[] kth(int[][] arr, int l, int r, int k) {
 
 # Dynamic Programming
 
+## Choose items with presum
+
+[LC 2209.Minimum White Tiles After Covering With Carpets](https://leetcode.com/problems/minimum-white-tiles-after-covering-with-carpets/)<br>
+[LC 2218.Maximum Value of K Coins From Piles](https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/)<br>
+
 ## knapsack
 
 ### 0-1 knapsack
