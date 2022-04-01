@@ -96,6 +96,50 @@ private int[] kth(int[][] arr, int l, int r, int k) {
 [LC 2218.Maximum Value of K Coins From Piles](https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/)<br>
 [LC 410.Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/)<br>
 
+```java
+class Solution {
+  private List<List<Integer>> piles;
+  private int[][] memo;
+  
+  public int maxValueOfCoins(List<List<Integer>> piles, int k) {
+    this.piles = piles;
+    this.memo = new int[piles.size()][k + 1];
+
+    for (int i = 0; i < piles.size(); i++) {
+      Arrays.fill(memo[i], -1);
+    }
+
+    return dp(piles.size() - 1, k);
+  }
+
+  private int dp(int i, int k) {
+    if (k == 0) return 0;
+    if (i < 0) return Integer.MIN_VALUE >> 1;
+    if (memo[i][k] != -1) return memo[i][k];
+    
+    List<Integer> pile = piles.get(i);
+    int n = pile.size();
+    
+    // int[] presum = new int[n + 1];
+    // for (int j = 1; j <= n; j++) {
+    //   presum[j] = presum[j - 1] + pile.get(j - 1);
+    // }
+
+    int ans = Integer.MIN_VALUE >> 1;
+    int v = 0;
+    for (int j = 0; j <= Math.min(n, k); j++) {
+      // int v = presum[j];
+      
+      ans = Math.max(ans, dp(i - 1, k - j) + v);
+      
+      if (j < n) v += pile.get(j);
+    }
+    
+    return memo[i][k] = ans;
+  }
+}
+```
+
 ## knapsack
 
 ### 0-1 knapsack
