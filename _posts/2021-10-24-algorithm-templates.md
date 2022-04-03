@@ -1263,6 +1263,7 @@ boolean rangeQuery(int l, int r, int lower, int upper) {
 [LC 1201.Ugly Number III](https://leetcode.com/problems/ugly-number-iii/)<br>
 [LC 875.Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)<br>
 [LC 2141.Maximum Running Time of N Computers](https://leetcode.com/problems/maximum-running-time-of-n-computers/)<br>
+[LC 2226.Maximum Candies Allocated to K Children](https://leetcode.com/problems/maximum-candies-allocated-to-k-children/)<br>
 
 ```java
 //
