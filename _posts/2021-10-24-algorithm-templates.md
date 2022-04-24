@@ -1460,6 +1460,7 @@ class Solution {
 [LC 56.Merge Intervals](https://leetcode.com/problems/merge-intervals/)<br>
 [LQ 1276.小明的彩灯](https://www.lanqiao.cn/problems/1276/learning/)<br>
 [LC 1094.Car Pooling](https://leetcode.com/problems/car-pooling/)<br>
+[LC 2251.Number of Flowers in Full Bloom](https://leetcode.com/problems/number-of-flowers-in-full-bloom/)<br>
 
 ```java
 // updates[i] = [x1, x2, delta]
@@ -1489,6 +1490,7 @@ void f(int[][] updates) {
 
 [LC 2132.Stamping the Grid](https://leetcode.com/problems/stamping-the-grid/)<br>
 [LC 850.Rectangle Area II](https://leetcode.com/problems/rectangle-area-ii/)<br>
+[LC 2250.Count Number of Rectangles Containing Each Point](https://leetcode.com/problems/count-number-of-rectangles-containing-each-point/)<br>
 
 ```java
 // updates[i] = [x1, y1, x2, y2, delta]
