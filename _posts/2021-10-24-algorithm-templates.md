@@ -440,6 +440,7 @@ class SparseTable {
 [LC 1514.Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/)<br>
 [LC 1976.Number of Ways to Arrive at Destination](https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/)<br>
 [LC 1786.Number of Restricted Paths From First to Last Node](https://leetcode.com/problems/number-of-restricted-paths-from-first-to-last-node/)<br>
+[LC 1631.Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort/)<br>
 
 ```java
 // vertex are 0-indexed
