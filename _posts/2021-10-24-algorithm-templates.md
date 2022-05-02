@@ -16,6 +16,7 @@ tags: [algorithm, templates]
 [LC 1636.Sort Array by Increasing Frequency](https://leetcode.com/problems/sort-array-by-increasing-frequency/)<br>
 [LC 1122.Relative Sort Array](https://leetcode.com/problems/relative-sort-array/)<br>
 [LC 2191.Sort the Jumbled Numbers](https://leetcode.com/problems/sort-the-jumbled-numbers)<br>
+[LC 905.Sort Array By Parity](https://leetcode.com/problems/sort-array-by-parity/)<br>
 
 ```java
 // [l, r)
