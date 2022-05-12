@@ -1073,7 +1073,7 @@ class Permutation {
 
       // this line use to remove duplicates,
       // but `nums` needs to be sorted first
-      // if (i > 0 && nums[i] == nums[i - 1]) continue;
+      // if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) continue;
 
       temp.add(nums[i]);
       used[i] = true;
