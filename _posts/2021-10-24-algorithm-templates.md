@@ -1307,6 +1307,7 @@ boolean rangeQuery(int l, int r, int lower, int upper) {
 [LC 875.Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)<br>
 [LC 2141.Maximum Running Time of N Computers](https://leetcode.com/problems/maximum-running-time-of-n-computers/)<br>
 [LC 2226.Maximum Candies Allocated to K Children](https://leetcode.com/problems/maximum-candies-allocated-to-k-children/)<br>
+[LC 2300.Successful Pairs of Spells and Potions](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/)<br>
 
 ```java
 //
