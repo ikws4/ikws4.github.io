@@ -1467,6 +1467,7 @@ class Solution {
 [LC 1004.Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)<br>
 [LC 1343.Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold](https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/)<br>
 [LC 2134.Minimum Swaps to Group All 1's Together II](https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together-ii/)<br>
+[LC 1658.Minimum Operations to Reduce X to Zero](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/)<br>
 
 ```java
 class Solution {
