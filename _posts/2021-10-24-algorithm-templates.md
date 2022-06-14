@@ -213,6 +213,7 @@ int knapsack(int[] W, int[] V, int n, int capacity) {
 [LC 1143.Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)<br>
 [LC 516.Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)<br>
 [LC 392.Is Subsequence](https://leetcode.com/problems/is-subsequence/)<br>
+[LC 583.Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/submissions/)<br>
 
 ```java
 int LCS(String s, String t) {
@@ -240,6 +241,7 @@ int LCS(String s, String t) {
 ![edit_distance](/assets/img/algorithm_templates/edit_distance.png)
 
 [LC 72.Edit Distance](https://leetcode.com/problems/edit-distance/submissions/)<br>
+[LC 583.Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/submissions/)<br>
 
 ```java
 int minDistance(String s, String t) {
