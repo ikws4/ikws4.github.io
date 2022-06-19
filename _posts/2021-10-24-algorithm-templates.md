@@ -981,6 +981,7 @@ class FenwickTree {
 [LC 421.Maximum XOR of Two Numbers in an Array](https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/)<br>
 [LC 211.Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/)<br>
 [LC 745.Prefix and Suffix Search](https://leetcode.com/problems/prefix-and-suffix-search/)<br>
+[LC 1268.Search Suggestions System](https://leetcode.com/problems/search-suggestions-system/)<br>
 
 ```java
 class Trie {
