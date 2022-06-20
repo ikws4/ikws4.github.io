@@ -982,6 +982,7 @@ class FenwickTree {
 [LC 211.Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/)<br>
 [LC 745.Prefix and Suffix Search](https://leetcode.com/problems/prefix-and-suffix-search/)<br>
 [LC 1268.Search Suggestions System](https://leetcode.com/problems/search-suggestions-system/)<br>
+[LC 820.Short Encoding of Words](https://leetcode.com/problems/short-encoding-of-words/)<br>
 
 ```java
 class Trie {
