@@ -1052,7 +1052,7 @@ class Trie {
 # DFS
 
 
-## Backtrack
+## Backtracking
 
 ### Combination
 
@@ -1061,6 +1061,7 @@ class Trie {
 [LC 40.Combination Sum II](https://leetcode.com/problems/combination-sum-ii)<br>
 [LC 216.Combination Sum III](https://leetcode.com/problems/combination-sum-iii)<br>
 [LC 17.Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)<br>
+[LC 2305.Fair Distribution of Cookies](https://leetcode.com/problems/fair-distribution-of-cookies/)<br>
 
 ```java
 class Combination {
