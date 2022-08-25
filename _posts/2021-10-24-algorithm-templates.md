@@ -1517,6 +1517,7 @@ class Solution {
 [LQ 1276.小明的彩灯](https://www.lanqiao.cn/problems/1276/learning/)<br>
 [LC 1094.Car Pooling](https://leetcode.com/problems/car-pooling/)<br>
 [LC 2251.Number of Flowers in Full Bloom](https://leetcode.com/problems/number-of-flowers-in-full-bloom/)<br>
+[LC 2381.Shifting Letters II](https://leetcode.com/problems/shifting-letters-ii/)<br>
 
 ```java
 // updates[i] = [x1, x2, delta]
