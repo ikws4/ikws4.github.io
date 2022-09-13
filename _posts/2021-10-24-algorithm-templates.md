@@ -1445,6 +1445,7 @@ for (int k = n; k >= 1; k--) {
 [LC 3.Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)<br>
 [LC 1876.Substrings of Size Three with Distinct Characters](https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/)<br>
 [LC 1695.Maximum Erasure Value](https://leetcode.com/problems/maximum-erasure-value/)<br>
+[LC 2405.Optimal Partition of String](https://leetcode.com/problems/optimal-partition-of-string/)<br>
 
 ```java
 class Solution {
@@ -1518,6 +1519,7 @@ class Solution {
 [LC 1094.Car Pooling](https://leetcode.com/problems/car-pooling/)<br>
 [LC 2251.Number of Flowers in Full Bloom](https://leetcode.com/problems/number-of-flowers-in-full-bloom/)<br>
 [LC 2381.Shifting Letters II](https://leetcode.com/problems/shifting-letters-ii/)<br>
+[LC 2406.Divide Intervals Into Minimum Number of Groups](https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/)<br>
 
 ```java
 // updates[i] = [x1, x2, delta]
