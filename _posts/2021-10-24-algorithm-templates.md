@@ -986,6 +986,7 @@ class FenwickTree {
 [LC 745.Prefix and Suffix Search](https://leetcode.com/problems/prefix-and-suffix-search/)<br>
 [LC 1268.Search Suggestions System](https://leetcode.com/problems/search-suggestions-system/)<br>
 [LC 820.Short Encoding of Words](https://leetcode.com/problems/short-encoding-of-words/)<br>
+[LC 336.Palindrome Pairs](https://leetcode.com/problems/palindrome-pairs/)<br>
 
 ```java
 class Trie {
