@@ -7,6 +7,8 @@ toc_sticky: true
 tags: [leetcode, algorithm]
 ---
 
+## October 1, 2022
+
 ### 91. Decode Ways
 
 ```rust
@@ -127,7 +129,7 @@ impl Solution {
         fn dfs(root: &Node, n: i32) -> bool {
             if let Some(root) = root {
                 let root = root.borrow();
-                
+
                 if root.left.is_none() && root.right.is_none() {
                     return root.val == n;
                 }
