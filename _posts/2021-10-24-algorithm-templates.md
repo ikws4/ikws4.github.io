@@ -738,6 +738,7 @@ class UnionFind {
 ## Segment tree
 
 [LC 307.Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)<br>
+[LC 1578.Minimum Time to Make Rope Colorful](https://leetcode.com/problems/minimum-time-to-make-rope-colorful/)<br>
 
 ```java
 class SegmentTree {
@@ -822,15 +823,20 @@ class SegmentTree {
 
 ```java
 class SegmentTree {
-  private static final int INVALID_VALUE = Integer.MIN_VALUE;
   private int[] tree;
   private int[] leaf;
   private int n;
+  private CombineStrategy strategy;
 
   public SegmentTree(int[] arr) {
+    this(arr, new SumCombineStrategy());
+  }
+
+  public SegmentTree(int[] arr, CombineStrategy strategy) {
     this.n = arr.length;
     this.leaf = arr;
     this.tree = new int[(n << 2) + 1];
+    this.strategy = strategy;
 
     build(0, 0, n - 1);
   }
@@ -846,7 +852,7 @@ class SegmentTree {
     build(left, l, m);
     build(right, m + 1, r);
 
-    tree[root] = combine(tree[left], tree[right]);
+    tree[root] = strategy.combine(tree[left], tree[right]);
   }
 
   public int query(int l, int r) {
@@ -854,7 +860,7 @@ class SegmentTree {
   }
 
   private int query(int root, int l, int r, int L, int R) {
-    if (L > R) return INVALID_VALUE;
+    if (L > R) return strategy.invalidValue();
     if (l == L && r == R) {
       return tree[root];
     }
@@ -862,8 +868,8 @@ class SegmentTree {
     int m = (l + r) >> 1;
     int left = left(root), right = right(root);
 
-    return combine(query(left, l, m, L, Math.min(m, R)),
-                   query(right, m + 1, r, Math.max(m + 1, L), R));
+    return strategy.combine(query(left, l, m, L, Math.min(m, R)),
+        query(right, m + 1, r, Math.max(m + 1, L), R));
   }
 
   public void update(int i, int val) {
@@ -886,11 +892,7 @@ class SegmentTree {
       update(right, m + 1, r, i, val);
     }
 
-    tree[root] = combine(tree[left], tree[right]);
-  }
-
-  private int combine(int left, int right) {
-    return Math.max(left, right);
+    tree[root] = strategy.combine(tree[left], tree[right]);
   }
 
   private int left(int root) {
@@ -899,6 +901,36 @@ class SegmentTree {
 
   private int right(int root) {
     return (root << 1) + 2;
+  }
+
+  public static class MaxCombineStrategy implements CombineStrategy {
+    @Override
+    public int invalidValue() {
+      return Integer.MIN_VALUE;
+    }
+
+    @Override
+    public int combine(int a, int b) {
+      return Math.max(a, b);
+    }
+  }
+
+  public static class SumCombineStrategy implements CombineStrategy {
+    @Override
+    public int invalidValue() {
+      return 0;
+    }
+
+    @Override
+    public int combine(int a, int b) {
+      return a + b;
+    }
+  }
+
+  public interface CombineStrategy {
+    int invalidValue();
+
+    int combine(int a, int b);
   }
 }
 ```
