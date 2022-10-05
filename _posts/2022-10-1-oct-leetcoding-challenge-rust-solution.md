@@ -1,13 +1,11 @@
 ---
-title: "Leetcode rust solution"
+title: "Oct LeetCoding Challenge Rust Solution"
 date: 2022-10-1 10:00:00 +0800
 layout: post
 toc: true
 toc_sticky: true
 tags: [leetcode, algorithm]
 ---
-
-## October 1, 2022
 
 ### 91. Decode Ways
 
@@ -141,6 +139,41 @@ impl Solution {
         }
 
         dfs(&root, target_sum)
+    }
+}
+```
+
+### 623. Add One Row to Tree
+
+```rust
+use std::cell::RefCell;
+use std::rc::Rc;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn add_one_row(root: Node, val: i32, depth: i32) -> Node {
+        fn internal(root: Node, val: i32, depth: i32, is_left: bool) -> Node {
+            if depth == 1 {
+                let mut node = TreeNode::new(val);
+                if is_left {
+                    node.left = root;
+                } else {
+                    node.right = root;
+                }
+                return Some(Rc::new(RefCell::new(node)));
+            }
+
+            if let Some(root) = root.as_ref() {
+                let mut root = root.borrow_mut();
+                root.left = internal(root.left.take(), val, depth - 1, true);
+                root.right = internal(root.right.take(), val, depth - 1, false);
+            }
+
+            root
+        }
+
+        internal(root, val, depth, true)
     }
 }
 ```
