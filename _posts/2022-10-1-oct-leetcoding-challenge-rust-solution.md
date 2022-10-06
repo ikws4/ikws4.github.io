@@ -177,3 +177,32 @@ impl Solution {
     }
 }
 ```
+
+### 981. Time Based Key-Value Store
+
+```rust
+use std::collections::{BTreeMap, HashMap};
+
+struct TimeMap {
+    map: HashMap<String, BTreeMap<i32, String>>,
+}
+
+impl TimeMap {
+    fn new() -> Self {
+        TimeMap {
+            map: HashMap::new(),
+        }
+    }
+
+    fn set(&mut self, key: String, value: String, timestamp: i32) {
+        self.map.entry(key).or_default().insert(timestamp, value);
+    }
+
+    fn get(&self, key: String, timestamp: i32) -> String {
+        self.map
+            .get(&key)
+            .and_then(|m| m.range(..=timestamp).next_back().map(|(_, v)| v.clone()))
+            .unwrap_or_default()
+    }
+}
+```
