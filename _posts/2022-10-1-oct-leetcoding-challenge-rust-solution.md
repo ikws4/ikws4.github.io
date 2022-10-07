@@ -206,3 +206,35 @@ impl TimeMap {
     }
 }
 ```
+
+### 732. My Calendar III
+
+```rust
+use std::collections::BTreeMap;
+
+struct MyCalendarThree {
+    diff: BTreeMap<i32, i32>,
+}
+
+impl MyCalendarThree {
+    fn new() -> Self {
+        MyCalendarThree {
+            diff: BTreeMap::new(),
+        }
+    }
+
+    fn book(&mut self, start: i32, end: i32) -> i32 {
+        *self.diff.entry(start).or_default() += 1;
+        *self.diff.entry(end).or_default() -= 1;
+        
+        let mut s = 0;
+        let mut ret = 0;
+        for d in self.diff.values() {
+            s += d;
+            ret = ret.max(s);
+        }
+
+        ret
+    }
+}
+```
