@@ -238,3 +238,39 @@ impl MyCalendarThree {
     }
 }
 ```
+
+### 16. 3Sum Closest
+
+```rust
+impl Solution {
+    pub fn three_sum_closest(mut nums: Vec<i32>, target: i32) -> i32 {
+        nums.sort();
+
+        let mut ret = 0;
+        let mut diff = i32::MAX >> 1;
+        for i in 0..nums.len() {
+            let mut j = i + 1;
+            let mut k = nums.len() - 1;
+            while j < k {
+                let sum = nums[i] + nums[j] + nums[k];
+                let d = (sum - target).abs();
+                if d < diff {
+                    diff = d;
+                    ret = sum;
+                    if d == 0 {
+                        break;
+                    }
+                }
+
+                if sum < target {
+                    j += 1;
+                } else {
+                    k -= 1;
+                }
+            }
+        }
+
+        ret
+    }
+}
+```
