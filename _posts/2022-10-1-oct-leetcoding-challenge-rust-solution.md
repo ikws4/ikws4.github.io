@@ -274,3 +274,31 @@ impl Solution {
     }
 }
 ```
+
+### 653. Two Sum IV - Input is a BST
+
+```rust
+use std::cell::RefCell;
+use std::collections::HashSet;
+use std::rc::Rc;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn find_target(root: Node, k: i32) -> bool {
+        fn internal(root: &Node, k: i32, set: &mut HashSet<i32>) -> bool {
+            if let Some(root) = root {
+                let root = root.borrow();
+                if set.contains(&(k - root.val)) {
+                    return true;
+                }
+                set.insert(root.val);
+                return internal(&root.left, k, set) || internal(&root.right, k, set);
+            }
+            false
+        }
+
+        internal(&root, k, &mut HashSet::new())
+    }
+}
+```
