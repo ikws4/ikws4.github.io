@@ -226,7 +226,7 @@ impl MyCalendarThree {
     fn book(&mut self, start: i32, end: i32) -> i32 {
         *self.diff.entry(start).or_default() += 1;
         *self.diff.entry(end).or_default() -= 1;
-        
+
         let mut s = 0;
         let mut ret = 0;
         for d in self.diff.values() {
@@ -299,6 +299,30 @@ impl Solution {
         }
 
         internal(&root, k, &mut HashSet::new())
+    }
+}
+```
+
+### 1328. Break a Palindrome
+
+```rust
+impl Solution {
+    pub fn break_palindrome(mut palindrome: String) -> String {
+        let n = palindrome.len();
+        if n == 1 {
+            return "".into();
+        }
+
+        let mut p = palindrome.into_bytes();
+        for i in 0..n / 2 {
+            if p[i] > b'a' {
+                p[i] = b'a';
+                return String::from_utf8(p).unwrap();
+            }
+        }
+        p[n - 1] = b'b';
+
+        String::from_utf8(p).unwrap()
     }
 }
 ```
