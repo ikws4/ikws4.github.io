@@ -326,3 +326,26 @@ impl Solution {
     }
 }
 ```
+
+### 334. Increasing Triplet Subsequence
+
+```rust
+impl Solution {
+    pub fn increasing_triplet(nums: Vec<i32>) -> bool {
+        let mut m1 = i32::MAX;
+        let mut m2 = i32::MAX;
+
+        for &num in &nums {
+            if num <= m1 {
+                m1 = num;
+            } else if num <= m2 {
+                m2 = num;
+            } else {
+                return true;
+            }
+        }
+
+        false
+    }
+}
+```
