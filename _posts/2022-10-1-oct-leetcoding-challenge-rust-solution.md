@@ -349,3 +349,21 @@ impl Solution {
     }
 }
 ```
+
+### 976. Largest Perimeter Triangle
+
+```rust
+impl Solution {
+    pub fn largest_perimeter(mut nums: Vec<i32>) -> i32 {
+        nums.sort();
+        for w in nums.windows(3).rev() {
+            if let &[a, b, c] = w {
+                if a + b > c {
+                    return a + b + c;
+                }
+            }
+        }
+        0
+    }
+}
+```
