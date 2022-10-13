@@ -367,3 +367,17 @@ impl Solution {
     }
 }
 ```
+
+### 237. Delete Node in a Linked List
+
+```rust
+impl Solution {
+    pub fn delete_node(node: Option<Box<ListNode>>) {
+        if let Some(mut node) = node {
+            let next = node.next.unwrap();
+            node.val = next.val;
+            node.next = next.next;
+        }
+    }
+}
+```
