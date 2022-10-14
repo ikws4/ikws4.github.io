@@ -381,3 +381,35 @@ impl Solution {
     }
 }
 ```
+
+### 2095. Delete the Middle Node of a Linked List
+
+```rust
+type Node = Option<Box<ListNode>>;
+
+impl Solution {
+    pub fn delete_middle(head: Node) -> Node {
+        fn node_len(head: &Node) -> usize {
+            if let Some(head) = head {
+                return node_len(&head.next) + 1;
+            }
+            0
+        }
+
+        fn node_delete(head: Node, n: usize) -> Node {
+            if let Some(mut head) = head {
+                if n == 0 {
+                    return head.next;
+                } else {
+                    head.next = node_delete(head.next, n - 1);
+                    return Some(head);
+                }
+            }
+            None
+        }
+
+        let len = node_len(&head);
+        node_delete(head, len / 2)
+    }
+}
+```
