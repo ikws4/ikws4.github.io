@@ -413,3 +413,60 @@ impl Solution {
     }
 }
 ```
+
+### 1531. String Compression II
+
+```rust
+struct Env<'a> {
+    s: &'a [u8],
+    memo: Vec<Vec<i32>>,
+}
+
+impl Solution {
+    pub fn get_length_of_optimal_compression(s: String, k: i32) -> i32 {
+        fn run(c: usize) -> i32 {
+            if c == 1 {
+                return 1;
+            }
+            if c <= 9 {
+                return 2;
+            }
+            if c <= 99 {
+                return 3;
+            }
+            4
+        }
+
+        fn internal(env: &mut Env, i: usize, k: usize) -> i32 {
+            if env.s.len() - i <= k {
+                return 0;
+            }
+            if env.memo[i][k] != -1 {
+                return env.memo[i][k];
+            }
+
+            let mut ret = i32::MAX >> 1;
+            let mut keep_count = 0;
+            let mut counter = vec![0; 26];
+            for j in i..env.s.len() {
+                let at = (env.s[j] - b'a') as usize;
+                counter[at] += 1;
+
+                keep_count = keep_count.max(counter[at]);
+                let remove_count = j - i + 1 - keep_count;
+                if remove_count <= k {
+                    ret = ret.min(internal(env, j + 1, k - remove_count) + run(keep_count));
+                }
+            }
+
+            env.memo[i][k] = ret;
+            ret
+        }
+
+        internal(&mut Env {
+            s: s.as_bytes(),
+            memo: vec![vec![-1; 101]; 101],
+        }, 0, k as usize)
+    }
+}
+```
