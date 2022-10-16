@@ -143,6 +143,52 @@ class Solution {
 }
 ```
 
+
+## Split intervel
+
+[LC 1335.Minimum Difficulty of a Job Schedule](https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/)<br>
+[LC 1531.String Compression II](https://leetcode.com/problems/string-compression-ii/)<br>
+
+```java
+class Solution {
+  private int n;
+  private int[][] max;
+  private int[][] memo;
+
+  public int minDifficulty(int[] jobDifficulty, int d) {
+    this.n = jobDifficulty.length;
+    this.max = new int[n][n];
+    this.memo = new int[n][d];
+    for (int i = 0; i < n; i++) {
+      Arrays.fill(memo[i], -1);
+    }
+
+    for (int i = 0; i < n; i++) {
+      for (int j = i, m = jobDifficulty[j]; j < n; j++) {
+        m = Math.max(m, jobDifficulty[j]);
+        max[i][j] = m;
+      }
+    }
+
+    int ret = f(0, d - 1);
+    return ret == Integer.MAX_VALUE >> 1 ? -1 : ret;
+  }
+
+  private int f(int i, int p) {
+    if (i >= n) return Integer.MAX_VALUE >> 1;
+    if (p == 0) return max[i][n - 1];
+    if (memo[i][p] != -1) return memo[i][p];
+
+    int ret = Integer.MAX_VALUE >> 1;
+    for (int j = i; j < n; j++) {
+      ret = Math.min(ret, max[i][j] + f(j + 1, p - 1));
+    }
+
+    return memo[i][p] = ret;
+  }
+}
+```
+
 ## knapsack
 
 ### 0-1 knapsack
