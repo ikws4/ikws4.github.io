@@ -1993,3 +1993,52 @@ class Solution {
   }
 }
 ```
+
+# Math
+
+## Linear Algebra
+
+### Guass Elimination
+
+```java
+class Solution {
+  public void solve(double[][] A, double[] B) {
+    int n = A.length;
+
+    System.out.println("Argumented Matrix: ");
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        System.out.print(A[i][j] + "\t");
+      }
+      System.out.println("|\t" + B[i]);
+    }
+    
+    // Elimination
+    for (int i = 0; i < n; i++) {
+      for (int j = i + 1; j < n; j++) {
+        double factor = A[i][i] / A[j][i];
+        for (int k = i; k < n; k++) {
+          A[j][k] = A[i][k] - factor * A[j][k];
+        }
+        B[j] = B[i] - factor * B[j];
+      }
+    }
+
+    // Back-substitution
+    double[] X = new double[n];
+    for (int i = n - 1; i >= 0; i--) {
+      double sum = 0;
+      for (int j = i + 1; j < n; j++) {
+        sum += A[i][j] * X[j];
+      }
+      X[i] = (B[i] - sum) / A[i][i];
+    }
+
+    System.out.println();
+    System.out.println("Solution: ");
+    for (int i = 0; i < n; i++) {
+      System.out.println("X" + (i + 1) + " = " + X[i]);
+    }
+  }
+}
+```
