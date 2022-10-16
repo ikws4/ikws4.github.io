@@ -470,3 +470,67 @@ impl Solution {
     }
 }
 ```
+
+### 1335. Minimum Difficulty of a Job Schedule
+
+```rust
+struct Env {
+    n: usize,
+    max: Vec<Vec<i32>>,
+    memo: Vec<Vec<i32>>,
+}
+
+impl Solution {
+    pub fn min_difficulty(job_difficulty: Vec<i32>, d: i32) -> i32 {
+        fn internal(env: &mut Env, i: usize, p: usize) -> i32 {
+            if i >= env.n {
+                return i32::MAX >> 1;
+            }
+            if p == 0 {
+                return env.max[i][env.n - 1];
+            }
+            if env.memo[i][p] != -1 {
+                return env.memo[i][p];
+            }
+
+            let mut ret = i32::MAX >> 1;
+            for j in i..env.n {
+                ret = ret.min(env.max[i][j] + internal(env, j + 1, p - 1));
+            }
+
+            env.memo[i][p] = ret;
+            ret
+        }
+
+        // build max array
+        let n = job_difficulty.len();
+        let mut max = vec![vec![0; n]; n];
+        for i in 0..n {
+            let mut m = job_difficulty[i];
+            for j in i..n {
+                m = m.max(job_difficulty[j]);
+                max[i][j] = m;
+            }
+        }
+
+        // compute the result
+        let d = d as usize;
+        let ret = internal(
+            &mut Env {
+                n,
+                max,
+                memo: vec![vec![-1; d]; n],
+            },
+            0,
+            d - 1,
+        );
+
+        // check invalid solution
+        if ret == i32::MAX >> 1 {
+            -1
+        } else {
+            ret
+        }
+    }
+}
+```
