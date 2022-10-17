@@ -534,3 +534,26 @@ impl Solution {
     }
 }
 ```
+
+### 1832. Check if the Sentence Is Pangram
+
+```rust
+impl Solution {
+    pub fn check_if_pangram(sentence: String) -> bool {
+        let mut has = vec![false; 26];
+        let sentence = sentence.as_bytes();
+      
+        for c in sentence {
+            has[(c - b'a') as usize] = true;
+        }
+
+        for c in 0..26 {
+            if !has[c] {
+                return false;
+            }
+        }
+
+        true
+    }
+}
+```
