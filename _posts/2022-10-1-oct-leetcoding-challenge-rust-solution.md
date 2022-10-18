@@ -557,3 +557,31 @@ impl Solution {
     }
 }
 ```
+
+### 38. Count and Say
+
+```rust
+impl Solution {
+    pub fn count_and_say(n: i32) -> String {
+        if n == 1 {
+            return "1".to_string();
+        }
+
+        let r = Solution::count_and_say(n - 1);
+        let r = r.as_bytes();
+
+        let mut ret = String::new();
+        let mut cnt = 1;
+        for i in 1..=r.len() {
+            if i == r.len() || r[i] != r[i - 1] {
+                ret.push_str(&cnt.to_string());
+                ret.push(r[i - 1] as char);
+                cnt = 0;
+            }
+            cnt += 1;
+        }
+
+        ret
+    }
+}
+```
