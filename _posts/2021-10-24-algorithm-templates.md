@@ -103,7 +103,7 @@ private int[] kth(int[][] arr, int l, int r, int k) {
 class Solution {
   private List<List<Integer>> piles;
   private int[][] memo;
-  
+
   public int maxValueOfCoins(List<List<Integer>> piles, int k) {
     this.piles = piles;
     this.memo = new int[piles.size()][k + 1];
@@ -119,10 +119,10 @@ class Solution {
     if (k == 0) return 0;
     if (i < 0) return Integer.MIN_VALUE >> 1;
     if (memo[i][k] != -1) return memo[i][k];
-    
+
     List<Integer> pile = piles.get(i);
     int n = pile.size();
-    
+
     // int[] presum = new int[n + 1];
     // for (int j = 1; j <= n; j++) {
     //   presum[j] = presum[j - 1] + pile.get(j - 1);
@@ -132,17 +132,16 @@ class Solution {
     int v = 0;
     for (int j = 0; j <= Math.min(n, k); j++) {
       // int v = presum[j];
-      
+
       ans = Math.max(ans, dp(i - 1, k - j) + v);
-      
+
       if (j < n) v += pile.get(j);
     }
-    
+
     return memo[i][k] = ans;
   }
 }
 ```
-
 
 ## Split intervel
 
@@ -572,7 +571,7 @@ int[] dijkstra(int n, int s, int[][] edges) {
 
     for (int[] next : graph[u]) {
       int v = next[0], w = next[1];
-      
+
       if (d + w < dist[v]) {
         dist[v] = d + w;
         prev[v] = u;
@@ -1132,7 +1131,6 @@ class Trie {
 ```
 
 # DFS
-
 
 ## Backtracking
 
@@ -1973,7 +1971,7 @@ class Solution {
     int min = 0, max = 0;
     for (int i = 0; i < s.length(); i++) {
       char c = s.charAt(i);
-      
+
       if (c == '(') {
         min++;
         max++;
@@ -1998,11 +1996,11 @@ class Solution {
 
 ## Linear Algebra
 
-### Guass Elimination
+### Gaussian Elimination
 
 ```java
 class Solution {
-  public void solve(double[][] A, double[] B) {
+  public void solve(double[][] A, double[] b) {
     int n = A.length;
 
     System.out.println("Argumented Matrix: ");
@@ -2010,34 +2008,57 @@ class Solution {
       for (int j = 0; j < n; j++) {
         System.out.print(A[i][j] + "\t");
       }
-      System.out.println("|\t" + B[i]);
+      System.out.println("|\t" + b[i]);
     }
-    
+
     // Elimination
     for (int i = 0; i < n; i++) {
+      // Find pivot row
+      int max = i;
       for (int j = i + 1; j < n; j++) {
-        double factor = A[i][i] / A[j][i];
-        for (int k = i; k < n; k++) {
-          A[j][k] = A[i][k] - factor * A[j][k];
+        if (Math.abs(A[j][i]) > Math.abs(A[max][i])) {
+          max = j;
         }
-        B[j] = B[i] - factor * B[j];
+      }
+
+      // Swap
+      double[] temp = A[i]; A[i] = A[max]; A[max] = temp;
+      double   t    = b[i]; b[i] = b[max]; b[max] = t;
+
+      if (Math.abs(A[i][i]) <= 1e-5) {
+        throw new ArithmeticException("Matrix is singular or nearly singular");
+      }
+
+      for (int j = i + 1; j < n; j++) {
+        double factor = A[j][i] / A[i][i];
+        for (int k = i; k < n; k++) {
+          A[j][k] -= factor * A[i][k];
+        }
+        b[j] -= factor * b[i];
       }
     }
 
     // Back-substitution
-    double[] X = new double[n];
+    double[] x = new double[n];
     for (int i = n - 1; i >= 0; i--) {
       double sum = 0;
       for (int j = i + 1; j < n; j++) {
-        sum += A[i][j] * X[j];
+        sum += A[i][j] * x[j];
       }
-      X[i] = (B[i] - sum) / A[i][i];
+      x[i] = (b[i] - sum) / A[i][i];
     }
 
     System.out.println();
     System.out.println("Solution: ");
     for (int i = 0; i < n; i++) {
-      System.out.println("X" + (i + 1) + " = " + X[i]);
+      for (int j = 0; j < n; j++) {
+        if (i == j) {
+          System.out.print("1\t");
+        } else {
+          System.out.print("0\t");
+        }
+      }
+      System.out.println("|\t" + x[i]);
     }
   }
 }
