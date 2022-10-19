@@ -585,3 +585,43 @@ impl Solution {
     }
 }
 ```
+
+### 692. Top K Frequent Words
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn top_k_frequent(words: Vec<String>, k: i32) -> Vec<String> {
+        let mut map: HashMap<String, i32> = HashMap::new();
+        for word in words {
+            *map.entry(word).or_default() += 1;
+        }
+
+        let mut entries = vec![];
+        for entry in map {
+            entries.push(entry);
+        }
+
+        entries.sort_by(|a, b| {
+            use std::cmp::Ordering;
+            
+            let ret = b.1.cmp(&a.1);
+            match ret {
+                Ordering::Equal => a.0.cmp(&b.0),
+                _ => ret
+            }
+        });
+
+        let mut ret = vec![];
+        for entry in entries {
+            if ret.len() >= k as usize {
+                break;
+            }
+            ret.push(entry.0);
+        }
+        
+        ret
+    }
+}
+```
