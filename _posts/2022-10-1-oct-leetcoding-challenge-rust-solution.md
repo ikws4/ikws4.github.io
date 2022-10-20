@@ -625,3 +625,24 @@ impl Solution {
     }
 }
 ```
+
+### 12. Integer to Roman
+
+```rust
+impl Solution {
+    pub fn int_to_roman(mut num: i32) -> String {
+        let A = vec![1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+        let B = vec!["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+
+        let mut ret = "".to_string();
+        for i in 0..A.len() {
+            while num >= A[i] {
+                ret.push_str(B[i]);
+                num -= A[i];
+            }
+        }
+
+        ret
+    }
+}
+```
