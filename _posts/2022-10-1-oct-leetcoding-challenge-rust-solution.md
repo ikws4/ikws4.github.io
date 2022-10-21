@@ -646,3 +646,27 @@ impl Solution {
     }
 }
 ```
+
+### 219. Contains Duplicate II
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn contains_nearby_duplicate(nums: Vec<i32>, k: i32) -> bool {
+        let mut map = HashMap::new();
+        for j in 0..nums.len() as i32 {
+            let num = nums[j as usize];
+            let i = map.entry(num).or_insert(j - k - 1);
+            
+            if j - *i <= k {
+                return true;
+            }
+
+            *i = j;
+        }
+
+        false
+    }
+}
+```
