@@ -670,3 +670,58 @@ impl Solution {
     }
 }
 ```
+
+### 76. Minimum Window Substring
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn min_window(s: String, t: String) -> String {
+        let mut tmap = HashMap::new();
+        for c in t.as_bytes() {
+            *tmap.entry(c).or_insert(0) += 1;
+        }
+
+        let mut wmap = HashMap::new();
+        let mut win_count = 0;
+
+        let (mut min, mut l, mut r) = (usize::MAX >> 1, 0, 0);
+        let (mut i, mut j) = (0, 0);
+        
+        let s = s.as_bytes();
+        while j < s.len() {
+            let mut c = s[j];
+            *wmap.entry(c).or_insert(0) += 1;
+
+            if tmap.contains_key(&c) && wmap[&c] == tmap[&c] {
+                win_count += 1;
+            }
+
+            while i <= j && win_count == tmap.len() {
+                if j - i + 1 < min {
+                    min = j - i + 1;
+                    l = i;
+                    r = j;
+                }
+
+                c = s[i];
+                i += 1;
+                *wmap.entry(c).or_insert(0) -= 1;
+                
+                if tmap.contains_key(&c) && wmap[&c] < tmap[&c] {
+                    win_count -= 1;
+                }
+            }
+            
+            j += 1;
+        }
+
+        if min == usize::MAX >> 1 {
+            return "".into();
+        }
+        
+        String::from_utf8(s[l..=r].into()).unwrap()
+    }
+}
+```
