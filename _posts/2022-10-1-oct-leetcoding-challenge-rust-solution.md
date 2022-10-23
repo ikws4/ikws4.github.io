@@ -725,3 +725,33 @@ impl Solution {
     }
 }
 ```
+
+### 645. Set Mismatch
+
+```rust
+use std::collections::HashSet;
+
+impl Solution {
+    pub fn find_error_nums(nums: Vec<i32>) -> Vec<i32> {
+        let mut ret = vec![0; 2];
+        let n = nums.len() as i32;
+        
+        let mut set = HashSet::new();
+        for num in nums {
+            if set.contains(&num) {
+                ret[0] = num;
+            }
+            set.insert(num);
+        }
+
+        for num in 1..=n {
+            if !set.contains(&num) {
+                ret[1] = num;
+                break;
+            }
+        }
+
+        ret
+    }
+}
+```
