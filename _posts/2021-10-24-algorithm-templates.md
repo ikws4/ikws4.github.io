@@ -1455,6 +1455,54 @@ int upperBound(int l, int r, int x) {
 }
 ```
 
+# Ternary Search
+
+[LC 2448.Minimum Cost to Make Array Equal](https://leetcode.com/problems/minimum-cost-to-make-array-equal/)<br>
+
+```java
+class Solution {
+  private int[] nums, cost;
+
+  public long minCost(int[] nums, int[] cost) {
+    int n = nums.length;
+    this.nums = nums;
+    this.cost = cost;
+
+    int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+    for (int i = 0; i < n; i++) {
+      min = Math.min(min, nums[i]);
+      max = Math.max(max, nums[i]);
+    }
+
+    // l    m1     m2    r
+    int l = min, r = max;
+    while (r - l > 3) {
+      int m1 = l + (r - l) / 3;
+      int m2 = r - (r - l) / 3;
+      if (cost(m2) < cost(m1)) {
+        l = m1;
+      } else {
+        r = m2;
+      }
+    }
+
+    long ret = Long.MAX_VALUE;
+    for (int m = l; m <= r; m++) {
+      ret = Math.min(ret, cost(m));
+    }
+    return ret;
+  }
+
+  private long cost(int m) {
+    long ret = 0;
+    for (int i = 0; i < nums.length; i++) {
+      ret += (long) Math.abs(nums[i] - m) * cost[i];
+    }
+    return ret;
+  }
+}
+```
+
 # Bit Manipulation
 
 ## Least significant bits
