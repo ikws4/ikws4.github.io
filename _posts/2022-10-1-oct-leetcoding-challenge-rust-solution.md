@@ -755,3 +755,40 @@ impl Solution {
     }
 }
 ```
+
+### 1239. Maximum Length of a Concatenated String with Unique Characters
+
+```rust
+impl Solution {
+    pub fn max_length(arr: Vec<String>) -> i32 {
+        let bits = arr.iter().map(|s| {
+            let mut bit = 0;
+            for c in s.as_bytes() {
+                let mask = 1 << (c - b'a');
+                if bit & mask != 0 {
+                    return 0;
+                }
+                bit |= mask;
+            }
+            bit
+        }).collect();
+
+        fn internal(bits: &Vec<i32>, i: usize, state: i32) -> i32 {
+            if i >= bits.len() {
+                return 0;
+            }
+
+            let l = internal(bits, i + 1, state);
+            let r = if state & bits[i] == 0 {
+                internal(bits, i + 1, state | bits[i]) + bits[i].count_ones() as i32
+            } else {
+                0
+            };
+
+            l.max(r)
+        }
+
+        internal(&bits, 0, 0)
+    }
+}
+```
