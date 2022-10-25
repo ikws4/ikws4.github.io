@@ -792,3 +792,20 @@ impl Solution {
     }
 }
 ```
+
+### 1662. Check If Two String Arrays are Equivalent
+
+```rust
+impl Solution {
+    pub fn array_strings_are_equal(word1: Vec<String>, word2: Vec<String>) -> bool {
+        fn toString(w: Vec<String>) -> String {
+            w.iter().fold(String::new(), |mut ret, a| {
+                ret.push_str(a);
+                ret
+            })
+        }
+
+        toString(word1) == toString(word2)
+    }
+}
+```
