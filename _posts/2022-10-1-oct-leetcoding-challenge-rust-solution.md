@@ -809,3 +809,32 @@ impl Solution {
     }
 }
 ```
+
+### 523. Continuous Subarray Sum
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn check_subarray_sum(nums: Vec<i32>, k: i32) -> bool {
+        let mut map: HashMap<i32, i32> = HashMap::new();
+        map.insert(0, -1);
+
+        let mut sum = 0;
+        for j in 0..nums.len() as i32 {
+            sum += nums[j as usize];
+
+            let key = sum % k;
+            let i = map.get(&key).unwrap_or(&j);
+
+            if j - i >= 2 {
+                return true;
+            }
+
+            map.entry(key).or_insert(j);
+        }
+
+        false
+    }
+}
+```
