@@ -838,3 +838,35 @@ impl Solution {
     }
 }
 ```
+
+### 835. Image Overlap
+
+```rust
+impl Solution {
+    pub fn largest_overlap(img1: Vec<Vec<i32>>, img2: Vec<Vec<i32>>) -> i32 {
+        let n = img1.len() as i32;
+        let mut ret = 0;
+        for yoff in -n..=n {
+            for xoff in -n..=n {
+                let mut overlap = 0;
+                for y in 0..n {
+                    for x in 0..n {
+                        let y_ = y + yoff;
+                        let x_ = x + xoff;
+
+                        if y_ < 0 || y_ >= n || x_ < 0 || x_ >= n {
+                            continue;
+                        }
+
+                        if img1[y as usize][x as usize] & img2[y_ as usize][x_ as usize] == 1 {
+                            overlap += 1;
+                        }
+                    }
+                }
+                ret = ret.max(overlap);
+            }
+        }
+        ret
+    }
+}
+```
