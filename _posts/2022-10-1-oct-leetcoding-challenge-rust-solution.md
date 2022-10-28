@@ -870,3 +870,28 @@ impl Solution {
     }
 }
 ```
+
+### 49. Group Anagrams
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
+        fn hash(str: &String) -> Vec<usize> {
+            let mut cnt = vec![0; 26];
+            for c in str.as_bytes() {
+                cnt[(c - b'a') as usize] += 1;
+            }
+            cnt
+        }
+
+        let mut map = HashMap::with_capacity(strs.len());
+        for str in strs {
+            map.entry(hash(&str)).or_insert_with(Vec::new).push(str);
+        }
+
+        map.into_values().collect()
+    }
+}
+```
