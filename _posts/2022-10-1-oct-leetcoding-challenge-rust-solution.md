@@ -542,7 +542,7 @@ impl Solution {
     pub fn check_if_pangram(sentence: String) -> bool {
         let mut has = vec![false; 26];
         let sentence = sentence.as_bytes();
-      
+
         for c in sentence {
             has[(c - b'a') as usize] = true;
         }
@@ -605,7 +605,7 @@ impl Solution {
 
         entries.sort_by(|a, b| {
             use std::cmp::Ordering;
-            
+
             let ret = b.1.cmp(&a.1);
             match ret {
                 Ordering::Equal => a.0.cmp(&b.0),
@@ -620,7 +620,7 @@ impl Solution {
             }
             ret.push(entry.0);
         }
-        
+
         ret
     }
 }
@@ -658,7 +658,7 @@ impl Solution {
         for j in 0..nums.len() as i32 {
             let num = nums[j as usize];
             let i = map.entry(num).or_insert(j - k - 1);
-            
+
             if j - *i <= k {
                 return true;
             }
@@ -688,7 +688,7 @@ impl Solution {
 
         let (mut min, mut l, mut r) = (usize::MAX >> 1, 0, 0);
         let (mut i, mut j) = (0, 0);
-        
+
         let s = s.as_bytes();
         while j < s.len() {
             let mut c = s[j];
@@ -708,19 +708,19 @@ impl Solution {
                 c = s[i];
                 i += 1;
                 *wmap.entry(c).or_insert(0) -= 1;
-                
+
                 if tmap.contains_key(&c) && wmap[&c] < tmap[&c] {
                     win_count -= 1;
                 }
             }
-            
+
             j += 1;
         }
 
         if min == usize::MAX >> 1 {
             return "".into();
         }
-        
+
         String::from_utf8(s[l..=r].into()).unwrap()
     }
 }
@@ -735,7 +735,7 @@ impl Solution {
     pub fn find_error_nums(nums: Vec<i32>) -> Vec<i32> {
         let mut ret = vec![0; 2];
         let n = nums.len() as i32;
-        
+
         let mut set = HashSet::new();
         for num in nums {
             if set.contains(&num) {
@@ -892,6 +892,29 @@ impl Solution {
         }
 
         map.into_values().collect()
+    }
+}
+```
+
+### 2136. Earliest Possible Day of Full Bloom
+
+```rust
+impl Solution {
+    pub fn earliest_full_bloom(plant_time: Vec<i32>, grow_time: Vec<i32>) -> i32 {
+        let n = plant_time.len();
+        let mut index = (0..n).collect::<Vec<usize>>();
+        index.sort_by(|&a, &b| {
+            grow_time[b].cmp(&grow_time[a])
+        });
+
+        let mut pt = 0;
+        let mut ret = 0;
+        for at in index {
+            pt += plant_time[at];
+            ret = ret.max(pt + grow_time[at]);
+        }
+
+        ret
     }
 }
 ```
