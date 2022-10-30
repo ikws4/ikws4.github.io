@@ -918,3 +918,58 @@ impl Solution {
     }
 }
 ```
+
+### 1293. Shortest Path in a Grid with Obstacles Elimination
+
+```rust
+use std::{cmp::Reverse, collections::BinaryHeap};
+
+impl Solution {
+    pub fn shortest_path(grid: Vec<Vec<i32>>, k: i32) -> i32 {
+        let dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+
+        let m = grid.len();
+        let n = grid[0].len();
+        let mut queue = BinaryHeap::new();
+        let mut cost = vec![i32::MAX >> 1; m * n];
+        queue.push(Reverse((0, 0, 0, 0)));
+        cost[0] = 0;
+
+        let target = m * n - 1;
+        while !queue.is_empty() {
+            if let Some(Reverse((d, i, j, c))) = queue.pop() {
+                let u = i * n + j;
+                if u == target {
+                    return d;
+                }
+                if c != cost[u] {
+                    continue;
+                }
+
+                for dir in dirs {
+                    let _i = i as i32 + dir[0];
+                    let _j = j as i32 + dir[1];
+                    if _i < 0 || _i >= m as i32 || _j < 0 || _j >= n as i32 {
+                        continue;
+                    }
+
+                    let (_i, _j) = (_i as usize, _j as usize);
+                    let v = _i * n + _j;
+                    let w = grid[_i][_j] & 1;
+
+                    if c + w > k {
+                        continue;
+                    }
+
+                    if c + w < cost[v] {
+                        cost[v] = c + w;
+                        queue.push(Reverse((d + 1, _i, _j, cost[v])));
+                    }
+                }
+            }
+        }
+
+        -1
+    }
+}
+```
