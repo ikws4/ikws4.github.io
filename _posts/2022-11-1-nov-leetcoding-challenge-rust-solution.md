@@ -41,3 +41,47 @@ impl Solution {
     }
 }
 ```
+
+### 433. Minimum Genetic Mutation
+
+```rust
+use std::collections::{HashSet, VecDeque};
+
+impl Solution {
+    pub fn min_mutation(start: String, end: String, bank: Vec<String>) -> i32 {
+        let choices = ["A", "C", "G", "T"];
+
+        let mut bank_set: HashSet<String> = bank.into_iter().collect();
+        let mut queue = VecDeque::new();
+        queue.push_back(start);
+
+        let mut ret = 0;
+        while !queue.is_empty() {
+            let size = queue.len();
+            for _ in 0..size {
+                let curr = queue.pop_front().unwrap();
+                if curr == end {
+                    return ret;
+                }
+
+                for i in 0..curr.len() {
+                    let mut next = curr.clone();
+                    for choice in choices {
+                        next.replace_range(i..=i, choice);
+
+                        if !bank_set.contains(&next) {
+                            continue;
+                        }
+
+                        bank_set.remove(&next);
+                        queue.push_back(next.clone());
+                    }
+                }
+            }
+            ret += 1;
+        }
+
+        -1
+    }
+}
+```
