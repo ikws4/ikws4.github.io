@@ -25,7 +25,7 @@ impl Solution {
             if grid[i][j] == -1 && (j as i32 - 1 < 0 || grid[i][j - 1] == 1) {
                 return -1;
             }
-            
+
             if grid[i][j] == 1 {
                 internal(grid, i + 1, j + 1)
             } else {
@@ -82,6 +82,41 @@ impl Solution {
         }
 
         -1
+    }
+}
+```
+
+### 2131. Longest Palindrome by Concatenating Two Letter Words
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn longest_palindrome(words: Vec<String>) -> i32 {
+        let mut counter = HashMap::new();
+
+        let mut ret = 0;
+        for word in words.iter() {
+            let rev_word = word.chars().rev().collect::<String>();
+            
+            let rev_cnt = counter.entry(rev_word).or_insert(0);
+            if *rev_cnt > 0 {
+                ret += 4;
+                *rev_cnt -= 1;
+            } else {
+                *counter.entry(word.clone()).or_insert(0) += 1;
+            }
+        }
+        
+        for word in words.iter() {
+            let bytes = word.as_bytes();
+            if bytes[0] == bytes[1] && counter[word] > 0 {
+                ret += 2;
+                break;
+            }
+        }
+
+        ret
     }
 }
 ```
