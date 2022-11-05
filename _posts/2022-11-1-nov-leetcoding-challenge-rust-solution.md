@@ -120,3 +120,95 @@ impl Solution {
     }
 }
 ```
+
+### 212. Word Search II
+
+```rust
+use std::collections::{HashMap, HashSet};
+
+const DIRS: [[i32; 2]; 4] = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+
+struct Trie {
+    is_word: bool,
+    children: HashMap<char, Trie>,
+}
+
+impl Trie {
+    pub fn new() -> Self {
+        Trie {
+            is_word: false,
+            children: HashMap::new(),
+        }
+    }
+
+    pub fn insert(&mut self, word: &str) {
+        let mut node = self;
+
+        for c in word.chars() {
+            let child = node.children.entry(c).or_insert_with(Trie::new);
+            node = child;
+        }
+
+        node.is_word = true;
+    }
+}
+
+impl Solution {
+    pub fn find_words(mut board: Vec<Vec<char>>, words: Vec<String>) -> Vec<String> {
+        let mut trie = Trie::new();
+        for word in &words {
+            trie.insert(word);
+        }
+
+        fn internal(
+            board: &mut Vec<Vec<char>>,
+            i: i32,
+            j: i32,
+            mut node: &Trie,
+            path: &mut String,
+            ret: &mut HashSet<String>,
+        ) {
+            if i < 0 || i >= board.len() as i32 || j < 0 || j >= board[0].len() as i32 {
+                return;
+            }
+            let iu = i as usize;
+            let ju = j as usize;
+
+            if board[iu][ju] == '#' {
+                return;
+            }
+
+            if let Some(child) = node.children.get(&board[iu][ju]) {
+                node = child;
+            } else {
+                return;
+            }
+
+            let v = board[iu][ju];
+            board[iu][ju] = '#';
+            path.push(v);
+
+            if node.is_word {
+                ret.insert(path.clone());
+            }
+
+            for dir in DIRS {
+                internal(board, i + dir[0], j + dir[1], node, path, ret);
+            }
+
+            path.pop();
+            board[iu][ju] = v;
+        }
+
+        let mut ret = HashSet::new();
+        let mut path = "".to_string();
+        for i in 0..board.len() as i32 {
+            for j in 0..board[0].len() as i32 {
+                internal(&mut board, i, j, &trie, &mut path, &mut ret);
+            }
+        }
+
+        ret.into_iter().collect()
+    }
+}
+```
