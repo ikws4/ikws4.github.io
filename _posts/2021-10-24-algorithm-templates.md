@@ -1067,6 +1067,7 @@ class FenwickTree {
 [LC 820.Short Encoding of Words](https://leetcode.com/problems/short-encoding-of-words/)<br>
 [LC 336.Palindrome Pairs](https://leetcode.com/problems/palindrome-pairs/)<br>
 [LC 2416.Sum of Prefix Scores of Strings](https://leetcode.com/problems/sum-of-prefix-scores-of-strings/)<br>
+[LC 212.Word Search II](https://leetcode.com/problems/word-search-ii/)<br>
 
 ```java
 class Trie {
