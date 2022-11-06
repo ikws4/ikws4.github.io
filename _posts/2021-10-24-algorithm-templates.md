@@ -785,6 +785,7 @@ class UnionFind {
 
 [LC 307.Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)<br>
 [LC 1578.Minimum Time to Make Rope Colorful](https://leetcode.com/problems/minimum-time-to-make-rope-colorful/)<br>
+[LC 2462.Total Cost to Hire K Workers](https://leetcode.com/problems/total-cost-to-hire-k-workers/)<br>
 
 ```java
 class SegmentTree {
@@ -1575,6 +1576,7 @@ for (int k = n; k >= 1; k--) {
 [LC 1876.Substrings of Size Three with Distinct Characters](https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/)<br>
 [LC 1695.Maximum Erasure Value](https://leetcode.com/problems/maximum-erasure-value/)<br>
 [LC 2405.Optimal Partition of String](https://leetcode.com/problems/optimal-partition-of-string/)<br>
+[LC 2461.Maximum Sum of Distinct Subarrays With Length K](https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/)<br>
 
 ```java
 class Solution {
