@@ -214,6 +214,8 @@ int knapsack(int[] W, int[] V, int n, int capacity) {
 
 ### Bounded knapsack
 
+[LC 2463.Minimum Total Distance Traveled](https://leetcode.com/problems/minimum-total-distance-traveled/)<br>
+
 ```java
 // dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - W[i] * k] + V[i] * k)
 int knapsack(int[] W, int[] V, int[] S, int n, int capacity) {
