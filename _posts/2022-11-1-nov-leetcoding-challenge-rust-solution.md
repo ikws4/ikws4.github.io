@@ -212,3 +212,28 @@ impl Solution {
     }
 }
 ```
+
+### 899. Orderly Queue
+
+```rust
+impl Solution {
+    pub fn orderly_queue(s: String, k: i32) -> String {
+        if k == 1 {
+            let mut ret = s.clone();
+            for i in 1..s.len() {
+                let l = &s[0..i];
+                let r = &s[i..];
+                let t = format!("{}{}", r, l);
+                if t < ret {
+                    ret = t;
+                }
+            }
+            ret
+        } else {
+            let mut s: Vec<char> = s.chars().collect();
+            s.sort();
+            s.into_iter().collect()
+        }
+    }
+}
+```
