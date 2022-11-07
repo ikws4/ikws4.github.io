@@ -237,3 +237,18 @@ impl Solution {
     }
 }
 ```
+
+### 1323. Maximum 69 Number
+
+```rust
+impl Solution {
+    pub fn maximum69_number (num: i32) -> i32 {
+        let mut s = num.to_string();
+        if let Some(index) = s.find('6') {
+            s.replace_range(index..=index, "9");
+            return s.parse().unwrap();
+        }
+        num
+    }
+}
+```
