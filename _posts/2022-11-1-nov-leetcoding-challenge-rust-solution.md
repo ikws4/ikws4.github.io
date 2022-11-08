@@ -252,3 +252,26 @@ impl Solution {
     }
 }
 ```
+
+### 1544. Make The String Great
+
+```rust
+impl Solution {
+    pub fn make_good(s: String) -> String {
+        let mut ret = "".to_string();
+        for c in s.chars() {
+            let revc = if c.is_ascii_lowercase() {
+                c.to_ascii_uppercase()
+            } else {
+                c.to_ascii_lowercase()
+            };
+            if !ret.is_empty() && ret.ends_with(revc) {
+                ret.pop();
+            } else {
+                ret.push(c);
+            }
+        }
+        ret
+    }
+}
+```
