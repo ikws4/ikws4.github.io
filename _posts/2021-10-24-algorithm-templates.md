@@ -1314,6 +1314,7 @@ class MatrixFastPow {
 [LC 2104.Sum of Subarray Ranges](https://leetcode.com/problems/sum-of-subarray-ranges/)<br>
 [LC 1856.Maximum Subarray Min-Product](https://leetcode.com/problems/maximum-subarray-min-product/)<br>
 [LC 849.Maximize Distance to Closest Person](https://leetcode.com/problems/maximize-distance-to-closest-person/)<br>
+[LC 901.Online Stock Span](https://leetcode.com/problems/online-stock-span/)<br>
 
 ```java
 void monotonicStack(int[] nums) {
