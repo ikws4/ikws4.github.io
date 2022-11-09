@@ -275,3 +275,42 @@ impl Solution {
     }
 }
 ```
+
+### 901. Online Stock Span
+
+```rust
+struct StockSpanner {
+    prices: Vec<i32>,
+    stack: Vec<usize>,
+    cache: Vec<i32>,
+}
+
+impl StockSpanner {
+    fn new() -> Self {
+        StockSpanner {
+            prices: Vec::new(),
+            stack: Vec::new(),
+            cache: Vec::new(),
+        }
+    }
+
+    fn next(&mut self, price: i32) -> i32 {
+        self.prices.push(price);
+        let last_index = self.prices.len() - 1;
+        let mut index = last_index;
+        while let Some(&peek) = self.stack.last() {
+            if price >= self.prices[peek] {
+                index = self.stack.pop().unwrap();
+            } else {
+                break;
+            }
+        }
+        self.stack.push(last_index);
+
+        let ret = (last_index - index + 1) as i32 + (self.cache.get(index).unwrap_or(&1) - 1);
+        self.cache.push(ret);
+
+        ret
+    }
+}
+```
