@@ -314,3 +314,21 @@ impl StockSpanner {
     }
 }
 ```
+
+### 1047. Remove All Adjacent Duplicates In String
+
+```rust
+impl Solution {
+    pub fn remove_duplicates(s: String) -> String {
+        let mut ret = "".to_string();
+        for c in s.chars() {
+            if ret.ends_with(c) {
+                ret.pop();
+            } else {
+                ret.push(c);
+            }
+        }
+        ret
+    }
+}
+```
