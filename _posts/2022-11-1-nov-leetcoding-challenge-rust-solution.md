@@ -350,3 +350,55 @@ impl Solution {
     }
 }
 ```
+
+### 295. Find Median from Data Stream
+
+```rust
+use std::cmp::{Ordering, Reverse};
+use std::collections::BinaryHeap;
+
+struct MedianFinder {
+    left: BinaryHeap<Reverse<i32>>,
+    right: BinaryHeap<i32>,
+}
+
+impl MedianFinder {
+    fn new() -> Self {
+        MedianFinder {
+            left: BinaryHeap::new(),
+            right: BinaryHeap::new(),
+        }
+    }
+
+    fn add_num(&mut self, num: i32) {
+        self.left.push(Reverse(num));
+        self.right.push(self.left.pop().unwrap().0);
+
+        if self.right.len() > self.left.len() {
+            self.left.push(Reverse(self.right.pop().unwrap()));
+        }
+    }
+
+    fn find_median(&self) -> f64 {
+        match self.left.len().cmp(&self.right.len()) {
+            Ordering::Less => *self.right.peek().unwrap() as f64,
+            Ordering::Equal => (self.left.peek().unwrap().0 + self.right.peek().unwrap()) as f64 / 2.0,
+            Ordering::Greater => self.left.peek().unwrap().0 as f64
+        }
+    }
+}
+```
+
+### 151. Reverse Words in a String
+
+```rust
+impl Solution {
+    pub fn reverse_words(s: String) -> String {
+        s.split(' ')
+            .filter(|word| word != &"")
+            .rev()
+            .collect::<Vec<&str>>()
+            .join(" ")
+    }
+}
+```
