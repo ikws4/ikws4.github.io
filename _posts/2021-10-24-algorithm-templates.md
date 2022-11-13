@@ -374,8 +374,9 @@ class Solution {
 
 ### Palindrom
 
-[LC 5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)<br>
-[LC 647. Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/)<br>
+[LC 5.Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)<br>
+[LC 647.Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/)<br>
+[LC 2472.Maximum Number of Non-overlapping Palindrome Substrings](https://leetcode.com/problems/maximum-number-of-non-overlapping-palindrome-substrings/)<br>
 
 ```java
 class Solution {
@@ -1315,6 +1316,7 @@ class MatrixFastPow {
 [LC 1856.Maximum Subarray Min-Product](https://leetcode.com/problems/maximum-subarray-min-product/)<br>
 [LC 849.Maximize Distance to Closest Person](https://leetcode.com/problems/maximize-distance-to-closest-person/)<br>
 [LC 901.Online Stock Span](https://leetcode.com/problems/online-stock-span/)<br>
+[LC 2472.Maximum Number of Non-overlapping Palindrome Substrings](https://leetcode.com/problems/maximum-number-of-non-overlapping-palindrome-substrings/)<br>
 
 ```java
 void monotonicStack(int[] nums) {
@@ -2115,6 +2117,38 @@ class Solution {
       }
       System.out.println("|\t" + x[i]);
     }
+  }
+}
+```
+
+### GCD & LCM
+
+[LC 2470.Number of Subarrays With LCM Equal to K](https://leetcode.com/problems/number-of-subarrays-with-lcm-equal-to-k/)<br>
+
+```java
+class Solution {
+  public int subarrayLCM(int[] nums, int k) {
+    int n = nums.length;
+    int ret = 0;
+    for (int i = 0; i < n; i++) {
+      int l = 1;
+      for (int j = i; j < n; j++) {
+        l = lcm(l, nums[j]);
+        if (l == k) {
+          ret++;
+        }
+      }
+    }
+    return ret;
+  }
+
+  private int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+  }
+
+  private int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
   }
 }
 ```
