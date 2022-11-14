@@ -729,6 +729,7 @@ void toplogicalSort(int n, int[][] edges) {
 [LC 1971.Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/)<br>
 [LC 959.Regions Cut By Slashes](https://leetcode.com/problems/regions-cut-by-slashes/)<br>
 [LQ 110.合根植物](https://www.lanqiao.cn/problems/110/learning/)<br>
+[LC 947.Most Stones Removed with Same Row or Column](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/)<br>
 [LC 130.Surrounded Regions](https://leetcode.com/problems/surrounded-regions/)<br>
 [LC 952.Largest Component Size by Common Factor](https://leetcode.com/problems/largest-component-size-by-common-factor/)<br>
 [LQ 185.修改数组](https://www.lanqiao.cn/problems/185/learning/)<br>
