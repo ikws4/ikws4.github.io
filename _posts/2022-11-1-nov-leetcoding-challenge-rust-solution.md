@@ -402,3 +402,73 @@ impl Solution {
     }
 }
 ```
+
+### 947. Most Stones Removed with Same Row or Column
+
+```rust
+struct UnionFind {
+    parent: Vec<usize>,
+    rank: Vec<usize>,
+}
+
+impl UnionFind {
+    fn new(n: usize) -> Self {
+        let mut parent = vec![0; n];
+        let rank = vec![0; n];
+
+        for i in 0..parent.len() {
+            parent[i] = i;
+        }
+
+        Self { parent, rank }
+    }
+
+    fn union(&mut self, u: usize, v: usize) -> bool {
+        let pu = self.find(u);
+        let pv = self.find(v);
+
+        if pu == pv {
+            return false;
+        }
+
+        if self.rank[pu] < self.rank[pv] {
+            self.parent[pu] = pv;
+        } else {
+            self.parent[pv] = pu;
+            if self.rank[pv] == self.rank[pu] {
+                self.rank[pv] += 1;
+            }
+        }
+
+        true
+    }
+
+    fn find(&mut self, u: usize) -> usize {
+        if self.parent[u] == u {
+            return u;
+        }
+        self.parent[u] = self.find(self.parent[u]);
+        self.parent[u]
+    }
+}
+
+impl Solution {
+    pub fn remove_stones(stones: Vec<Vec<i32>>) -> i32 {
+        let n = stones.len();
+        let mut ret: i32 = 0;
+        let mut uf = UnionFind::new(n);
+
+        for i in 0..n {
+            for j in (i + 1)..n {
+                if stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1] {
+                    if uf.union(i, j) {
+                        ret += 1;
+                    }
+                }
+            }
+        }
+
+        ret
+    }
+}
+```
