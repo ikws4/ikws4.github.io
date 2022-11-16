@@ -490,3 +490,25 @@ impl Solution {
     }
 }
 ```
+
+### 374. Guess Number Higher or Lower
+
+```rust
+impl Solution {
+    unsafe fn guessNumber(n: i32) -> i32 {
+        let mut l = 0;
+        let mut r = n;
+      
+        while l < r {
+            let m = l + (r - l) / 2;
+            if guess(m) == 1 {
+                l = m + 1;
+            } else {
+                r = m;
+            }
+        }
+      
+        l
+    }
+}
+```
