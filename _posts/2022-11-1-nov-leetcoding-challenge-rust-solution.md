@@ -472,3 +472,21 @@ impl Solution {
     }
 }
 ```
+
+### 222. Count Complete Tree Nodes
+
+```rust
+use std::rc::Rc;
+use std::cell::RefCell;
+
+impl Solution {
+    pub fn count_nodes(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        if let Some(root) = root {
+            let mut root = root.borrow_mut();
+            return Solution::count_nodes(root.left.take()) +
+                   Solution::count_nodes(root.right.take()) + 1;
+        }
+        0
+    }
+}
+```
