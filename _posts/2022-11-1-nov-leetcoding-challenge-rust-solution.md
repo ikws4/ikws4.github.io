@@ -512,3 +512,36 @@ impl Solution {
     }
 }
 ```
+
+### 223. Rectangle Area
+
+```rust
+impl Solution {
+    pub fn compute_area(
+        ax1: i32,
+        ay1: i32,
+        ax2: i32,
+        ay2: i32,
+        bx1: i32,
+        by1: i32,
+        bx2: i32,
+        by2: i32,
+    ) -> i32 {
+        let cx1 = ax1.max(bx1);
+        let cy1 = ay1.max(by1);
+        let cx2 = ax2.min(bx2);
+        let cy2 = ay2.min(by2);
+
+        Solution::area(ax1, ay1, ax2, ay2) +
+        Solution::area(bx1, by1, bx2, by2) -
+        Solution::area(cx1, cy1, cx2, cy2)
+    }
+
+    fn area(x1: i32, y1: i32, x2: i32, y2: i32) -> i32 {
+        if x1 > x2 || y1 > y2 {
+            return 0;
+        }
+        (x2 - x1) * (y2 - y1)
+    }
+}
+```
