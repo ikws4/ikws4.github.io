@@ -571,3 +571,63 @@ impl Solution {
     }
 }
 ```
+
+### 587. Erect the Fence
+
+```rust
+impl Solution {
+    pub fn outer_trees(mut points: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        let p0 = &points
+            .iter()
+            .min_by(|a, b| a[1].cmp(&b[1]).then(a[0].cmp(&b[0])))
+            .unwrap()
+            .clone();
+
+        points.sort_by(|a, b| {
+            angle(p0, a)
+                .partial_cmp(&angle(p0, b))
+                .unwrap()
+                .then(dist(p0, a).cmp(&dist(p0, b)))
+        });
+
+        let n = points.len();
+        let mut i = (n - 1) as i32;
+        while i >= 0 && orientation(p0, &points[n - 1], &points[i as usize]) == 0 {
+            i -= 1;
+        }
+        reverse(&mut points, (i + 1) as usize, n - 1);
+
+        let mut stack: Vec<Vec<i32>> = vec![];
+        for p in points {
+            while stack.len() >= 2
+                && orientation(&stack[stack.len() - 2], &stack[stack.len() - 1], &p) < 0
+            {
+                stack.pop();
+            }
+            stack.push(p);
+        }
+
+        stack
+    }
+}
+
+fn reverse(points: &mut Vec<Vec<i32>>, mut l: usize, mut r: usize) {
+    while l < r {
+        points.swap(l, r);
+        l += 1;
+        r -= 1;
+    }
+}
+
+fn angle(p0: &[i32], p1: &[i32]) -> f32 {
+    ((p1[1] - p0[1]) as f32).atan2((p1[0] - p0[0]) as f32)
+}
+
+fn dist(p0: &[i32], p1: &[i32]) -> i32 {
+    (p1[0] - p0[0]).pow(2) + (p1[1] - p0[1]).pow(2)
+}
+
+fn orientation(p0: &[i32], p1: &[i32], p2: &[i32]) -> i32 {
+    (p2[1] - p1[1]) * (p1[0] - p0[0]) - (p1[1] - p0[1]) * (p2[0] - p1[0])
+}
+```
