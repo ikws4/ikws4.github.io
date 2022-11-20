@@ -679,6 +679,7 @@ class Solution {
 [LC 1591.Strange Printer II](https://leetcode.com/problems/strange-printer-ii/)<br>
 [LC 2127.Maximum Employees to Be Invited to a Meeting](https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting/)<br>
 [LC 2192.All Ancestors of a Node in a Directed Acyclic Graph](https://leetcode.com/problems/all-ancestors-of-a-node-in-a-directed-acyclic-graph/)<br>
+[LC 2477.Minimum Fuel Cost to Report to the Capital](https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital/)<br>
 
 ```java
 void toplogicalSort(int n, int[][] edges) {
