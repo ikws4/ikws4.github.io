@@ -631,3 +631,90 @@ fn orientation(p0: &[i32], p1: &[i32], p2: &[i32]) -> i32 {
     (p2[1] - p1[1]) * (p1[0] - p0[0]) - (p1[1] - p0[1]) * (p2[0] - p1[0])
 }
 ```
+
+### 224. Basic Calculator
+
+```rust
+impl Solution {
+    pub fn calculate(s: String) -> i32 {
+        let expr = s.chars().filter(|c| c != &' ').collect::<Vec<char>>();
+        Calculator::new(expr).eval()
+    }
+}
+
+struct Calculator {
+    expr: Vec<char>,
+    index: usize,
+}
+
+// grammar
+//   term: unary (('+' / '-') unary)*
+//   unary: '-'? group
+//   group: '(' term ')' | number
+//   number: ('0' - '9')+
+impl Calculator {
+    pub fn new(expr: Vec<char>) -> Self {
+        Self { expr, index: 0 }
+    }
+
+    pub fn eval(&mut self) -> i32 {
+        self.term()
+    }
+
+    fn term(&mut self) -> i32 {
+        let mut ret = self.unary();
+        while self.is_match('+') || self.is_match('-') {
+            if self.is_match('+') {
+                self.advance();
+                ret += self.unary();
+            } else {
+                self.advance();
+                ret -= self.unary();
+            }
+        }
+        ret
+    }
+
+    fn unary(&mut self) -> i32 {
+        if self.is_match('-') {
+            self.advance();
+            return -self.group();
+        }
+        self.group()
+    }
+
+    fn group(&mut self) -> i32 {
+        if self.is_match('(') {
+            self.advance();
+            let ret = self.term();
+            self.advance();
+            return ret;
+        }
+        self.number()
+    }
+
+    fn number(&mut self) -> i32 {
+        let mut num: i32 = 0;
+        while self.peek() >= '0' && self.peek() <= '9' {
+            num = num * 10 + (self.peek() as u8 - b'0') as i32;
+            self.advance();
+        }
+        num
+    }
+
+    fn advance(&mut self) {
+        self.index += 1
+    }
+
+    fn is_match(&self, c: char) -> bool {
+        self.peek() == c
+    }
+
+    fn peek(&self) -> char {
+        if self.index >= self.expr.len() {
+            return '\0';
+        }
+        self.expr[self.index]
+    }
+}
+```
