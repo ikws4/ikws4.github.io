@@ -637,7 +637,10 @@ fn orientation(p0: &[i32], p1: &[i32], p2: &[i32]) -> i32 {
 ```rust
 impl Solution {
     pub fn calculate(s: String) -> i32 {
-        let expr = s.chars().filter(|c| c != &' ').collect::<Vec<char>>();
+        let expr = s
+            .chars()
+            .filter(|it| !it.is_ascii_whitespace())
+            .collect::<Vec<char>>();
         Calculator::new(expr).eval()
     }
 }
@@ -717,4 +720,5 @@ impl Calculator {
         self.expr[self.index]
     }
 }
+
 ```
