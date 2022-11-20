@@ -411,6 +411,56 @@ class Solution {
 }
 ```
 
+## Interval DP
+
+[LC 2478.Number of Beautiful Partitions](https://leetcode.com/problems/number-of-beautiful-partitions/)<br>
+
+```java
+class Solution {
+  private String s;
+  private int minLength;
+  private long[][] memo;
+  private int mod = (int) 1e9 + 7;
+
+  public int beautifulPartitions(String s, int k, int minLength) {
+    this.s = s;
+    this.minLength = minLength;
+    this.memo = new long[s.length()][k + 1];
+    for (int i = 0; i < s.length(); i++) {
+      Arrays.fill(memo[i], -1);
+    }
+    return (int) dp(0, k);
+  }
+
+  private long dp(int i, int k) {
+    if (i == s.length() && k == 0) return 1;
+    if (i >= s.length() || k < 0) return 0;
+    if (memo[i][k] != -1) return memo[i][k];
+
+    // xxxxxxxxxx
+    // i        j
+    // j - i + 1 >= minLength
+    //         j >= minLength + i - 1
+    long ret = 0;
+    if (isPrime(s.charAt(i))) {
+      for (int j = minLength + i - 1; j < s.length(); j++) {
+        if (s.length() - (j + 1) + 1 < (k - 1) * minLength) break;
+        if (isPrime(s.charAt(j))) continue;
+
+        ret += dp(j + 1, k - 1);
+        ret %= mod;
+      }
+    }
+
+    return memo[i][k] = ret;
+  }
+
+  private boolean isPrime(char c) {
+    return c == '2' || c == '3' || c == '5' || c == '7';
+  }
+}
+```
+
 ## 2D Grid Path
 
 [LC 741.Cherry Pickup](https://leetcode.com/problems/cherry-pickup/)<br>
