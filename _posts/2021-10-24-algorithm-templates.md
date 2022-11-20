@@ -1457,6 +1457,7 @@ boolean rangeQuery(int l, int r, int lower, int upper) {
 [LC 2226.Maximum Candies Allocated to K Children](https://leetcode.com/problems/maximum-candies-allocated-to-k-children/)<br>
 [LC 2300.Successful Pairs of Spells and Potions](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/)<br>
 [LC 374.Guess Number Higher or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/)<br>
+[LC 2476.Closest Nodes Queries in a Binary Search Tree](https://leetcode.com/problems/closest-nodes-queries-in-a-binary-search-tree/)<br>
 
 ```java
 //
@@ -1488,6 +1489,7 @@ int lowerBound(int l, int r, int x) {
 ### Upper Bound
 
 [LC 441.Arranging Coins](https://leetcode.com/problems/arranging-coins/)<br>
+[LC 2476.Closest Nodes Queries in a Binary Search Tree](https://leetcode.com/problems/closest-nodes-queries-in-a-binary-search-tree/)<br>
 
 ```java
 //
