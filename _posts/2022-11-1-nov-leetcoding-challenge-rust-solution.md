@@ -720,5 +720,50 @@ impl Calculator {
         self.expr[self.index]
     }
 }
+```
 
+### 1926. Nearest Exit from Entrance in Maze
+
+```rust
+use std::collections::VecDeque;
+
+impl Solution {
+    pub fn nearest_exit(maze: Vec<Vec<char>>, entrance: Vec<i32>) -> i32 {
+        let (m, n) = (maze.len(), maze[0].len());
+        let mut queue = VecDeque::new();
+        let mut visited = vec![vec![false; n]; m];
+        queue.push_back((entrance[0], entrance[1]));
+        visited[entrance[0] as usize][entrance[1] as usize] = true;
+
+        let dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+        let mut ret = 0;
+        while !queue.is_empty() {
+            ret += 1;
+            for _ in 0..queue.len() {
+                let u = queue.pop_front().unwrap();
+
+                for dir in dirs {
+                    let i = u.0 + dir[0];
+                    let j = u.1 + dir[1];
+
+                    if i < 0 || i >= m as i32 || j < 0 || j >= n as i32 {
+                        continue;
+                    }
+
+                    if visited[i as usize][j as usize] || maze[i as usize][j as usize] == '+' {
+                        continue;
+                    }
+                    if i == 0 || i == (m - 1) as i32 || j == 0 || j == (n - 1) as i32 {
+                        return ret;
+                    }
+
+                    queue.push_back((i, j));
+                    visited[i as usize][j as usize] = true;
+                }
+            }
+        }
+
+        -1
+    }
+}
 ```
