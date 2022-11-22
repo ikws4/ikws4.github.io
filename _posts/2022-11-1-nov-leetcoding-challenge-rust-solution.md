@@ -767,3 +767,44 @@ impl Solution {
     }
 }
 ```
+
+### 279. Perfect Squares
+
+```rust
+use std::collections::VecDeque;
+
+impl Solution {
+    pub fn num_squares(n: i32) -> i32 {
+        let n = n as usize;
+        let mut queue = VecDeque::new();
+        let mut visited = vec![false; n + 1];
+        queue.push_back(n);
+        visited[n] = true;
+
+        let mut ret = 0;
+        while !queue.is_empty() {
+            ret += 1;
+            for _ in 0..queue.len() {
+                let u = queue.pop_front().unwrap();
+                for i in 1..=u {
+                    if u < i * i {
+                        break;
+                    }
+                    let v = u - i * i;
+                    if v == 0 {
+                        return ret;
+                    }
+                    if visited[v] {
+                        continue;
+                    }
+
+                    queue.push_back(v);
+                    visited[v] = true;
+                }
+            }
+        }
+
+        -1
+    }
+}
+```
