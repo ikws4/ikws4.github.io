@@ -808,3 +808,35 @@ impl Solution {
     }
 }
 ```
+
+### 36. Valid Sudoku
+
+```rust
+impl Solution {
+    pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool {
+        let n = board.len();
+        let mut row = vec![0; n];
+        let mut col = vec![0; n];
+        let mut cel = vec![0; n];
+
+        for i in 0..n {
+            for j in 0..n {
+                if board[i][j] != '.' {
+                    let k = (i / 3) * 3 + (j / 3);
+                    let mask = 1 << (board[i][j] as u8 - b'0');
+
+                    if row[i] & mask != 0 || col[j] & mask != 0 || cel[k] & mask != 0 {
+                        return false;
+                    }
+
+                    row[i] |= mask;
+                    col[j] |= mask;
+                    cel[k] |= mask;
+                }
+            }
+        }
+
+        true
+    }
+}
+```
