@@ -840,3 +840,60 @@ impl Solution {
     }
 }
 ```
+
+### 79. Word Search
+
+```rust
+const DIRS: [[i32; 2]; 4] = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+
+struct Env {
+    board: Vec<Vec<char>>,
+    word: Vec<char>,
+    m: i32,
+    n: i32,
+}
+
+impl Solution {
+    pub fn exist(board: Vec<Vec<char>>, word: String) -> bool {
+        fn internal(env: &mut Env, i: i32, j: i32, k: usize) -> bool {
+            if k == env.word.len() {
+                return true;
+            }
+            if i < 0 || i >= env.m || j < 0 || j >= env.n {
+                return false;
+            }
+
+            let (ui, uj) = (i as usize, j as usize);
+            let v = env.board[ui][uj];
+
+            if v == '#' || v != env.word[k] {
+                return false;
+            }
+
+            env.board[ui][uj] = '#';
+            for dir in DIRS {
+                if internal(env, i + dir[0], j + dir[1], k + 1) {
+                    return true;
+                }
+            }
+            env.board[ui][uj] = v;
+
+            false
+        }
+
+        let (m, n) = (board.len() as i32, board[0].len() as i32);
+        let word = word.chars().collect::<Vec<char>>();
+        let mut env = Env { board, word, m, n };
+
+        for i in 0..m {
+            for j in 0..n {
+                if internal(&mut env, i as i32, j as i32, 0) {
+                    return true;
+                }
+            }
+        }
+
+        false
+    }
+}
+```
