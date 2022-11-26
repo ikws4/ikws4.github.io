@@ -897,3 +897,56 @@ impl Solution {
     }
 }
 ```
+
+### 1235. Maximum Profit in Job Scheduling
+
+```rust
+struct Job {
+    start_time: i32,
+    end_time: i32,
+    profit: i32,
+}
+
+impl Job {
+    fn new(start_time: i32, end_time: i32, profit: i32) -> Self {
+        Self {
+            start_time,
+            end_time,
+            profit,
+        }
+    }
+}
+
+impl Solution {
+    pub fn job_scheduling(start_time: Vec<i32>, end_time: Vec<i32>, profit: Vec<i32>) -> i32 {
+        let n = start_time.len();
+        let mut jobs = vec![];
+        for i in 0..n {
+            jobs.push(Job::new(start_time[i], end_time[i], profit[i]));
+        }
+        jobs.sort_by(|a, b| a.end_time.cmp(&b.end_time));
+
+        let mut dp = vec![0; n];
+        dp[0] = jobs[0].profit;
+
+        for i in 1..n {
+            let job = &jobs[i];
+
+            let (mut l, mut r) = (0, i);
+            while l < r {
+                let m = l + (r - l) / 2;
+                if jobs[m].end_time <= job.start_time {
+                    l = m + 1;
+                } else {
+                    r = m;
+                }
+            }
+
+            let valid = l > 0 && l <= i;
+            dp[i] = dp[i - 1].max(job.profit + if valid { dp[l - 1] } else { 0 });
+        }
+
+        dp[n - 1]
+    }
+}
+```
