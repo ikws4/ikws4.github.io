@@ -950,3 +950,55 @@ impl Solution {
     }
 }
 ```
+
+### 446. Arithmetic Slices II - Subsequence
+
+```rust
+use std::collections::HashMap;
+
+struct Env {
+    n: usize,
+    nums: Vec<i32>,
+    memo: HashMap<i64, i32>,
+}
+
+impl Solution {
+    pub fn number_of_arithmetic_slices(nums: Vec<i32>) -> i32 {
+        fn dp(env: &mut Env, diff: i64, i: usize) -> i32 {
+            let key = diff << 32 | i as i64;
+            if let Some(&ret) = env.memo.get(&key) {
+                return ret;
+            }
+            
+            let mut ret = 0;
+            for j in (i + 1)..env.n {
+                if (env.nums[j] as i64 - env.nums[i] as i64) == diff as i64 {
+                    ret += dp(env, diff, j) + 1;
+                }
+            }
+
+
+            env.memo.entry(key).or_insert(ret);
+            ret
+        }
+
+        
+        let n = nums.len();
+        let mut env = Env {
+            n: nums.len(),
+            nums: nums.clone(),
+            memo: HashMap::new(),
+        };
+
+        let mut ret = 0;
+        for i in 0..n {
+            for j in (i + 1)..n {
+                let diff = nums[j] as i64 - nums[i] as i64;
+                ret += dp(&mut env, diff, j);
+            }
+        }
+
+        ret
+    }
+}
+```
