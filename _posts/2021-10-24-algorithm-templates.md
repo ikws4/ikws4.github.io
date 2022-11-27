@@ -2104,6 +2104,56 @@ class Solution {
 }
 ```
 
+# Array
+
+## Counting
+
+[LC 2488.Count Subarrays With Median K](https://leetcode.com/problems/count-subarrays-with-median-k/)<br>
+
+```java
+class Solution {
+  public int countSubarrays(int[] nums, int k) {
+    int n = nums.length;
+    int m = findK(nums, k);
+    Map<Integer, Integer> diff = new HashMap<>();
+
+    int greater = 0, less = 0;
+    for (int i = m; i >= 0; i--) {
+      if (nums[i] > k) {
+        greater++;
+      } else if (nums[i] < k) {
+        less++;
+      }
+      int d = greater - less;
+      diff.put(d, diff.getOrDefault(d, 0) + 1);
+    }
+
+    int ret = 0;
+    greater = less = 0;
+    for (int i = m; i < n; i++) {
+      if (nums[i] > k) {
+        greater++;
+      } else if (nums[i] < k) {
+        less++;
+      }
+      int d = greater - less;
+      ret += diff.getOrDefault(-d, 0) + diff.getOrDefault(1 - d, 0);
+    }
+
+    return ret;
+  }
+
+  private int findK(int[] A, int k) {
+    for (int i = 0; i < A.length; i++) {
+      if (A[i] == k) {
+        return i;
+      }
+    }
+    return -1;
+  }
+}
+```
+
 # Math
 
 ## Linear Algebra
