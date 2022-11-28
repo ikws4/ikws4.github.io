@@ -1002,3 +1002,36 @@ impl Solution {
     }
 }
 ```
+
+### 2225. Find Players With Zero or One Losses
+
+```rust
+impl Solution {
+    pub fn find_winners(matches: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        let n = 100001;
+        let mut in_degree = vec![0; n];
+        let mut in_match = vec![false; n];
+        for edge in matches {
+            let (u, v) = (edge[0] as usize, edge[1] as usize);
+            in_degree[v] += 1;
+            in_match[u] = true;
+            in_match[v] = true;
+        }
+
+        let mut ret = vec![vec![]; 2];
+        for i in 0..n {
+            if !in_match[i] {
+                continue;
+            }
+            
+            if in_degree[i] == 0 {
+                ret[0].push(i as i32);
+            } else if in_degree[i] == 1 {
+                ret[1].push(i as i32);
+            }
+        }
+
+        ret
+    }
+}
+```
