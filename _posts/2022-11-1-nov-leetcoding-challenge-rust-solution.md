@@ -1035,3 +1035,55 @@ impl Solution {
     }
 }
 ```
+
+### 380. Insert Delete GetRandom O(1)
+
+```rust
+use std::collections::HashMap;
+use rand::prelude::*;
+
+struct RandomizedSet {
+    index_map: HashMap<i32, usize>,
+    nums: Vec<i32>,
+}
+
+impl RandomizedSet {
+    fn new() -> Self {
+        Self {
+            index_map: HashMap::new(),
+            nums: Vec::new(),
+        }
+    }
+
+    fn insert(&mut self, val: i32) -> bool {
+        if self.index_map.contains_key(&val) {
+            return false;
+        }
+
+        self.nums.push(val);
+        self.index_map.entry(val).or_insert(self.nums.len() - 1);
+
+        true
+    }
+
+    fn remove(&mut self, val: i32) -> bool {
+        if !self.index_map.contains_key(&val) {
+            return false;
+        }
+
+        let at = self.index_map[&val];
+        let last_index = self.nums.len() - 1;
+        self.nums.swap(at, last_index);
+        self.index_map.entry(self.nums[at]).and_modify(|v| *v = at);
+        self.index_map.remove(&self.nums[last_index]);
+        self.nums.remove(last_index);
+
+        true
+    }
+
+    fn get_random(&self) -> i32 {
+        let at = thread_rng().gen_range(0..self.nums.len());
+        self.nums[at]
+    }
+}
+```
