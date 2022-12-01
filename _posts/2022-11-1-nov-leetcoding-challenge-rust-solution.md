@@ -1087,3 +1087,30 @@ impl RandomizedSet {
     }
 }
 ```
+
+### 1207. Unique Number of Occurrences
+
+```rust
+impl Solution {
+    pub fn unique_occurrences(arr: Vec<i32>) -> bool {
+        let n = 1001;
+        let offset = 1000;
+        let mut count = vec![0; offset + n];
+        for num in arr {
+            count[(num + offset as i32) as usize] += 1;
+        }
+
+        let mut set = vec![false; offset + n];
+        for c in count {
+            if c != 0 {
+                if set[c] {
+                    return false;
+                }
+                set[c] = true;
+            }
+        }
+
+        true
+    }
+}
+```
