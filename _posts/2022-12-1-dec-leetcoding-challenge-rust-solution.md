@@ -30,3 +30,38 @@ impl Solution {
     }
 }
 ```
+
+### 1657. Determine if Two Strings Are Close
+
+```rust
+impl Solution {
+    pub fn close_strings(word1: String, word2: String) -> bool {
+        let n = 26;
+        let mut cnt1 = vec![0; n];
+        let mut cnt2 = vec![0; n];
+        for &c in word1.as_bytes() {
+            cnt1[(c - b'a') as usize] += 1;
+        }
+        for &c in word2.as_bytes() {
+            cnt2[(c - b'a') as usize] += 1;
+        }
+
+        for c in 0..n {
+            if cnt1[c] != 0 && cnt2[c] == 0 || cnt2[c] != 0 && cnt1[c] == 0 {
+                return false;
+            }
+        }
+
+        cnt1.sort();
+        cnt2.sort();
+
+        for c in 0..n {
+            if cnt1[c] != cnt2[c] {
+                return false;
+            }
+        }
+
+        true
+    }
+}
+```
