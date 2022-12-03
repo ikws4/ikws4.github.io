@@ -65,3 +65,30 @@ impl Solution {
     }
 }
 ```
+
+### 451. Sort Characters By Frequency
+
+```rust
+impl Solution {
+    pub fn frequency_sort(s: String) -> String {
+        let n = 128;
+        let mut freq = vec![0; n];
+        let mut chars = (0..n).collect::<Vec<usize>>();
+        for &c in s.as_bytes() {
+            freq[c as usize] += 1;
+        }
+        chars.sort_by(|&a, &b| freq[b].cmp(&freq[a]));
+
+        let mut ret = "".to_string();
+        for c in chars {
+            let f = freq[c];
+            let c = c as u8;
+            for _ in 0..f {
+                ret.push(c.into());
+            }
+        }
+
+        ret
+    }
+}
+```
