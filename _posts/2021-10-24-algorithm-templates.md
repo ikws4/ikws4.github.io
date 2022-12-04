@@ -791,6 +791,7 @@ void toplogicalSort(int n, int[][] edges) {
 [LC 2157.Groups of Strings](https://leetcode.com/problems/groups-of-strings/)<br>
 [LC 1202.Smallest String With Swaps](https://leetcode.com/problems/smallest-string-with-swaps/)<br>
 [LC 990.Satisfiability of Equality Equations](https://leetcode.com/problems/satisfiability-of-equality-equations/)<br>
+[LC 2493.Divide Nodes Into the Maximum Number of Groups](https://leetcode.com/problems/divide-nodes-into-the-maximum-number-of-groups/)<br>
 
 ```java
 class UnionFind {
