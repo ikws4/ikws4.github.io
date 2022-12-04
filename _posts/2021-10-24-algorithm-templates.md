@@ -585,6 +585,7 @@ class SparseTable {
 [LC 1786.Number of Restricted Paths From First to Last Node](https://leetcode.com/problems/number-of-restricted-paths-from-first-to-last-node/)<br>
 [LC 1631.Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort/)<br>
 [LC 2290.Minimum Obstacle Removal to Reach Corner](https://leetcode.com/problems/minimum-obstacle-removal-to-reach-corner/)<br>
+[LC 2492.Minimum Score of a Path Between Two Cities](https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/)<br>
 
 ```java
 // vertex are 0-indexed
