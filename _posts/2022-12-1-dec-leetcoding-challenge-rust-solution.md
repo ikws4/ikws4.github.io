@@ -92,3 +92,35 @@ impl Solution {
     }
 }
 ```
+
+### 2256. Minimum Average Difference
+
+```rust
+impl Solution {
+    pub fn minimum_average_difference(nums: Vec<i32>) -> i32 {
+        let n = nums.len();
+        let mut left_sum = vec![0 as i64; n + 1];
+        for i in 1..=n {
+            left_sum[i] = left_sum[i - 1] + nums[i - 1] as i64;
+        }
+
+        let mut ret = 0;
+        let mut min_abs = i64::MAX;
+        let mut right_sum = 0;
+        for i in (0..n).rev() {
+            let left_avg = left_sum[i + 1] / (i - 0 + 1) as i64;
+            let right_avg = right_sum / ((n - 1) - (i + 1) + 1).max(1) as i64;
+
+            let abs = (left_avg - right_avg).abs();
+            if abs <= min_abs {
+                ret = i;
+                min_abs = abs;
+            }
+
+            right_sum += nums[i] as i64;
+        }
+
+        ret as i32
+    }
+}
+```
