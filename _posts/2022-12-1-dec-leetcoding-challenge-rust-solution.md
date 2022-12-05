@@ -124,3 +124,21 @@ impl Solution {
     }
 }
 ```
+
+### 876. Middle of the Linked List
+
+```rust
+impl Solution {
+    pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let mut slow = head.clone();
+        let mut fast = head;
+
+        while fast.is_some() && fast.as_ref().unwrap().next.is_some() {
+            slow = slow.unwrap().next;
+            fast = fast.unwrap().next.unwrap().next;
+        }
+
+        slow
+    }
+}
+```
