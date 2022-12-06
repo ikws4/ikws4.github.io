@@ -142,3 +142,35 @@ impl Solution {
     }
 }
 ```
+
+### 328. Odd Even Linked List
+
+```rust
+impl Solution {
+    pub fn odd_even_list(mut head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let mut odd = None;
+        let mut even = None;
+        let mut odd_iter = &mut odd;
+        let mut even_iter = &mut even;
+        
+        let mut is_odd = true;
+        while let Some(mut node) = head {
+            head = node.next;
+            node.next = None;
+
+            if is_odd {
+                odd_iter = &mut odd_iter.insert(node).next;
+            } else {
+                even_iter = &mut even_iter.insert(node).next;
+            }
+            is_odd ^= true;
+        }
+
+        if let Some(node) = even {
+            odd_iter.insert(node);
+        }
+        
+        odd
+    }
+}
+```
