@@ -174,3 +174,36 @@ impl Solution {
     }
 }
 ```
+
+### 938. Range Sum of BST
+
+```rust
+use std::cell::RefCell;
+use std::rc::Rc;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn range_sum_bst(root: Node, low: i32, high: i32) -> i32 {
+        fn f(root: &Node, low: i32, high: i32) -> i32 {
+            if let Some(root) = root {
+                let root = root.borrow();
+
+                if root.val < low {
+                    return f(&root.right, low, high);
+                }
+
+                if root.val > high {
+                    return f(&root.left, low, high);
+                }
+
+                return f(&root.left, low, high) + f(&root.right, low, high) + root.val;
+            }
+
+            0
+        }
+
+        f(&root, low, high)
+    }
+}
+```
