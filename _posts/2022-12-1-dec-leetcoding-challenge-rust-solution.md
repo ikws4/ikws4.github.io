@@ -207,3 +207,36 @@ impl Solution {
     }
 }
 ```
+
+### 872. Leaf-Similar Trees
+
+```rust
+use std::cell::RefCell;
+use std::rc::Rc;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn leaf_similar(root1: Node, root2: Node) -> bool {
+        fn collect_leaf(root: &Node, to: &mut Vec<i32>) {
+            if let Some(root) = root {
+                let root = root.borrow();
+                if root.left.is_none() && root.right.is_none() {
+                    to.push(root.val);
+                    return;
+                }
+
+                collect_leaf(&root.left, to);
+                collect_leaf(&root.right, to);
+            }
+        }
+
+        let mut leaf1 = vec![];
+        let mut leaf2 = vec![];
+        collect_leaf(&root1, &mut leaf1);
+        collect_leaf(&root2, &mut leaf2);
+
+        leaf1.cmp(&leaf2).is_eq()
+    }
+}
+```
