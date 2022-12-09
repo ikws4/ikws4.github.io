@@ -240,3 +240,31 @@ impl Solution {
     }
 }
 ```
+
+### 1026. Maximum Difference Between Node and Ancestor
+
+```rust
+use std::cell::RefCell;
+use std::rc::Rc;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn max_ancestor_diff(root: Node) -> i32 {
+        fn f(root: &Node, mut min: i32, mut max: i32) -> i32 {
+            if let Some(root) = root {
+                let root = root.borrow();
+                min = min.min(root.val);
+                max = max.max(root.val);
+
+                return f(&root.left, min, max).max(f(&root.right, min, max));
+            }
+
+            max - min
+        }
+
+        let v = root.as_ref().unwrap().borrow().val;
+        f(&root, v, v)
+    }
+}
+```
