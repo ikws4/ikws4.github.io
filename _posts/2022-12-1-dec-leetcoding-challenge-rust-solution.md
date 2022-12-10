@@ -268,3 +268,45 @@ impl Solution {
     }
 }
 ```
+
+### 1339. Maximum Product of Splitted Binary Tree
+
+```rust
+use std::cell::RefCell;
+use std::rc::Rc;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn max_product(root: Node) -> i32 {
+        fn sum(root: &Node) -> i32 {
+            if let Some(root) = root {
+                let root = root.borrow();
+
+                return sum(&root.left) + sum(&root.right) + root.val;
+            }
+
+            0
+        }
+
+        fn product(root: &Node, total_sum: i32) -> (i32, i64) {
+            if let Some(root) = root {
+                let root = root.borrow();
+                let left = product(&root.left, total_sum);
+                let right = product(&root.right, total_sum);
+
+                let s = (left.0 + right.0) + root.val;
+                let p = s as i64 * (total_sum - s) as i64;
+
+                return (s, left.1.max(right.1).max(p));
+            }
+
+            (0, 0)
+        }
+
+        let total_sum = sum(&root);
+
+        (product(&root, total_sum).1 % (1_000_000_007)) as i32
+    }
+}
+```
