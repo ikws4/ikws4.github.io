@@ -310,3 +310,40 @@ impl Solution {
     }
 }
 ```
+
+### 124. Binary Tree Maximum Path Sum
+
+```rust
+use std::cell::RefCell;
+use std::rc::Rc;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn max_path_sum(root: Node) -> i32 {
+        fn f(root: &Node, ret: &mut i32) -> i32 {
+            if let Some(root) = root {
+                let root = root.borrow();
+
+                let l = f(&root.left, ret);
+                let r = f(&root.right, ret);
+
+                *ret = (*ret)
+                    .max(root.val)
+                    .max(l + root.val)
+                    .max(r + root.val)
+                    .max(l + r + root.val);
+
+                return root.val.max(root.val + l).max(root.val + r);
+            }
+
+            0
+        }
+
+        let mut ret = i32::MIN >> 1;
+        f(&root, &mut ret);
+
+        ret
+    }
+}
+```
