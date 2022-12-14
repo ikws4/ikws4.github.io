@@ -364,3 +364,66 @@ impl Solution {
     }
 }
 ```
+
+### 931. Minimum Falling Path Sum
+
+```rust
+struct Env {
+    matrix: Vec<Vec<i32>>,
+    memo: Vec<Vec<i32>>,
+}
+
+impl Solution {
+    pub fn min_falling_path_sum(matrix: Vec<Vec<i32>>) -> i32 {
+        fn f(env: &mut Env, i: i32, j: i32) -> i32 {
+            if i >= env.matrix.len() as i32 {
+                return 0;
+            }
+            if j < 0 || j >= env.matrix.len() as i32 {
+                return i32::MAX >> 1;
+            }
+            let (iu, ju) = (i as usize, j as usize);
+            if env.memo[iu][ju] != -1 {
+                return env.memo[iu][ju];
+            }
+
+            env.memo[iu][ju] = f(env, i + 1, j - 1).min(f(env, i + 1, j)).min(f(env, i + 1, j + 1)) + env.matrix[iu][ju];
+            env.memo[iu][ju]
+        }
+
+        let (m, n) = (matrix.len(), matrix[0].len());
+        let mut ret = i32::MAX >> 1;
+        let mut env = Env {
+            matrix,
+            memo: vec![vec![-1; n]; m]
+        };
+        
+        for j in 0..n {
+            ret = ret.min(f(&mut env, 0, j as i32));
+        }
+
+        ret
+    }
+}
+```
+
+### 198. House Robber
+
+```rust
+impl Solution {
+    pub fn rob(nums: Vec<i32>) -> i32 {
+        let n = nums.len();
+        let mut dp = vec![0; n];
+        dp[0] = nums[0];
+        if n > 1 {
+            dp[1] = nums[0].max(nums[1]);
+        }
+
+        for i in 2..n {
+            dp[i] = dp[i - 1].max(dp[i - 2] + nums[i]);
+        }
+
+        dp[n - 1]
+    }
+}
+```
