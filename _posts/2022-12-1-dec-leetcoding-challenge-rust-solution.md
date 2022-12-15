@@ -427,3 +427,27 @@ impl Solution {
     }
 }
 ```
+
+### 1143. Longest Common Subsequence
+
+```rust
+impl Solution {
+    pub fn longest_common_subsequence(text1: String, text2: String) -> i32 {
+        let (s1, s2) = (text1.as_bytes(), text2.as_bytes());
+        let (m, n) = (s1.len(), s2.len());
+        let mut dp = vec![vec![0; n + 1]; m + 1];
+
+        for i in 1..=m {
+            for j in 1..=n {
+                if s1[i - 1] == s2[j - 1] {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = dp[i - 1][j].max(dp[i][j - 1]);
+                }
+            }
+        }
+
+        dp[m][n]
+    }
+}
+```
