@@ -451,3 +451,82 @@ impl Solution {
     }
 }
 ```
+
+### 232. Implement Queue using Stacks
+
+```rust
+struct MyQueue {
+    stack1: Vec<i32>,
+    stack2: Vec<i32>
+}
+
+impl MyQueue {
+
+    fn new() -> Self {
+        Self {
+            stack1: vec![],
+            stack2: vec![],
+        }
+    }
+    
+    fn push(&mut self, x: i32) {
+        self.stack1.push(x);
+    }
+    
+    fn pop(&mut self) -> i32 {
+        if self.peek() != -1 {
+            return self.stack2.pop().unwrap();
+        }
+
+        -1
+    }
+    
+    fn peek(&mut self) -> i32 {
+        if self.stack2.is_empty() {
+            while let Some(v) = self.stack1.pop() {
+                self.stack2.push(v);
+            }
+        }
+
+        if self.stack2.is_empty() {
+            return -1
+        }
+
+        self.stack2[self.stack2.len() - 1]
+    }
+    
+    fn empty(&self) -> bool {
+        self.stack1.is_empty() && self.stack2.is_empty()
+    }
+}
+```
+
+### 150. Evaluate Reverse Polish Notation
+
+```rust
+use std::ops::{Add, Div, Mul, Sub};
+
+impl Solution {
+    pub fn eval_rpn(tokens: Vec<String>) -> i32 {
+        let mut stack = vec![];
+
+        fn eval(stack: &mut Vec<i32>, op: impl Fn(i32, i32) -> i32) {
+            let b = stack.pop().unwrap();
+            let a = stack.pop().unwrap();
+            stack.push(op(a, b));
+        }
+
+        for token in tokens {
+            match token.as_str() {
+                "+" => eval(&mut stack, Add::add),
+                "-" => eval(&mut stack, Sub::sub),
+                "*" => eval(&mut stack, Mul::mul),
+                "/" => eval(&mut stack, Div::div),
+                _ => stack.push(token.parse().unwrap())
+            }
+        }
+
+        stack.pop().unwrap()
+    }
+}
+```
