@@ -556,3 +556,86 @@ impl Solution {
     }
 }
 ```
+
+### 1971. Find if Path Exists in Graph
+
+```rust
+struct UnionFind {
+    parent: Vec<usize>,
+    rank: Vec<usize>,
+}
+
+impl UnionFind {
+    fn new(n: usize) -> Self {
+        Self {
+            parent: (0..n).collect::<Vec<usize>>(),
+            rank: vec![0; n],
+        }
+    }
+
+    fn find(&mut self, u: usize) -> usize {
+        if self.parent[u] == u {
+            return u;
+        }
+        self.parent[u] = self.find(self.parent[u]);
+        self.parent[u]
+    }
+
+    fn union(&mut self, u: usize, v: usize) -> bool {
+        let pu = self.find(u);
+        let pv = self.find(v);
+        if pu == pv {
+            return false;
+        }
+
+        if self.rank[pu] < self.rank[pv] {
+            self.parent[pu] = pv;
+        } else {
+            self.parent[pv] = pu;
+            if self.rank[pu] == self.rank[pv] {
+                self.rank[pu] += 1;
+            }
+        }
+
+        true
+    }
+}
+
+impl Solution {
+    pub fn valid_path(n: i32, edges: Vec<Vec<i32>>, source: i32, destination: i32) -> bool {
+        let mut uf = UnionFind::new(n as usize);
+
+        for edge in edges {
+            let (u, v) = (edge[0] as usize, edge[1] as usize);
+            uf.union(u, v);
+        }
+
+        uf.find(source as usize) == uf.find(destination as usize)
+    }
+}
+```
+
+### 841. Keys and Rooms
+
+```rust
+use std::collections::HashSet;
+
+impl Solution {
+    pub fn can_visit_all_rooms(rooms: Vec<Vec<i32>>) -> bool {
+        fn f(u: i32, rooms: &Vec<Vec<i32>>, visited: &mut HashSet<i32>) {
+            if visited.contains(&u) {
+                return;
+            }
+
+            visited.insert(u);
+            for &v in &rooms[u as usize] {
+                f(v, rooms, visited);
+            }
+        }
+
+        let mut visited = HashSet::new();
+        f(0, &rooms, &mut visited);
+        visited.len() == rooms.len()
+    }
+}
+```
