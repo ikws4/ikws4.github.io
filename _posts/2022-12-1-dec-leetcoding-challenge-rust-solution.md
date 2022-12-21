@@ -639,3 +639,78 @@ impl Solution {
     }
 }
 ```
+
+### 886. Possible Bipartition
+
+```rust
+struct UnionFind {
+    parent: Vec<usize>,
+    rank: Vec<usize>,
+}
+
+impl UnionFind {
+    fn new(n: usize) -> Self {
+        Self {
+            parent: (0..n).collect::<Vec<usize>>(),
+            rank: vec![0; n],
+        }
+    }
+
+    fn find(&mut self, u: usize) -> usize {
+        if self.parent[u] == u {
+            return u;
+        }
+        self.parent[u] = self.find(self.parent[u]);
+        self.parent[u]
+    }
+
+    fn union(&mut self, u: usize, v: usize) -> bool {
+        let pu = self.find(u);
+        let pv = self.find(v);
+        if pu == pv {
+            return false;
+        }
+
+        if self.rank[pu] < self.rank[pv] {
+            self.parent[pu] = pv;
+        } else {
+            self.parent[pv] = pu;
+            if self.rank[pu] == self.rank[pv] {
+                self.rank[pu] += 1;
+            }
+        }
+
+        true
+    }
+}
+
+impl Solution {
+    pub fn possible_bipartition(n: i32, dislikes: Vec<Vec<i32>>) -> bool {
+        let n = n as usize;
+        let mut graph = vec![vec![]; n];
+        for d in dislikes {
+            let (u, v) = (d[0] as usize - 1, d[1] as usize - 1);
+            graph[u].push(v);
+            graph[v].push(u);
+        }
+
+        let mut uf = UnionFind::new(n);
+        for i in 0..n {
+            let next = &graph[i];
+            if next.is_empty() {
+                continue;
+            }
+
+            let u = next[0];
+            for &v in next {
+                if uf.find(i) == uf.find(v) {
+                    return false;
+                }
+                uf.union(u, v);
+            }
+        }
+
+        true
+    }
+}
+```
