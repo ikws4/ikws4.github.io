@@ -714,3 +714,56 @@ impl Solution {
     }
 }
 ```
+
+### 834. Sum of Distances in Tree
+
+```rust
+struct Env {
+    count: Vec<i32>,
+    ret: Vec<i32>,
+}
+
+impl Solution {
+    pub fn sum_of_distances_in_tree(n: i32, edges: Vec<Vec<i32>>) -> Vec<i32> {
+        let n = n as usize;
+        let mut graph = vec![vec![]; n];
+        for edge in edges {
+            let (u, v) = (edge[0] as usize, edge[1] as usize);
+            graph[u].push(v);
+            graph[v].push(u);
+        }
+        let mut env = Env {
+            count: vec![1; n],
+            ret: vec![0; n]
+        };
+        
+        fn f(env: &mut Env, graph: &Vec<Vec<usize>>, root: usize, parent: usize) {
+            for &child in &graph[root] {
+                if child == parent {
+                    continue;
+                }
+
+                f(env, graph, child, root);
+                env.count[root] += env.count[child];
+                env.ret[root] += env.ret[child] + env.count[child];
+            }
+        }
+
+        fn g(env: &mut Env, graph: &Vec<Vec<usize>>, root: usize, parent: usize) {
+            for &child in &graph[root] {
+                if child == parent {
+                    continue;
+                }
+
+                env.ret[child] = env.ret[root] + (env.count.len() as i32 - env.count[child]) - env.count[child];
+                g(env, graph, child, root);
+            }
+        }
+
+        f(&mut env, &graph, 0, n + 1);
+        g(&mut env, &graph, 0, n + 1);
+
+        env.ret
+    }
+}
+```
