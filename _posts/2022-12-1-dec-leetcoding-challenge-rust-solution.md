@@ -787,3 +787,25 @@ impl Solution {
     }
 }
 ```
+
+### 790. Domino and Tromino Tiling
+
+```rust
+impl Solution {
+    pub fn num_tilings(n: i32) -> i32 {
+        let n = n as usize;
+        let mut dp: Vec<Vec<i64>> = vec![vec![0; 3]; n + 1];
+        let m = 1_000_000_007;
+        dp[0][0] = 1;
+        dp[1][0] = 1;
+
+        for i in 2..=n {
+            dp[i][0] = (dp[i - 1][0] + dp[i - 2][0] + dp[i - 1][1] + dp[i - 1][2]) % m;
+            dp[i][1] = (dp[i - 2][0] + dp[i - 1][2]) % m;
+            dp[i][2] = (dp[i - 2][0] + dp[i - 1][1]) % m;
+        }
+
+        dp[n][0] as i32
+    }
+}
+```
