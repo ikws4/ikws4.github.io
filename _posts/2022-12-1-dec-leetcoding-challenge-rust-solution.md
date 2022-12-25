@@ -809,3 +809,38 @@ impl Solution {
     }
 }
 ```
+
+### 2389. Longest Subsequence With Limited Sum
+
+```rust
+impl Solution {
+    pub fn answer_queries(mut nums: Vec<i32>, queries: Vec<i32>) -> Vec<i32> {
+        nums.sort();
+        let (n, m) = (nums.len(), queries.len());
+        let mut presum = vec![0; n + 1];
+        for i in 1..=n {
+            presum[i] = presum[i - 1] + nums[i - 1];
+        }
+
+        fn bsearch(arr: &Vec<i32>, a: i32) -> usize {
+            let (mut l, mut r) = (0, arr.len());
+            while l < r {
+                let m = l + (r - l) / 2;
+                if arr[m] <= a {
+                    l = m + 1;
+                } else {
+                    r = m;
+                }
+            }
+            l
+        }
+
+        let mut ret = vec![0; m];
+        for i in 0..m {
+            ret[i] = (bsearch(&presum, queries[i]) - 1) as i32;
+        }
+
+        ret
+    }
+}
+```
