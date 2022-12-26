@@ -844,3 +844,26 @@ impl Solution {
     }
 }
 ```
+
+### 55. Jump Game
+
+```rust
+impl Solution {
+    pub fn can_jump(nums: Vec<i32>) -> bool {
+        let n = nums.len();
+        let mut dp = vec![false; n];
+        dp[0] = true;
+        
+        for i in 1..n {
+            for j in (0..i).rev() {
+                if nums[j] as usize >= i - j && dp[j] {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+
+        dp[n - 1]
+    }
+}
+```
