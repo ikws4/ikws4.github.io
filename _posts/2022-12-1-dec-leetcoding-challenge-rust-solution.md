@@ -867,3 +867,29 @@ impl Solution {
     }
 }
 ```
+
+### 2279. Maximum Bags With Full Capacity of Rocks
+
+```rust
+impl Solution {
+    pub fn maximum_bags(capacity: Vec<i32>, rocks: Vec<i32>, mut additional_rocks: i32) -> i32 {
+        let mut needs = capacity
+            .iter()
+            .zip(rocks)
+            .map(|(c, r)| c - r)
+            .collect::<Vec<i32>>();
+        needs.sort();
+
+        let mut ret = 0;
+        for need in needs {
+            if additional_rocks < need {
+                break;
+            }
+            additional_rocks -= need;
+            ret += 1;
+        }
+
+        ret
+    }
+}
+```
