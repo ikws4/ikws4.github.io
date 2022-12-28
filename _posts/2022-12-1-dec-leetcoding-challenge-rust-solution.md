@@ -893,3 +893,22 @@ impl Solution {
     }
 }
 ```
+
+### 1962. Remove Stones to Minimize the Total
+
+```rust
+use std::collections::BinaryHeap;
+
+impl Solution {
+    pub fn min_stone_sum(piles: Vec<i32>, k: i32) -> i32 {
+        let mut max_heap = BinaryHeap::from(piles);
+
+        for _ in 0..k {
+            let p = max_heap.pop().unwrap();
+            max_heap.push(p - (p / 2));
+        }
+
+        max_heap.iter().sum()
+    }
+}
+```
