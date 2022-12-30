@@ -912,3 +912,73 @@ impl Solution {
     }
 }
 ```
+
+### 1834. Single-Threaded CPU
+
+```rust
+use std::{collections::BinaryHeap, cmp::Ordering};
+
+#[derive(PartialEq, Eq, Default)]
+struct Task {
+    enqueue_time: i32,
+    processing_time: i32,
+    index: i32,
+}
+
+impl Ord for Task {
+    fn cmp(&self, other: &Self) -> Ordering {
+       let r = self.processing_time.cmp(&other.processing_time).reverse();
+        if r == Ordering::Equal {
+            return self.index.cmp(&other.index).reverse();
+        }
+        r
+    }
+}
+
+impl PartialOrd for Task {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Solution {
+    pub fn get_order(tasks: Vec<Vec<i32>>) -> Vec<i32> {
+        let mut tasks = tasks
+            .into_iter()
+            .enumerate()
+            .map(|(index, task)| {
+                Task {
+                    enqueue_time: task[0],
+                    processing_time: task[1],
+                    index: index as i32
+                }
+            })
+            .collect::<Vec<Task>>();
+        tasks.sort_by(|a, b| a.enqueue_time.cmp(&b.enqueue_time));
+
+        let mut cpu = BinaryHeap::new();
+
+        let n = tasks.len();
+        let mut ret = vec![];
+
+        let (mut i, mut t) = (0, 0);
+        while ret.len() < n {
+            while i < n && tasks[i].enqueue_time <= t {
+                cpu.push(&tasks[i]);
+                i += 1;
+            }
+
+            if cpu.is_empty() {
+                t = tasks[i].enqueue_time;
+                continue;
+            }
+
+            let task = cpu.pop().unwrap();
+            ret.push(task.index);
+            t += task.processing_time;
+        }
+
+        ret
+    }
+}
+```
