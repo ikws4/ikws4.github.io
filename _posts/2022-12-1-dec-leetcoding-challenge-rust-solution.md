@@ -982,3 +982,31 @@ impl Solution {
     }
 }
 ```
+
+### 797. All Paths From Source to Target
+
+```rust
+impl Solution {
+    pub fn all_paths_source_target(graph: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        fn f(graph: &Vec<Vec<i32>>, u: i32, path: &mut Vec<i32>, paths: &mut Vec<Vec<i32>>) {
+            path.push(u);
+            if u == graph.len() as i32 - 1 {
+                paths.push(path.clone());
+            } else {
+                for &v in &graph[u as usize] {
+                    f(graph, v, path, paths);
+                }
+            }
+
+            path.pop();
+        }
+
+        let mut path = vec![];
+        let mut paths = vec![];
+
+        f(&graph, 0, &mut path, &mut paths);
+
+        paths
+    }
+}
+```
