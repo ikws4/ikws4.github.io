@@ -1010,3 +1010,54 @@ impl Solution {
     }
 }
 ```
+
+### 980. Unique Paths III
+
+```rust
+const DIRS: [[i32; 2]; 4] = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+
+impl Solution {
+    pub fn unique_paths_iii(mut grid: Vec<Vec<i32>>) -> i32 {
+        fn f(grid: &mut Vec<Vec<i32>>, i: i32, j: i32, empty: i32) -> i32 {
+            if i < 0 || i >= grid.len() as i32 || j < 0 || j >= grid[0].len() as i32 {
+                return 0;
+            }
+            let (ui, uj) = (i as usize, j as usize);
+            if grid[ui][uj] == -1 {
+                return 0;
+            }
+            if grid[ui][uj] == 2 && empty == 0 {
+                return 1;
+            }
+
+            let mut ret = 0;
+            let v = grid[ui][uj];
+            grid[ui][uj] = -1;
+            for dir in DIRS {
+                ret += f(grid, i + dir[0], j + dir[1], empty - 1);
+            }
+            grid[ui][uj] = v;
+
+            ret
+        }
+
+        let mut empty = 0;
+        let mut si = 0;
+        let mut sj = 0;
+
+        for i in 0..grid.len() {
+            for j in 0..grid[0].len() {
+                if grid[i][j] == 1 {
+                    si = i as i32;
+                    sj = j as i32;
+                }
+                if grid[i][j] == 0 {
+                    empty += 1;
+                }
+            }
+        }
+        
+        f(&mut grid, si, sj, empty + 1)
+    }
+}
+```
