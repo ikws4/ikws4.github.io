@@ -38,3 +38,20 @@ impl Solution {
     }
 }
 ```
+
+### 520. Detect Capital
+
+```rust
+impl Solution {
+    pub fn detect_capital_use(word: String) -> bool {
+        let mut all_cap = word.chars().filter(|c| c.is_lowercase()).count() == 0;
+        let mut all_lower = word.chars().filter(|c| c.is_uppercase()).count() == 0;
+        let mut title = word
+            .char_indices()
+            .filter(|&(i, c)| i == 0 && c.is_uppercase() || c.is_lowercase())
+            .count() == word.len();
+
+        all_cap || all_lower || title
+    }
+}
+```
