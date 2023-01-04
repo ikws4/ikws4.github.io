@@ -75,3 +75,39 @@ impl Solution {
     }
 }
 ```
+
+### 2244. Minimum Rounds to Complete All Tasks
+
+```rust
+impl Solution {
+    pub fn minimum_rounds(mut tasks: Vec<i32>) -> i32 {
+        let n = tasks.len();
+        tasks.sort();
+        
+        let mut dp = vec![i32::MAX >> 1; n + 5];
+        dp[0] = 0;
+        dp[2] = 1;
+        for i in 3..=n {
+            dp[i] = dp[i - 2].min(dp[i - 3]) + 1;
+        }
+
+        let mut ret = 0;
+        let mut cnt = 1;
+        for i in 1..=n {
+            if i == n || tasks[i - 1] != tasks[i] {
+                let r = dp[cnt];
+                if r >= i32::MAX >> 1 {
+                    return -1;
+                }
+
+                ret += r;
+                cnt = 1;
+            } else {
+                cnt += 1;
+            }
+        }
+
+        ret
+    }
+}
+```
