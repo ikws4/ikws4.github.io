@@ -55,3 +55,23 @@ impl Solution {
     }
 }
 ```
+
+### 944. Delete Columns to Make Sorted
+
+```rust
+impl Solution {
+    pub fn min_deletion_size(mut strs: Vec<String>) -> i32 {
+        let mut ret = 0;
+        for j in 0..strs[0].len() {
+            for i in 1..strs.len() {
+                if strs[i - 1].as_bytes()[j] > strs[i].as_bytes()[j] {
+                    ret += 1;
+                    break;
+                }
+            }
+        }
+
+        ret
+    }
+}
+```
