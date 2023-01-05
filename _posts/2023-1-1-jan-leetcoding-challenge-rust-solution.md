@@ -111,3 +111,26 @@ impl Solution {
     }
 }
 ```
+
+### 452. Minimum Number of Arrows to Burst Balloons
+
+```rust
+impl Solution {
+    pub fn find_min_arrow_shots(mut points: Vec<Vec<i32>>) -> i32 {
+        points.sort_by(|a, b| a[0].cmp(&b[0]));
+
+        let mut ret = 0;
+        let mut right = points[0][1];
+        for i in 1..points.len() {
+            if points[i][0] > right {
+                ret += 1;
+                right = points[i][1];
+            } else {
+                right = right.min(points[i][1]);
+            }
+        }
+
+        ret + 1
+    }
+}
+```
