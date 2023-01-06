@@ -134,3 +134,23 @@ impl Solution {
     }
 }
 ```
+
+### 1833. Maximum Ice Cream Bars
+
+```rust
+impl Solution {
+    pub fn max_ice_cream(mut costs: Vec<i32>, mut coins: i32) -> i32 {
+        costs.sort();
+
+        let n = costs.len();
+        for i in 0..=n {
+            if i == n || coins < costs[i] {
+                return i as i32;
+            }
+            coins -= costs[i];
+        }
+
+        -1
+    }
+}
+```
