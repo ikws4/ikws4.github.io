@@ -154,3 +154,27 @@ impl Solution {
     }
 }
 ```
+
+### 134. Gas Station
+
+```rust
+impl Solution {
+    pub fn can_complete_circuit(gas: Vec<i32>, cost: Vec<i32>) -> i32 {
+        let total_gain = gas.iter().zip(cost.iter()).map(|(g, c)| g - c).sum::<i32>();
+        if total_gain < 0 {
+            return -1;
+        }
+
+        let (mut g, mut ret) = (0, 0);
+        for i in 0..gas.len() {
+            g += gas[i] - cost[i];
+            if g < 0 {
+                g = 0;
+                ret = i + 1;
+            }
+        }
+
+        ret as i32
+    }
+}
+```
