@@ -178,3 +178,83 @@ impl Solution {
     }
 }
 ```
+
+### 149. Max Points on a Line
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn max_points(points: Vec<Vec<i32>>) -> i32 {
+        let n = points.len();
+        let mut ret = 0;
+        let mut slope_map = HashMap::new();
+        for i in 0..n {
+            let mut max = 1;
+            for j in 0..n {
+                if i != j {
+                    let s = slope(&points[i], &points[j]);
+                    let v = slope_map.entry(s).or_insert(1);
+                    *v += 1;
+                    max = max.max(*v);
+                }
+            }
+            slope_map.clear();
+            ret = ret.max(max);
+        }
+
+        ret
+    }
+}
+
+fn slope(p0: &[i32], p1: &[i32]) -> String {
+    let mut dy = p0[1] - p1[1];
+    let mut dx = p0[0] - p1[0];
+
+    if dy == 0 {
+        return "0".into();
+    }
+    if dx == 0 {
+        return "inf".into();
+    }
+
+    let gcd = gcd(dy, dx);
+    dy /= gcd;
+    dx /= gcd;
+
+    format!("{}/{}", dy, dx)
+}
+
+fn gcd(a: i32, b: i32) -> i32 {
+    if b == 0 {
+        return a;
+    }
+    gcd(b, a % b)
+}
+```
+
+### 144. Binary Tree Preorder Traversal
+
+```rust
+use std::rc::Rc;
+use std::cell::RefCell;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn preorder_traversal(root: Node) -> Vec<i32> {
+        let mut ret = vec![];
+        f(&root, &mut ret);
+        ret
+    }
+}
+
+fn f(root: &Node, ret: &mut Vec<i32>) {
+    if let Some(root) = root {
+        let root = root.borrow();
+        ret.push(root.val);
+        f(&root.left, ret);
+        f(&root.right, ret);
+    }
+}
+```
