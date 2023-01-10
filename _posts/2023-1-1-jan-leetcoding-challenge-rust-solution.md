@@ -258,3 +258,31 @@ fn f(root: &Node, ret: &mut Vec<i32>) {
     }
 }
 ```
+
+### 100. Same Tree
+
+```rust
+use std::rc::Rc;
+use std::cell::RefCell;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn is_same_tree(p: Node, q: Node) -> bool {
+        fn f(p: &Node, q: &Node) -> bool {
+            if p.is_none() && q.is_none() {
+                return true;
+            }
+            if p.is_none() || q.is_none() {
+                return false;
+            }
+            let p = p.as_ref().unwrap().borrow();
+            let q = q.as_ref().unwrap().borrow();
+            
+            p.val == q.val && f(&p.left, &q.left) && f(&p.right, &q.right)
+        }
+
+        f(&p, &q)
+    }
+}
+```
