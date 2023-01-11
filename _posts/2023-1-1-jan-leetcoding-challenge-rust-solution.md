@@ -286,3 +286,46 @@ impl Solution {
     }
 }
 ```
+
+### 1443. Minimum Time to Collect All Apples in a Tree
+
+```rust
+struct Env {
+    graph: Vec<Vec<usize>>,
+    has_apple: Vec<bool>
+}
+
+impl Solution {
+    pub fn min_time(n: i32, edges: Vec<Vec<i32>>, has_apple: Vec<bool>) -> i32 {
+        let n = n as usize;
+        let mut graph = vec![vec![]; n];
+        for edge in &edges {
+            let (u, v) = (edge[0] as usize, edge[1] as usize);
+            graph[u].push(v);
+            graph[v].push(u);
+        }
+        
+        fn f(env: &Env, u: usize, parent: usize) -> (i32, i32) {
+            let mut seconds = 0;
+            let mut apples = env.has_apple[u as usize] as i32;
+
+            for &v in &env.graph[u] {
+                if v == parent { continue; }
+
+                let r = f(env, v, u);
+
+                if r.1 > 0 {
+                    seconds += r.0 + 2;
+                }
+
+                apples += r.1;
+            }
+
+            (seconds, apples)
+        }
+
+        let env = Env { graph, has_apple };
+        f(&env, 0, n).0
+    }
+}
+```
