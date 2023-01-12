@@ -329,3 +329,53 @@ impl Solution {
     }
 }
 ```
+
+### 1519. Number of Nodes in the Sub-Tree With the Same Label
+
+```rust
+struct Env<'a> {
+    graph: Vec<Vec<usize>>,
+    labels: &'a [u8],
+}
+
+impl Solution {
+    pub fn count_sub_trees(n: i32, edges: Vec<Vec<i32>>, labels: String) -> Vec<i32> {
+        let n = n as usize;
+        let mut graph = vec![vec![]; n];
+        for edge in &edges {
+            let (u, v) = (edge[0] as usize, edge[1] as usize);
+            graph[u].push(v);
+            graph[v].push(u);
+        }
+
+        let mut ret = vec![0; n];
+        fn f(env: &Env, u: usize, p: usize, ret: &mut Vec<i32>) -> Vec<i32> {
+            let mut count = vec![0; 26];
+
+            for &v in &env.graph[u] {
+                if v != p {
+                    let r = f(env, v, u, ret);
+
+                    for i in 0..count.len() {
+                        count[i] += r[i];
+                    }
+                }
+            }
+
+            let lable = (env.labels[u] - b'a') as usize;
+            count[lable] += 1;
+            ret[u] = count[lable];
+
+            count
+        }
+
+        let env = Env {
+            graph,
+            labels: labels.as_bytes(),
+        };
+        f(&env, 0, n, &mut ret);
+
+        ret
+    }
+}
+```
