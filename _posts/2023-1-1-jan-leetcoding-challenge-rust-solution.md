@@ -379,3 +379,43 @@ impl Solution {
     }
 }
 ```
+
+### 2246. Longest Path With Different Adjacent Characters
+
+```rust
+impl Solution {
+    pub fn longest_path(parent: Vec<i32>, s: String) -> i32 {
+        let n = parent.len();
+        let mut graph = vec![vec![]; n];
+        for (u, &p) in parent.iter().enumerate().skip(1) {
+            graph[p as usize].push(u);
+        }
+
+        fn f(graph: &Vec<Vec<usize>>, s: &[u8], u: usize, ret: &mut i32) -> i32 {
+            let mut child1 = 0;
+            let mut child2 = 0;
+
+            for &v in &graph[u] {
+                let r = f(graph, s, v, ret);
+                if s[u] != s[v] {
+                    if r >= child1 {
+                        child2 = child1;
+                        child1 = r;
+                    } else if r >= child2 {
+                        child2 = r;
+                    }
+                }
+            }
+
+            *ret = (*ret).max(child1 + child2 + 1);
+
+            child1 + 1
+        }
+
+        let mut ret = 0;
+        f(&graph, s.as_bytes(), 0, &mut ret);
+
+        ret
+    }
+}
+```
