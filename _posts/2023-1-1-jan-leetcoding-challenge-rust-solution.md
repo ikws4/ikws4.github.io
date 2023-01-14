@@ -419,3 +419,77 @@ impl Solution {
     }
 }
 ```
+
+### 1061. Lexicographically Smallest Equivalent String
+
+```rust
+struct UnionFind {
+    parent: Vec<usize>,
+    rank: Vec<usize>,
+}
+
+impl UnionFind {
+    fn with_capacity(n: usize) -> Self {
+        Self {
+            parent: (0..n).collect(),
+            rank: vec![0; n],
+        }
+    }
+
+    fn find(&mut self, u: usize) -> usize {
+        if self.parent[u] == u {
+            return u;
+        }
+        self.parent[u] = self.find(self.parent[u]);
+        self.parent[u]
+    }
+
+    fn union(&mut self, u: usize, v: usize) -> bool {
+        let pu = self.find(u);
+        let pv = self.find(v);
+
+        if pu == pv {
+            return true;
+        }
+
+        if self.rank[pu] < self.rank[pv] {
+            self.parent[pu] = pv;
+        } else {
+            self.parent[pv] = pu;
+            if self.rank[pu] == self.rank[pv] {
+                self.rank[pu] += 1;
+            }
+        }
+
+        false
+    }
+}
+
+impl Solution {
+    pub fn smallest_equivalent_string(s1: String, s2: String, base_str: String) -> String {
+        let mut uf = UnionFind::with_capacity(128);
+        s1.as_bytes()
+            .iter()
+            .zip(s2.as_bytes().iter())
+            .for_each(|(&a, &b)| {
+                uf.union(a as usize, b as usize);
+            });
+
+        let mut group = vec![vec![]; 128];
+        (b'a'..=b'z').for_each(|c| {
+            let root = uf.find(c as usize);
+            group[root].push(c);
+        });
+        group.iter_mut().for_each(|g| g.sort());
+        
+
+        let mut ret = String::with_capacity(s1.len());
+        base_str.as_bytes().iter().for_each(|&c| {
+            let root = uf.find(c as usize);
+            ret.push(group[root][0] as char);
+        });
+
+        ret
+    }
+}
+```
