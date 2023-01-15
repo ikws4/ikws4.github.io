@@ -493,3 +493,103 @@ impl Solution {
     }
 }
 ```
+
+### 2421. Number of Good Paths
+
+```rust
+use std::{
+    cmp::Reverse,
+    collections::{BTreeMap, HashMap},
+};
+
+struct UnionFind {
+    parent: Vec<usize>,
+    rank: Vec<usize>,
+}
+
+impl UnionFind {
+    fn with_capacity(n: usize) -> Self {
+        Self {
+            parent: (0..n).collect(),
+            rank: vec![0; n],
+        }
+    }
+
+    fn find(&mut self, u: usize) -> usize {
+        if self.parent[u] == u {
+            return u;
+        }
+        self.parent[u] = self.find(self.parent[u]);
+        self.parent[u]
+    }
+
+    fn union(&mut self, u: usize, v: usize) -> bool {
+        let pu = self.find(u);
+        let pv = self.find(v);
+
+        if pu == pv {
+            return true;
+        }
+
+        if self.rank[pu] < self.rank[pv] {
+            self.parent[pu] = pv;
+        } else {
+            self.parent[pv] = pu;
+            if self.rank[pu] == self.rank[pv] {
+                self.rank[pu] += 1;
+            }
+        }
+
+        false
+    }
+}
+
+impl Solution {
+    pub fn number_of_good_paths(vals: Vec<i32>, edges: Vec<Vec<i32>>) -> i32 {
+        let n = vals.len();
+        let mut graph = vec![vec![]; n];
+        let mut same_val_nodes = BTreeMap::new();
+        for i in 0..n {
+            same_val_nodes
+                .entry(vals[i])
+                .or_insert_with(Vec::new)
+                .push(i);
+        }
+        for edge in edges {
+            let u = edge[0] as usize;
+            let v = edge[1] as usize;
+            if vals[v] <= vals[u] {
+                graph[u].push(v);
+            }
+            if vals[u] <= vals[v] {
+                graph[v].push(u);
+            }
+        }
+
+        let mut ret = n;
+        let mut uf = UnionFind::with_capacity(n);
+        let mut groups: HashMap<usize, usize> = HashMap::new();
+        for (_, nodes) in same_val_nodes {
+            for &u in &nodes {
+                for &v in &graph[u] {
+                    uf.union(u, v);
+                }
+            }
+
+            groups.clear();
+            for u in nodes {
+                let e = groups.entry(uf.find(u)).or_default();
+                *e += 1;
+            }
+
+            for &cnt in groups.values() {
+                if cnt > 1 {
+                    ret += (cnt * (cnt - 1)) / 2;
+                }
+            }
+        }
+
+        ret as i32
+    }
+}
+```
