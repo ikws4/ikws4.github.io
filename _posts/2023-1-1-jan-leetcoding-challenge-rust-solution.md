@@ -624,3 +624,37 @@ impl Solution {
     }
 }
 ```
+
+### 926. Flip String to Monotone Increasing
+
+```rust
+impl Solution {
+    pub fn min_flips_mono_incr(s: String) -> i32 {
+        let n = s.len();
+        let s = s.as_bytes();
+        let mut total_zeros = 0;
+        for i in 0..n {
+            if s[i] == b'0' {
+                total_zeros += 1;
+            }
+        }
+
+        let mut ret = i32::MAX >> 1;
+        let mut left_ones = 0;
+        let mut left_zeros = 0;
+        for i in 0..=n {
+            ret = ret.min(left_ones + (total_zeros - left_zeros));
+
+            if i < n {
+                if s[i] == b'0' {
+                    left_zeros += 1;
+                } else {
+                    left_ones += 1;
+                }
+            }
+        }
+
+        ret
+    }
+}
+```
