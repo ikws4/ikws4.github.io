@@ -658,3 +658,31 @@ impl Solution {
     }
 }
 ```
+
+### 918. Maximum Sum Circular Subarray
+
+```rust
+impl Solution {
+    pub fn max_subarray_sum_circular(nums: Vec<i32>) -> i32 {
+        let mut dp_min = nums[0];
+        let mut dp_max = nums[0];
+        let mut sum = nums[0];
+        let mut min = dp_min;
+        let mut max = dp_max;
+
+        for &num in nums.iter().skip(1) {
+            dp_min = (dp_min + num).min(num);
+            dp_max = (dp_max + num).max(num);
+            sum += num;
+            min = min.min(dp_min);
+            max = max.max(dp_max);
+        }
+
+        if max < 0 {
+            max
+        } else {
+            max.max(sum - min)
+        }
+    }
+}
+```
