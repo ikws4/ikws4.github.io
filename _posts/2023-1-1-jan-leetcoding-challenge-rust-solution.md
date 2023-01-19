@@ -686,3 +686,34 @@ impl Solution {
     }
 }
 ```
+
+### 974. Subarray Sums Divisible by K
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn subarrays_div_by_k(mut nums: Vec<i32>, k: i32) -> i32 {
+        let min = nums.iter().min().unwrap();
+        let m = (min.abs() / k) + 1;
+        for num in nums.iter_mut() {
+            *num += m * k;
+        }
+
+        let mut ret = 0;
+        let mut sum = 0;
+        let mut map = HashMap::new();
+        map.insert(0, 1);
+        
+        for num in nums {
+            sum += num;
+
+            let e = map.entry(sum % k).or_default();
+            ret += *e;
+            *e += 1;
+        }
+
+        ret
+    }
+}
+```
