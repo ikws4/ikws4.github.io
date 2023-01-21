@@ -717,3 +717,35 @@ impl Solution {
     }
 }
 ```
+
+### 491. Non-decreasing Subsequences
+
+```rust
+impl Solution {
+    pub fn find_subsequences(nums: Vec<i32>) -> Vec<Vec<i32>> {
+        fn f(i: usize, last: i32, nums: &Vec<i32>, sub: &mut Vec<i32>, ret: &mut Vec<Vec<i32>>) {
+            if i >= nums.len() {
+                if sub.len() >= 2 {
+                    ret.push(sub.clone());
+                }
+                return;
+            }
+
+            if sub.len() == 0 || nums[i] >= last {
+                sub.push(nums[i]);
+                f(i + 1, nums[i], nums, sub, ret);
+                sub.pop();
+            }
+
+            if nums[i] != last {
+                f(i + 1, last, nums, sub, ret);
+            }
+        }
+
+        let mut ret = vec![];
+        let mut sub = vec![];
+        f(0, i32::MIN >> 1, &nums, &mut sub, &mut ret);
+        ret
+    }
+}
+```
