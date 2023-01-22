@@ -749,3 +749,43 @@ impl Solution {
     }
 }
 ```
+
+### 131. Palindrome Partitioning
+
+```rust
+impl Solution {
+    pub fn partition(s: String) -> Vec<Vec<String>> {
+        fn check(s: &String, mut l: usize, mut r: usize) -> bool {
+            while l < r {
+                if s.as_bytes()[l] != s.as_bytes()[r] {
+                    return false;
+                }
+                l += 1;
+                r -= 1;
+            }
+            true
+        }
+
+        fn f(s: &String, i: usize, parts: &mut Vec<String>, ret: &mut Vec<Vec<String>>) {
+            if i >= s.len() {
+                ret.push(parts.clone());
+                return;
+            }
+            
+            for j in i..s.len() {
+                if check(s, i, j) {
+                    parts.push(s[i..=j].into());
+                    f(s, j + 1, parts, ret);
+                    parts.pop();
+                }
+            }
+        }
+
+        let mut parts = vec![];
+        let mut ret = vec![];
+        f(&s, 0, &mut parts, &mut ret);
+
+        ret
+    }
+}
+```
