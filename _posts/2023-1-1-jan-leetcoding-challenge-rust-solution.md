@@ -789,3 +789,32 @@ impl Solution {
     }
 }
 ```
+
+### 997. Find the Town Judge
+
+```rust
+impl Solution {
+    pub fn find_judge(n: i32, trust: Vec<Vec<i32>>) -> i32 {
+        let n = n as usize;
+        let mut in_degree = vec![0; n + 1];
+        let mut out_degree = vec![0; n + 1];
+        for edge in trust {
+            let (u, v) = (edge[0], edge[1]);
+            out_degree[u as usize] += 1;
+            in_degree[v as usize] += 1;
+        }
+
+        let mut ret = -1;
+        for i in 1..=n {
+            if out_degree[i] == 0 && in_degree[i] == n - 1 {
+                if ret != -1 {
+                    return -1;
+                }
+                ret = i as i32;
+            }
+        }
+
+        ret
+    }
+}
+```
