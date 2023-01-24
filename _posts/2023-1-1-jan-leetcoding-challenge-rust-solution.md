@@ -818,3 +818,55 @@ impl Solution {
     }
 }
 ```
+
+### 909. Snakes and Ladders
+
+```rust
+impl Solution {
+    pub fn snakes_and_ladders(board: Vec<Vec<i32>>) -> i32 {
+        let n = board.len();
+        let mut queue = vec![];
+        let mut visited = vec![vec![false; n]; n];
+        queue.push(1);
+        visited[n - 1][0] = true;
+
+        let mut level = 0;
+        while !queue.is_empty() {
+            let mut next_queue = vec![];
+
+            for _ in 0..queue.len() {
+                let curr = queue.pop().unwrap();
+                if curr == n * n {
+                    return level;
+                }
+
+                for next in (curr + 1)..=(curr + 6).min(n * n) {
+                    let i = (next - 1) / n;
+                    let j = (next - 1) % n;
+                    let revi = n - 1 - i;
+                    let revj = n - 1 - j;
+
+                    let i = revi;
+                    let j = if revi & 1 == n & 1 { revj } else { j };
+
+                    if visited[i][j] {
+                        continue;
+                    }
+                    visited[i][j] = true;
+
+                    if board[i][j] == -1 {
+                        next_queue.push(next);
+                    } else {
+                        next_queue.push(board[i][j] as usize);
+                    }
+                }
+            }
+
+            queue = next_queue;
+            level += 1;
+        }
+
+        -1
+    }
+}
+```
