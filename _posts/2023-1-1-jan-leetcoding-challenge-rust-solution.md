@@ -870,3 +870,64 @@ impl Solution {
     }
 }
 ```
+
+### 2359. Find Closest Node to Given Two Nodes
+
+```rust
+use std::collections::VecDeque;
+
+impl Solution {
+    pub fn closest_meeting_node(edges: Vec<i32>, node1: i32, node2: i32) -> i32 {
+        let n = edges.len();
+        let mut graph = vec![vec![]; n];
+        for i in 0..n {
+            if edges[i] != -1 {
+                graph[i].push(edges[i] as usize);
+            }
+        }
+
+        fn dijkstra(graph: &Vec<Vec<usize>>, s: usize) -> Vec<i32> {
+            // because all the weight is 1, we could using normal queue to
+            // reduce the time complexity
+            let mut queue = VecDeque::new();
+            let mut dist = vec![i32::MAX >> 1; graph.len()];
+
+            dist[s] = 0;
+            queue.push_back((dist[s], s));
+
+            while !queue.is_empty() {
+                let node = queue.pop_front().unwrap();
+                let (d, u) = (node.0, node.1);
+
+                if d != dist[u] {
+                    continue;
+                }
+
+                for &v in &graph[u] {
+                    if d + 1 < dist[v] {
+                        dist[v] = d + 1;
+                        queue.push_back((dist[v], v));
+                    } 
+                }
+            }
+
+            dist
+        }
+
+        let d1 = dijkstra(&graph, node1 as usize);
+        let d2 = dijkstra(&graph, node2 as usize);
+
+        let mut ret = -1;
+        let mut min = i32::MAX >> 1;
+        for i in 0..n {
+            let d = d1[i].max(d2[i]);
+            if d < min {
+                min = d;
+                ret = i as i32;
+            }
+        }
+
+        ret
+    }
+}
+```
