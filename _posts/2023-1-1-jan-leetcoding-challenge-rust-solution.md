@@ -931,3 +931,29 @@ impl Solution {
     }
 }
 ```
+
+### 787. Cheapest Flights Within K Stops
+
+```rust
+impl Solution {
+    pub fn find_cheapest_price(n: i32, flights: Vec<Vec<i32>>, src: i32, dst: i32, k: i32) -> i32 {
+        let mut dist = vec![i32::MAX >> 1; n as usize];
+        dist[src as usize] = 0;
+
+        for _ in 0..=k {
+            let prev_dist = dist.clone();
+            for edge in &flights {
+                let (u, v, w) = (edge[0] as usize, edge[1] as usize, edge[2]);
+                dist[v] = dist[v].min(prev_dist[u] + w);
+            }
+        }
+
+        let ret = dist[dst as usize];
+        if ret >= i32::MAX >> 1 {
+            -1
+        } else {
+            ret
+        }
+    }
+}
+```
