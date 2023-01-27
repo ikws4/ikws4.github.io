@@ -957,3 +957,41 @@ impl Solution {
     }
 }
 ```
+
+### 472. Concatenated Words
+
+```rust
+use std::collections::HashSet;
+
+impl Solution {
+    pub fn find_all_concatenated_words_in_a_dict(words: Vec<String>) -> Vec<String> {
+        let mut word_set = HashSet::new();
+        for word in &words {
+            word_set.insert(word.as_str());
+        }
+
+        let mut ret = vec![];
+        for &word in &word_set {
+            if Solution::f(word, 0, 0, &word_set) {
+                ret.push(word.into());
+            }
+        }
+        ret
+    }
+
+    fn f(word: &str, cnt: usize, i: usize, words: &HashSet<&str>) -> bool {
+        if i >= word.len() {
+            return cnt >= 2;
+        }
+
+        for j in i..word.len() {
+            let sub = &word[i..=j];
+            if words.contains(sub) && Solution::f(word, cnt + 1, j + 1, words) {
+                return true;
+            }
+        }
+
+        false
+    }
+}
+```
