@@ -995,3 +995,48 @@ impl Solution {
     }
 }
 ```
+
+### 352. Data Stream as Disjoint Intervals
+
+```rust
+struct SummaryRanges {
+    data: Vec<Vec<i32>>,
+}
+
+impl SummaryRanges {
+    fn new() -> Self {
+        Self {
+            data: vec![
+                vec![i32::MIN >> 1, i32::MIN >> 1],
+                vec![i32::MAX >> 1, i32::MAX >> 1],
+            ],
+        }
+    }
+
+    fn add_num(&mut self, value: i32) {
+        let l = self.data.partition_point(|range| range[1] < value);
+        let left = &self.data[l - 1];
+        let right = &self.data[l];
+        let mid = value;
+
+        fn contains(range: &[i32], v: i32) -> bool {
+            range[0] <= v && v <= range[1]
+        }
+
+        if left[1] + 1 == mid && mid == right[0] - 1 {
+            self.data[l - 1][1] = right[1];
+            self.data.remove(l);
+        } else if left[1] + 1 == mid || contains(left, mid) {
+            self.data[l - 1][1] = left[1].max(mid);
+        } else if mid == right[0] - 1 || contains(right, mid) {
+            self.data[l][0] = right[0].min(mid);
+        } else {
+            self.data.insert(l, vec![mid, mid]);
+        }
+    }
+
+    fn get_intervals(&self) -> Vec<Vec<i32>> {
+        self.data[1..self.data.len() - 1].to_vec()
+    }
+}
+```
