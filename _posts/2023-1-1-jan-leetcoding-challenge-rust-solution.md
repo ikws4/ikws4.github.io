@@ -1112,3 +1112,28 @@ impl LFUCache {
     }
 }
 ```
+
+### 1137. N-th Tribonacci Number
+
+```rust
+impl Solution {
+    pub fn tribonacci(n: i32) -> i32 {
+        let n = n as usize;
+        let mut memo = vec![-1; n + 1];
+
+        fn f(memo: &mut [i32], n: usize) -> i32 {
+            if n <= 2 {
+                return (n as i32).min(1);
+            }
+            if memo[n] != -1 {
+                return memo[n];
+            }
+
+            memo[n] = f(memo, n - 1) + f(memo, n - 2) + f(memo, n - 3);
+            memo[n]
+        }
+
+        f(&mut memo, n)
+    }
+}
+```
