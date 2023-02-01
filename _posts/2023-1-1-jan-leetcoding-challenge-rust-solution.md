@@ -1137,3 +1137,49 @@ impl Solution {
     }
 }
 ```
+
+### 1626. Best Team With No Conflicts
+
+```rust
+use std::cmp::Ordering;
+
+impl Solution {
+    pub fn best_team_score(scores: Vec<i32>, ages: Vec<i32>) -> i32 {
+        let n = scores.len();
+        let mut index: Vec<usize> = (0..n).collect();
+        let mut memo = vec![vec![-1; n + 1]; n];
+        index.sort_by(|&a, &b| {
+            let r = ages[a].cmp(&ages[b]);
+            if r == Ordering::Equal {
+                return scores[a].cmp(&scores[b]);
+            }
+            r
+        });
+
+        fn f(
+            scores: &Vec<i32>,
+            index: &Vec<usize>,
+            memo: &mut Vec<Vec<i32>>,
+            i: usize,
+            p: usize,
+        ) -> i32 {
+            if i >= scores.len() {
+                return 0;
+            }
+            if memo[i][p] != -1 {
+                return memo[i][p];
+            }
+
+            let mut ret = f(scores, index, memo, i + 1, p);
+            if p == scores.len() || scores[index[i]] >= scores[index[p]] {
+                ret = ret.max(f(scores, index, memo, i + 1, i) + scores[index[i]]);
+            }
+
+            memo[i][p] = ret;
+            memo[i][p]
+        }
+
+        f(&scores, &index, &mut memo, 0, n)
+    }
+}
+```
