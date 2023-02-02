@@ -1,5 +1,5 @@
 ---
-title: "Wed LeetCoding Challenge Rust Solution"
+title: "Feb LeetCoding Challenge Rust Solution"
 date: 2023-2-1 10:00:00 +0800
 layout: post
 toc: true
