@@ -23,3 +23,28 @@ impl Solution {
     }
 }
 ```
+
+### 953. Verifying an Alien Dictionary
+
+```rust
+use std::{cmp::Ordering, collections::HashMap};
+
+impl Solution {
+    pub fn is_alien_sorted(words: Vec<String>, order: String) -> bool {
+        let char_order =
+            order
+                .char_indices()
+                .fold(HashMap::with_capacity(26), |mut char_order, (i, c)| {
+                    char_order.insert(c, i);
+                    char_order
+                });
+
+        words
+            .iter()
+            .map(|s| s.chars().map(|c| char_order[&c]).collect::<Vec<_>>())
+            .collect::<Vec<_>>()
+            .windows(2)
+            .all(|w| w[0] <= w[1])
+    }
+}
+```
