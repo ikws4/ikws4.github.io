@@ -48,3 +48,29 @@ impl Solution {
     }
 }
 ```
+
+### 6. Zigzag Conversion
+
+```rust
+impl Solution {
+    pub fn convert(s: String, num_rows: i32) -> String {
+        let mut rows = vec![String::new(); num_rows as usize];
+
+        let mut row = 0;
+        let mut delta = -1;
+        for c in s.chars() {
+            rows[row as usize].push(c);
+            if row == 0 || row == num_rows - 1 {
+                delta *= -1;
+            }
+            row += delta;
+            row = row.clamp(0, num_rows - 1);
+        }
+
+        rows.iter().fold(String::new(), |mut ret, row| {
+            ret.push_str(row);
+            ret
+        })
+    }
+}
+```
