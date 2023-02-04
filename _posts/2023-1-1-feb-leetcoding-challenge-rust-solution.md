@@ -74,3 +74,45 @@ impl Solution {
     }
 }
 ```
+
+### 567. Permutation in String
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn check_inclusion(s1: String, s2: String) -> bool {
+        fn default_hash_map() -> HashMap<char, i32> {
+            let mut map = HashMap::new();
+            for c in 'a'..='z' {
+                map.entry(c).or_default();
+            }
+            map
+        }
+
+        let cnt1 = s1.chars().fold(default_hash_map(), |mut cnt, c| {
+            cnt.entry(c).and_modify(|e| *e += 1);
+            cnt
+        });
+        let mut cnt2 = default_hash_map();
+
+        let s2 = s2.chars().collect::<Vec<_>>();
+        let mut i = 0;
+        for j in 0..s2.len() {
+            let c = s2[j];
+            cnt2.entry(c).and_modify(|e| *e += 1);
+
+            while i < j && (j - i + 1 > s1.len() || cnt2[&c] > cnt1[&c]) {
+                cnt2.entry(s2[i]).and_modify(|e| *e -= 1);
+                i += 1;
+            }
+
+            if j - i + 1 == s1.len() && cnt1 == cnt2 {
+                return true;
+            }
+        }
+
+        false
+    }
+}
+```
