@@ -116,3 +116,46 @@ impl Solution {
     }
 }
 ```
+
+### 438. Find All Anagrams in a String
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn find_anagrams(s: String, p: String) -> Vec<i32> {
+        fn default_hash_map() -> HashMap<char, i32> {
+            let mut map = HashMap::new();
+            for c in 'a'..='z' {
+                map.entry(c).or_default();
+            }
+            map
+        }
+
+        let cnt1 = p.chars().fold(default_hash_map(), |mut cnt, c| {
+            cnt.entry(c).and_modify(|e| *e += 1);
+            cnt
+        });
+        let mut cnt2 = default_hash_map();
+
+        let mut ret = vec![];
+        let s = s.chars().collect::<Vec<_>>();
+        let mut i = 0;
+        for j in 0..s.len() {
+            let c = s[j];
+            cnt2.entry(c).and_modify(|e| *e += 1);
+
+            while i < j && (j - i + 1 > p.len() || cnt2[&c] > cnt1[&c]) {
+                cnt2.entry(s[i]).and_modify(|e| *e -= 1);
+                i += 1;
+            }
+
+            if j - i + 1 == p.len() && cnt1 == cnt2 {
+                ret.push(i as i32);
+            }
+        }
+
+        ret
+    }
+}
+```
