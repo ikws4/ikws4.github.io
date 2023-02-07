@@ -159,3 +159,54 @@ impl Solution {
     }
 }
 ```
+
+### 1470. Shuffle the Array
+
+```rust
+impl Solution {
+    pub fn shuffle(mut nums: Vec<i32>, n: i32) -> Vec<i32> {
+        let n = n as usize;
+        let right_half = nums.drain(n..).collect::<Vec<_>>();
+
+        nums.iter()
+            .zip(right_half.iter())
+            .fold(Vec::with_capacity(2 * n), |mut ret, (&a, &b)| {
+                ret.push(a);
+                ret.push(b);
+                ret
+            })
+    }
+}
+```
+
+### 904. Fruit Into Baskets
+
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn total_fruit(fruits: Vec<i32>) -> i32 {
+        let mut map: HashMap<i32, i32> = HashMap::new();
+        
+        let mut i = 0;
+        let mut ret = 0;
+        for j in 0..fruits.len() {
+            map.entry(fruits[j]).and_modify(|e| *e += 1).or_insert(1);
+
+            while map.len() > 2 {
+                if map[&fruits[i]] <= 1 {
+                    map.remove(&fruits[i]);
+                } else {
+                    map.entry(fruits[i]).and_modify(|e| *e -= 1);
+                }
+                i += 1;
+            }
+
+            ret = ret.max(j - i + 1);
+        }
+
+        ret as i32
+    }
+}
+```
