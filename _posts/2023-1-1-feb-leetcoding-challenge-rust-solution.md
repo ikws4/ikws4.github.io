@@ -210,3 +210,36 @@ impl Solution {
     }
 }
 ```
+
+### 45. Jump Game II
+
+```rust
+impl Solution {
+    pub fn jump(nums: Vec<i32>) -> i32 {
+        let n = nums.len();
+        let mut memo = vec![-1; n];
+
+        fn f(memo: &mut [i32], nums: &[i32], i: usize) -> i32 {
+            if i >= memo.len() {
+                return i32::MAX >> 1;
+            }
+            if i == memo.len() - 1 {
+                return 0;
+            }
+            if memo[i] != -1 {
+                return memo[i];
+            }
+
+            let mut ret = i32::MAX >> 1;
+            for j in 1..=nums[i] as usize {
+                ret = ret.min(f(memo, nums, i + j) + 1);
+            }
+            
+            memo[i] = ret;
+            memo[i]
+        }
+
+        f(&mut memo, &nums, 0)
+    }
+}
+```
