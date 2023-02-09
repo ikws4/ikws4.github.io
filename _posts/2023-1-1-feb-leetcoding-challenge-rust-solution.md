@@ -243,3 +243,43 @@ impl Solution {
     }
 }
 ```
+
+### 2306. Naming a Company
+
+```rust
+use std::collections::HashSet;
+
+impl Solution {
+    pub fn distinct_names(ideas: Vec<String>) -> i64 {
+        let mut set = vec![HashSet::new(); 26];
+        for idea in &ideas {
+            let k = (idea.as_bytes()[0] - b'a') as usize;
+            set[k].insert(&idea[1..]);
+        }
+
+        let mut ret = 0;
+        for i in 0..26 {
+            for j in (i + 1)..26 {
+                let mut a = 0;
+                let mut b = 0;
+
+                for &v in &set[i] {
+                    if !set[j].contains(v) {
+                        a += 1;
+                    }
+                }
+
+                for &v in &set[j] {
+                    if !set[i].contains(v) {
+                        b += 1;
+                    }
+                }
+
+                ret += a * b;
+            }
+        }
+
+        2 * ret
+    }
+}
+```
