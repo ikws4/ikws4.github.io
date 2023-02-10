@@ -283,3 +283,52 @@ impl Solution {
     }
 }
 ```
+
+### 1162. As Far from Land as Possible
+
+```rust
+use std::collections::VecDeque;
+
+impl Solution {
+    pub fn max_distance(mut grid: Vec<Vec<i32>>) -> i32 {
+        let m = grid.len();
+        let n = grid[0].len();
+        let mut queue = VecDeque::new();
+
+        for i in 0..m {
+            for j in 0..n {
+                if grid[i][j] == 1 {
+                    queue.push_back((i as i32, j as i32));
+                }
+            }
+        }
+
+        if queue.is_empty() || queue.len() == m * n {
+            return -1;
+        }
+
+        let mut ret = 0;
+        let dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+        while !queue.is_empty() {
+            for k in 0..queue.len() {
+                if let Some((i, j)) = queue.pop_front() {
+                    for &dir in &dirs {
+                        let _i = i as i32 + dir[0];
+                        let _j = j as i32 + dir[1];
+
+                        if _i < 0 || _i >= m as i32 || _j < 0 || _j >= n as i32 || grid[_i as usize][_j as usize] == -1 {
+                            continue;
+                        }
+
+                        grid[_i as usize][_j as usize] = -1;
+                        queue.push_back((_i, _j));
+                    }
+                }
+            }
+            ret += 1;
+        }
+
+        ret - 1
+    }
+}
+```
