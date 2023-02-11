@@ -332,3 +332,49 @@ impl Solution {
     }
 }
 ```
+
+### 1129. Shortest Path with Alternating Colors
+
+```rust
+use std::collections::VecDeque;
+
+impl Solution {
+    pub fn shortest_alternating_paths(n: i32, red_edges: Vec<Vec<i32>>, blue_edges: Vec<Vec<i32>>) -> Vec<i32> {
+        let n = n as usize;
+        let mut graph = vec![vec![]; n];
+        for edge in &red_edges {
+            graph[edge[0] as usize].push((edge[1] as usize, 0));
+        }
+        for edge in &blue_edges {
+            graph[edge[0] as usize].push((edge[1] as usize, 1));
+        }
+      
+        let mut queue = VecDeque::new();
+        let mut visited = vec![vec![false; n]; 3];
+        queue.push_back((2, 0));
+        visited[2][0] = true;
+
+        let mut ret = vec![-1; n];
+        let mut dist = 0;
+        while !queue.is_empty() {
+            for _ in 0..queue.len() {
+                let (uc, u) = queue.pop_front().unwrap();
+                
+                if ret[u] == -1 {
+                    ret[u] = dist;
+                }
+                
+                for &(v, vc) in &graph[u] {
+                    if uc != vc && !visited[vc][v] {
+                        queue.push_back((vc, v));
+                        visited[vc][v] = true;
+                    }
+                }
+            }
+            dist += 1;
+        }
+
+        ret
+    }
+}
+```
