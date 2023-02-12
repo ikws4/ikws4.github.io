@@ -1846,6 +1846,7 @@ void f(int[][] updates) {
 [LC 315.Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)<br>
 [LC 2179.Count Good Triplets in an Array](https://leetcode.com/problems/count-good-triplets-in-an-array/)<br>
 [LC 493.Reverse Pairs](https://leetcode.com/problems/reverse-pairs/)<br>
+[LC 2563.Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/)<br>
 
 ```java
 int[] nums;
