@@ -378,3 +378,40 @@ impl Solution {
     }
 }
 ```
+
+### 2477. Minimum Fuel Cost to Report to the Capital
+
+```rust
+struct Env {
+    graph: Vec<Vec<usize>>,
+    seats: i32,
+}
+
+impl Solution {
+    pub fn minimum_fuel_cost(roads: Vec<Vec<i32>>, seats: i32) -> i64 {
+        let n = roads.len() + 1;
+        let mut graph = vec![vec![]; n];
+        for road in roads {
+            let u = road[0] as usize;
+            let v = road[1] as usize;
+            graph[u].push(v);
+            graph[v].push(u);
+        }
+
+        fn f(env: &Env, people: &mut Vec<i32>, u: usize, p: usize) -> i64 {
+            let mut ret = 0;
+
+            for &v in &env.graph[u] {
+                if v != p {
+                    ret += f(env, people, v, u) + (people[v] as f32 / env.seats as f32).ceil() as i64;
+                    people[u] += people[v];
+                }
+            }
+
+            ret
+        }
+
+        f(&Env { graph, seats }, &mut vec![1; n], 0, n)
+    }
+}
+```
