@@ -415,3 +415,18 @@ impl Solution {
     }
 }
 ```
+
+### 1523. Count Odd Numbers in an Interval Range
+
+```rust
+impl Solution {
+    pub fn count_odds(low: i32, high: i32) -> i32 {
+        let n = high - low + 1;
+        if low & 1 == 0 {
+            n / 2
+        } else {
+            (n - 1) / 2 + 1
+        }
+    }
+}
+```
