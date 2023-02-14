@@ -430,3 +430,28 @@ impl Solution {
     }
 }
 ```
+
+### 67. Add Binary
+
+```rust
+impl Solution {
+    pub fn add_binary(a: String, b: String) -> String {
+        let mut c = 0;
+        let mut i = (a.len() - 1) as i32;
+        let mut j = (b.len() - 1) as i32;
+        let mut ret = String::new();
+
+        while i >= 0 || j >= 0 || c > 0 {
+            let _a = if i >= 0 { a.as_bytes()[i as usize] - b'0' } else { 0 };
+            let _b = if j >= 0 { b.as_bytes()[j as usize] - b'0' } else { 0 };
+            let v = _a + _b + c;
+            ret.push_str(&(v % 2).to_string());
+            c = v / 2;
+            i -= 1;
+            j -= 1;
+        }
+
+        ret.chars().rev().collect()
+    }
+}
+```
