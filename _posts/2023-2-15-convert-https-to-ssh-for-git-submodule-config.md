@@ -7,8 +7,6 @@ toc_sticky: false
 tags: [git]
 ---
 
-###
-
 My company's self-hosting git server have some issues with the http
 authentication, so I want to switch to ssh instead. Is there has any command
 can help me convert those remote-urls to ssh? After searching the internet, I
