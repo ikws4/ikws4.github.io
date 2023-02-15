@@ -455,3 +455,27 @@ impl Solution {
     }
 }
 ```
+
+### 989. Add to Array-Form of Integer
+
+```rust
+impl Solution {
+    pub fn add_to_array_form(mut num: Vec<i32>, mut k: i32) -> Vec<i32> {
+        let mut ret = vec![];
+        num.insert(0, 0);
+
+        let mut i = (num.len() - 1) as i32;
+        let mut c = 0;
+
+        while i >= 1 || k > 0 || c > 0 {
+            let v = num[i.max(0) as usize] + k % 10 + c;
+            ret.push(v % 10);
+            k /= 10;
+            c = v / 10;
+            i -= 1;
+        }
+
+        ret.into_iter().rev().collect::<Vec<i32>>()
+    }
+}
+```
