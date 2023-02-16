@@ -479,3 +479,23 @@ impl Solution {
     }
 }
 ```
+
+### 104. Maximum Depth of Binary Tree
+
+```rust
+use std::rc::Rc;
+use std::cell::RefCell;
+
+impl Solution {
+    pub fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        if let Some(root) = root {
+            let mut root = root.borrow_mut();
+            let l = Self::max_depth(root.left.take());
+            let r = Self::max_depth(root.right.take());
+            l.max(r) + 1
+        } else {
+            0
+        }
+    }
+}
+```
