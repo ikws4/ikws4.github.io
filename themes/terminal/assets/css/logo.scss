@@ -1,0 +1,14 @@
+.header__logo a {
+  &:hover {
+    text-decoration: none;
+  };
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background: $accent;
+  color: black;
+  padding: 5px 10px;
+}

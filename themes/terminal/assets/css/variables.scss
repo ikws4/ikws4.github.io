@@ -1,0 +1,38 @@
+/* COLOR VARIABLES */
+$base               : #232136;
+$surface            : #2a273f;
+$overlay            : #393552;
+$inactive           : #59546d;
+$muted              : #6e6a86;
+$subtle             : #817c9c;
+$text               : #e0def4;
+$love               : #eb6f92;
+$gold               : #f6c177;
+$rose               : #ea9a97;
+$pine               : #3e8fb0;
+$foam               : #9ccfd8;
+$iris               : #c4a7e7;
+$highlight          : #312f44;
+$highlight_inactive : #2a283d;
+$highlight_overlay  : #3f3c53;
+
+$accent: $iris;
+$background: $base;
+$border-color: $overlay;
+$link-color: $foam;
+$color: $text;
+
+// $background: mix($accent, #1D1E28, 2%);
+// $color: white;
+// $border-color: rgba(255, 255, 255, .1);
+// $link-color: white;
+
+/* MEDIA QUERIES */
+$phone: "max-width: 684px";
+$tablet: "max-width: 900px";
+
+/* variables for js, must be the same as these in @custom-media queries */
+:root {
+  --phoneWidth: (max-width: 684px);
+  --tabletWidth: (max-width: 900px);
+}
