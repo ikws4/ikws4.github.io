@@ -499,3 +499,30 @@ impl Solution {
     }
 }
 ```
+
+### 783. Minimum Distance Between BST Nodes
+
+```rust
+use std::rc::Rc;
+use std::cell::RefCell;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn min_diff_in_bst(root: Node) -> i32 {
+        fn f(p: &mut i32, root: &Node) -> i32 {
+            if let Some(root) = root {
+                let root = root.borrow();
+                let l = f(p, &root.left);
+                let m = (*p - root.val).abs();
+                *p = root.val;
+                let r = f(p, &root.right);
+                return l.min(m).min(r);
+            }
+            i32::MAX >> 1
+        }
+
+        f(&mut (i32::MAX >> 1), &root)
+    }
+}
+```
