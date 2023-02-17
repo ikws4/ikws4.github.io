@@ -102,3 +102,8 @@ a.read-more:active {
 .button.previous a {
   color: unset;
 }
+
+.button.next,
+.button.previous {
+  color: $base;
+}

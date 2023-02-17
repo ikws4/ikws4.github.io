@@ -9,6 +9,8 @@ readingTime = false
 Toc = true
 +++
 
+<!--more-->
+
 # Sorting
 
 ## 3-way quick sort

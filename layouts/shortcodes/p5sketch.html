@@ -1,0 +1,11 @@
+{{ if .Get "name" }}
+<style>
+.p5-sketch-container {
+  border: 2px solid #393552;
+  border-radius: 5px !important;
+}
+</style>
+
+<div id="p5-sketch-{{ .Get "name" }}" class="p5-sketch-container" />
+<script src="/p5/sketchs/{{ .Get "name" }}.js"></script>
+{{ end }}
