@@ -374,7 +374,6 @@ sup {
 
 :focus-visible {
   outline: 0px;
-  outline-offset: 2px;
   background: transparentize($accent, 0.9) !important;
   color: $accent !important;
 }
