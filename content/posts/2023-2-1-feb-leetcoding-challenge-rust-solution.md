@@ -527,3 +527,27 @@ impl Solution {
     }
 }
 ```
+
+### 226. Invert Binary Tree
+
+```rust
+use std::cell::RefCell;
+use std::rc::Rc;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn invert_tree(root: Node) -> Node {
+        if let Some(root) = root {
+            let _root = root.clone();
+            let mut root = root.borrow_mut();
+            let l = Self::invert_tree(root.left.take());
+            let r = Self::invert_tree(root.right.take());
+            root.left = r;
+            root.right = l;
+            return Some(_root);
+        }
+        None
+    }
+}
+```
