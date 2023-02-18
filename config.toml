@@ -15,6 +15,9 @@ paginate = 5
     style = 'rose-pine-moon'
     tabWidth = 4
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [params]
   # dir name of your main content (default is `content/posts`).
   # the list of set content will show up on your index page (baseurl).
@@ -102,16 +105,23 @@ paginate = 5
         [languages.en.menu.main.params]
           align = 'left'
       [[languages.en.menu.main]]
+        identifier = "template"
+        name = "Template"
+        url = "/posts/template/"
+        Weight = 3
+        [languages.en.menu.main.params]
+          align = 'left'
+      [[languages.en.menu.main]]
         identifier = "tags"
         name = "Tags"
         url = "/tags/"
-        Weight = 3
+        Weight = 4
         [languages.en.menu.main.params]
           align = 'right'
       [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
         url = "/posts/about/"
-        Weight = 4
+        Weight = 5
         [languages.en.menu.main.params]
           align = 'right'

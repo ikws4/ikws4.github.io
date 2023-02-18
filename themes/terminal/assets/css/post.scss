@@ -31,7 +31,7 @@
 
   &-meta {
     font-size: 1rem;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     // color: transparentize($accent, .3);
     color: $text;
   }
@@ -41,7 +41,7 @@
     position: relative;
     color: $accent;
     margin: 0 0 0px;
-    padding-bottom: 15px;
+    padding-bottom: 6px;
     // border-bottom: $border;
 
     &:after {
@@ -81,7 +81,12 @@
   }
 
   &-content {
-    margin-top: 30px;
+    margin-top: 0px;
+
+    p {
+      margin: 0px;
+      margin-bottom: 20px;
+    }
   }
 
   &-cover {
