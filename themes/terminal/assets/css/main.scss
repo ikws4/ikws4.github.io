@@ -361,3 +361,9 @@ sup {
 //     color: $foam;
 //   }
 // }
+
+:focus-visible {
+  outline: 0px;
+  background: transparentize($accent, 0.9) !important;
+  color: $accent !important;
+}

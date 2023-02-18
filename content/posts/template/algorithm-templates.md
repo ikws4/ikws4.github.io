@@ -251,7 +251,7 @@ int knapsack(int[] W, int[] V, int[] S, int n, int capacity) {
 
 ### Unbounded knapsack
 
-![unbounded_knapsack](/assets/img/algorithm_templates/unbounded_knapsack.png)
+![unbounded_knapsack](/post/algorithm_templates/unbounded_knapsack.png)
 
 ```java
 int knapsack(int[] W, int[] V, int n, int capacity) {
@@ -307,7 +307,7 @@ int LCS(String s, String t) {
 
 ### Edit Distance
 
-![edit_distance](/assets/img/algorithm_templates/edit_distance.png)
+![edit_distance](/post/algorithm_templates/edit_distance.png)
 
 ```java
 int minDistance(String s, String t) {
