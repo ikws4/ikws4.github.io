@@ -33,15 +33,24 @@ $highlight_overlay  : #3f3c53;
 .token.function {
   color: $rose;
 }
-
 .token.class-name,
+.token.keyword.keyword-Self,
 .token.keyword.keyword-int,
 .token.keyword.keyword-boolean,
+.token.keyword.keyword-bool,
 .token.keyword.keyword-char,
 .token.keyword.keyword-byte,
 .token.keyword.keyword-long,
 .token.keyword.keyword-float,
 .token.keyword.keyword-double,
+.token.keyword.keyword-usize,
+.token.keyword.keyword-i32,
+.token.keyword.keyword-f32,
+.token.keyword.keyword-f64,
+.token.keyword.keyword-i64,
+.token.keyword.keyword-u8,
+.token.keyword.keyword-i128,
+.token.constant,
 .token.keyword.keyword-short {
   color: $foam;
 }
@@ -51,10 +60,14 @@ $highlight_overlay  : #3f3c53;
   color: $gold;
 }
 
+.token.keyword.keyword-self,
 .token.keyword.keyword-this {
   color: $love;
 }
 
+.token.namespace,
+.token.closure-params,
+.token.macro.property,
 .token.annotation.punctuation {
   color: $iris;
 }
