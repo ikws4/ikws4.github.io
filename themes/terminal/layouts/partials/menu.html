@@ -3,13 +3,30 @@
     {{ if or $.Site.Params.showMenuItems ( eq .Site.Params.showMenuItems 0 ) }}
       {{ range first $.Site.Params.showMenuItems $.Site.Menus.main }}
         {{ if not .HasChildren }}
-          {{ if (hasPrefix $.RelPermalink .URL) }}
-            <li><a class="menu-item-active" href="{{ .URL }}">{{ .Name }}</a></li>
-          {{ else }}
-            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ if eq .Params.Align "left" }}
+            {{ if hasPrefix $.RelPermalink .URL }}
+              <li><a class="menu-item-active" href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ else }}
+              <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
           {{ end }}
         {{ end }}
       {{ end }}
+
+      <div style="flex-grow: 1;"></div>
+
+      {{ range first $.Site.Params.showMenuItems $.Site.Menus.main }}
+        {{ if not .HasChildren }}
+          {{ if eq .Params.Align "right" }}
+            {{ if hasPrefix $.RelPermalink .URL }}
+              <li><a class="menu-item-active" href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ else }}
+              <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+
       {{ if gt (len $.Site.Menus.main) $.Site.Params.showMenuItems }}
         <li>
           <ul class="menu">

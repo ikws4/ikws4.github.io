@@ -11,6 +11,9 @@ paginate = 5
     startLevel = 1
     endLevel = 5
     ordered = false
+  [markup.highlight]
+    style = 'rose-pine-moon'
+    tabWidth = 4
 
 [params]
   # dir name of your main content (default is `content/posts`).
@@ -21,7 +24,7 @@ paginate = 5
   themeColor = "rosepine"
 
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 2
+  showMenuItems = 10
 
   # show selector to switch language
   showLanguageSelector = false
@@ -88,7 +91,27 @@ paginate = 5
         identifier = "git"
         name = "Git"
         url = "/posts/git/"
+        Weight = 1
+        [languages.en.menu.main.params]
+          align = 'left'
       [[languages.en.menu.main]]
         identifier = "rust"
         name = "Rust"
         url = "/posts/rust/"
+        Weight = 2
+        [languages.en.menu.main.params]
+          align = 'left'
+      [[languages.en.menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags/"
+        Weight = 3
+        [languages.en.menu.main.params]
+          align = 'right'
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/posts/about/"
+        Weight = 4
+        [languages.en.menu.main.params]
+          align = 'right'
