@@ -29,9 +29,9 @@
 
 .navigation-menu {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  margin: 20px 1px;
+  // margin: 20px 1px;
 
   @media ($phone) {
     margin: 0;
@@ -44,14 +44,29 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    height: 100%;
 
     > li {
-      flex: 0 0 auto;
-      margin-bottom: 10px;
+      // flex: 0 0 auto;
+      // margin-bottom: 10px;
       white-space: nowrap;
+      height: 100%;
+      align-items: center;
 
-      &:not(:last-of-type) {
-        margin-right: 20px;
+      a {
+        color: $text;
+        height: 100%;
+        display: flex;
+        background: $base;
+        padding-right: 12px;
+        padding-left: 12px;
+        align-items: center;
+
+        &:active,
+        &:hover {
+          color: $base;
+          background: $foam;
+        }
       }
     }
 
@@ -154,4 +169,9 @@
       right: 0;
     }
   }
+}
+
+.menu-item-active {
+  background: $foam !important;
+  color: $base !important;
 }

@@ -1,7 +1,6 @@
 +++
 title = "Feb LeetCoding Challenge Rust Solution"
 date = "2023-02-01T10:00:00+08:00"
-author = "ikws4"
 cover = ""
 tags = ["leetcode", "algorithm"]
 Toc = true
@@ -9,7 +8,7 @@ Toc = true
 
 <!--more-->
 
-### 1071. Greatest Common Divisor of Strings
+# 1071. Greatest Common Divisor of Strings
 
 ```rust
 impl Solution {
@@ -26,7 +25,7 @@ impl Solution {
 }
 ```
 
-### 953. Verifying an Alien Dictionary
+# 953. Verifying an Alien Dictionary
 
 ```rust
 use std::{cmp::Ordering, collections::HashMap};
@@ -51,7 +50,7 @@ impl Solution {
 }
 ```
 
-### 6. Zigzag Conversion
+# 6. Zigzag Conversion
 
 ```rust
 impl Solution {
@@ -77,7 +76,7 @@ impl Solution {
 }
 ```
 
-### 567. Permutation in String
+# 567. Permutation in String
 
 ```rust
 use std::collections::HashMap;
@@ -119,7 +118,7 @@ impl Solution {
 }
 ```
 
-### 438. Find All Anagrams in a String
+# 438. Find All Anagrams in a String
 
 ```rust
 use std::collections::HashMap;
@@ -162,7 +161,7 @@ impl Solution {
 }
 ```
 
-### 1470. Shuffle the Array
+# 1470. Shuffle the Array
 
 ```rust
 impl Solution {
@@ -181,7 +180,7 @@ impl Solution {
 }
 ```
 
-### 904. Fruit Into Baskets
+# 904. Fruit Into Baskets
 
 ```rust
 use std::collections::HashMap;
@@ -212,7 +211,7 @@ impl Solution {
 }
 ```
 
-### 45. Jump Game II
+# 45. Jump Game II
 
 ```rust
 impl Solution {
@@ -245,7 +244,7 @@ impl Solution {
 }
 ```
 
-### 2306. Naming a Company
+# 2306. Naming a Company
 
 ```rust
 use std::collections::HashSet;
@@ -285,7 +284,7 @@ impl Solution {
 }
 ```
 
-### 1162. As Far from Land as Possible
+# 1162. As Far from Land as Possible
 
 ```rust
 use std::collections::VecDeque;
@@ -334,7 +333,7 @@ impl Solution {
 }
 ```
 
-### 1129. Shortest Path with Alternating Colors
+# 1129. Shortest Path with Alternating Colors
 
 ```rust
 use std::collections::VecDeque;
@@ -380,7 +379,7 @@ impl Solution {
 }
 ```
 
-### 2477. Minimum Fuel Cost to Report to the Capital
+# 2477. Minimum Fuel Cost to Report to the Capital
 
 ```rust
 struct Env {
@@ -417,7 +416,7 @@ impl Solution {
 }
 ```
 
-### 1523. Count Odd Numbers in an Interval Range
+# 1523. Count Odd Numbers in an Interval Range
 
 ```rust
 impl Solution {
@@ -432,7 +431,7 @@ impl Solution {
 }
 ```
 
-### 67. Add Binary
+# 67. Add Binary
 
 ```rust
 impl Solution {
@@ -457,7 +456,7 @@ impl Solution {
 }
 ```
 
-### 989. Add to Array-Form of Integer
+# 989. Add to Array-Form of Integer
 
 ```rust
 impl Solution {
@@ -481,7 +480,7 @@ impl Solution {
 }
 ```
 
-### 104. Maximum Depth of Binary Tree
+# 104. Maximum Depth of Binary Tree
 
 ```rust
 use std::rc::Rc;
@@ -501,7 +500,7 @@ impl Solution {
 }
 ```
 
-### 783. Minimum Distance Between BST Nodes
+# 783. Minimum Distance Between BST Nodes
 
 ```rust
 use std::rc::Rc;
@@ -528,7 +527,7 @@ impl Solution {
 }
 ```
 
-### 226. Invert Binary Tree
+# 226. Invert Binary Tree
 
 ```rust
 use std::cell::RefCell;

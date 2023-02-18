@@ -91,12 +91,12 @@ paginate = 5
       logoText = "HOME"
       logoHomeLink = "/"
 
-    # [languages.en.menu]
-    #   [[languages.en.menu.main]]
-    #     identifier = "about"
-    #     name = "About"
-    #     url = "/about"
-    #   [[languages.en.menu.main]]
-    #     identifier = "showcase"
-    #     name = "Showcase"
-    #     url = "/showcase"
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "git"
+        name = "Git"
+        url = "/posts/git/"
+      [[languages.en.menu.main]]
+        identifier = "rust"
+        name = "Rust"
+        url = "/posts/rust/"

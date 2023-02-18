@@ -1,7 +1,6 @@
 +++
 title = "leetcode 21 days dynamic programming study plan"
 date = "2021-10-24T9:08:22+08:00"
-author = "ikws4"
 cover = ""
 tags = ["leetcode", "dynamic programming", "algorithm"]
 mathjax = true

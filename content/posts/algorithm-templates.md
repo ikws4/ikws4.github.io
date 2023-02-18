@@ -1,7 +1,6 @@
 +++
 title = "Algorithm templates"
 date = "2021-10-24T08:53:56+08:00"
-author = "ikws4"
 cover = ""
 tags = ["algorithm", "templates"]
 showFullContent = false

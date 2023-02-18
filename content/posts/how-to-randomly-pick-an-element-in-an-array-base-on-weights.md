@@ -1,7 +1,6 @@
 +++
 title = "How to randomly pick an element in an array base on weights?"
 date = "2021-10-11T11:08:32+08:00"
-author = "ikws4"
 cover = ""
 tags = ["random algorithm", "algorithm"]
 p5 = true

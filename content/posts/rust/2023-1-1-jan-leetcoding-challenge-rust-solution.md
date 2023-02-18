@@ -1,7 +1,6 @@
 +++
 title = "Jan LeetCoding Challenge Rust Solution"
 date = "2023-01-01T08:53:56+08:00"
-author = "ikws4"
 cover = ""
 tags = ["leetcode", "algorithm"]
 Toc = true
@@ -9,7 +8,7 @@ Toc = true
 
 <!--more-->
 
-### 290. Word Pattern
+# 290. Word Pattern
 
 ```rust
 use std::collections::HashMap;
@@ -41,7 +40,7 @@ impl Solution {
 }
 ```
 
-### 520. Detect Capital
+# 520. Detect Capital
 
 ```rust
 impl Solution {
@@ -58,7 +57,7 @@ impl Solution {
 }
 ```
 
-### 944. Delete Columns to Make Sorted
+# 944. Delete Columns to Make Sorted
 
 ```rust
 impl Solution {
@@ -78,7 +77,7 @@ impl Solution {
 }
 ```
 
-### 2244. Minimum Rounds to Complete All Tasks
+# 2244. Minimum Rounds to Complete All Tasks
 
 ```rust
 impl Solution {
@@ -114,7 +113,7 @@ impl Solution {
 }
 ```
 
-### 452. Minimum Number of Arrows to Burst Balloons
+# 452. Minimum Number of Arrows to Burst Balloons
 
 ```rust
 impl Solution {
@@ -137,7 +136,7 @@ impl Solution {
 }
 ```
 
-### 1833. Maximum Ice Cream Bars
+# 1833. Maximum Ice Cream Bars
 
 ```rust
 impl Solution {
@@ -157,7 +156,7 @@ impl Solution {
 }
 ```
 
-### 134. Gas Station
+# 134. Gas Station
 
 ```rust
 impl Solution {
@@ -181,7 +180,7 @@ impl Solution {
 }
 ```
 
-### 149. Max Points on a Line
+# 149. Max Points on a Line
 
 ```rust
 use std::collections::HashMap;
@@ -235,7 +234,7 @@ fn gcd(a: i32, b: i32) -> i32 {
 }
 ```
 
-### 144. Binary Tree Preorder Traversal
+# 144. Binary Tree Preorder Traversal
 
 ```rust
 use std::rc::Rc;
@@ -261,7 +260,7 @@ fn f(root: &Node, ret: &mut Vec<i32>) {
 }
 ```
 
-### 100. Same Tree
+# 100. Same Tree
 
 ```rust
 use std::rc::Rc;
@@ -289,7 +288,7 @@ impl Solution {
 }
 ```
 
-### 1443. Minimum Time to Collect All Apples in a Tree
+# 1443. Minimum Time to Collect All Apples in a Tree
 
 ```rust
 struct Env {
@@ -332,7 +331,7 @@ impl Solution {
 }
 ```
 
-### 1519. Number of Nodes in the Sub-Tree With the Same Label
+# 1519. Number of Nodes in the Sub-Tree With the Same Label
 
 ```rust
 struct Env<'a> {
@@ -382,7 +381,7 @@ impl Solution {
 }
 ```
 
-### 2246. Longest Path With Different Adjacent Characters
+# 2246. Longest Path With Different Adjacent Characters
 
 ```rust
 impl Solution {
@@ -422,7 +421,7 @@ impl Solution {
 }
 ```
 
-### 1061. Lexicographically Smallest Equivalent String
+# 1061. Lexicographically Smallest Equivalent String
 
 ```rust
 struct UnionFind {
@@ -496,7 +495,7 @@ impl Solution {
 }
 ```
 
-### 2421. Number of Good Paths
+# 2421. Number of Good Paths
 
 ```rust
 use std::{
@@ -596,7 +595,7 @@ impl Solution {
 }
 ```
 
-### 57. Insert Interval
+# 57. Insert Interval
 
 ```rust
 impl Solution {
@@ -627,7 +626,7 @@ impl Solution {
 }
 ```
 
-### 926. Flip String to Monotone Increasing
+# 926. Flip String to Monotone Increasing
 
 ```rust
 impl Solution {
@@ -661,7 +660,7 @@ impl Solution {
 }
 ```
 
-### 918. Maximum Sum Circular Subarray
+# 918. Maximum Sum Circular Subarray
 
 ```rust
 impl Solution {
@@ -689,7 +688,7 @@ impl Solution {
 }
 ```
 
-### 974. Subarray Sums Divisible by K
+# 974. Subarray Sums Divisible by K
 
 ```rust
 use std::collections::HashMap;
@@ -720,7 +719,7 @@ impl Solution {
 }
 ```
 
-### 491. Non-decreasing Subsequences
+# 491. Non-decreasing Subsequences
 
 ```rust
 impl Solution {
@@ -752,7 +751,7 @@ impl Solution {
 }
 ```
 
-### 131. Palindrome Partitioning
+# 131. Palindrome Partitioning
 
 ```rust
 impl Solution {
@@ -792,7 +791,7 @@ impl Solution {
 }
 ```
 
-### 997. Find the Town Judge
+# 997. Find the Town Judge
 
 ```rust
 impl Solution {
@@ -821,7 +820,7 @@ impl Solution {
 }
 ```
 
-### 909. Snakes and Ladders
+# 909. Snakes and Ladders
 
 ```rust
 impl Solution {
@@ -873,7 +872,7 @@ impl Solution {
 }
 ```
 
-### 2359. Find Closest Node to Given Two Nodes
+# 2359. Find Closest Node to Given Two Nodes
 
 ```rust
 use std::collections::VecDeque;
@@ -934,7 +933,7 @@ impl Solution {
 }
 ```
 
-### 787. Cheapest Flights Within K Stops
+# 787. Cheapest Flights Within K Stops
 
 ```rust
 impl Solution {
@@ -960,7 +959,7 @@ impl Solution {
 }
 ```
 
-### 472. Concatenated Words
+# 472. Concatenated Words
 
 ```rust
 use std::collections::HashSet;
@@ -998,7 +997,7 @@ impl Solution {
 }
 ```
 
-### 352. Data Stream as Disjoint Intervals
+# 352. Data Stream as Disjoint Intervals
 
 ```rust
 struct SummaryRanges {
@@ -1043,7 +1042,7 @@ impl SummaryRanges {
 }
 ```
 
-### 460. LFU Cache
+# 460. LFU Cache
 
 ```rust
 use std::collections::{BTreeSet, HashMap};
@@ -1115,7 +1114,7 @@ impl LFUCache {
 }
 ```
 
-### 1137. N-th Tribonacci Number
+# 1137. N-th Tribonacci Number
 
 ```rust
 impl Solution {
@@ -1140,7 +1139,7 @@ impl Solution {
 }
 ```
 
-### 1626. Best Team With No Conflicts
+# 1626. Best Team With No Conflicts
 
 ```rust
 use std::cmp::Ordering;

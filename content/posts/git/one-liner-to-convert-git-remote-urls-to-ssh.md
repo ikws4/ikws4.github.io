@@ -1,7 +1,6 @@
 +++
 title = "One-liner to convert git remote urls to ssh"
 date = "2023-02-16T08:37:36+08:00"
-author = "ikws4"
 cover = ""
 tags = ["git"]
 showFullContent = false

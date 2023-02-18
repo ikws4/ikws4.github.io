@@ -1,7 +1,6 @@
 +++
 title = "Nov LeetCoding Challenge Rust Solution"
 date = "2022-11-01T10:00:00+08:00"
-author = "ikws4"
 cover = ""
 tags = ["algorithm", "templates"]
 showFullContent = false
@@ -11,7 +10,7 @@ Toc = true
 
 <!--more-->
 
-### 1706. Where Will the Ball Fall
+# 1706. Where Will the Ball Fall
 
 ```rust
 impl Solution {
@@ -46,7 +45,7 @@ impl Solution {
 }
 ```
 
-### 433. Minimum Genetic Mutation
+# 433. Minimum Genetic Mutation
 
 ```rust
 use std::collections::{HashSet, VecDeque};
@@ -90,7 +89,7 @@ impl Solution {
 }
 ```
 
-### 2131. Longest Palindrome by Concatenating Two Letter Words
+# 2131. Longest Palindrome by Concatenating Two Letter Words
 
 ```rust
 use std::collections::HashMap;
@@ -125,7 +124,7 @@ impl Solution {
 }
 ```
 
-### 212. Word Search II
+# 212. Word Search II
 
 ```rust
 use std::collections::{HashMap, HashSet};
@@ -217,7 +216,7 @@ impl Solution {
 }
 ```
 
-### 899. Orderly Queue
+# 899. Orderly Queue
 
 ```rust
 impl Solution {
@@ -242,7 +241,7 @@ impl Solution {
 }
 ```
 
-### 1323. Maximum 69 Number
+# 1323. Maximum 69 Number
 
 ```rust
 impl Solution {
@@ -257,7 +256,7 @@ impl Solution {
 }
 ```
 
-### 1544. Make The String Great
+# 1544. Make The String Great
 
 ```rust
 impl Solution {
@@ -280,7 +279,7 @@ impl Solution {
 }
 ```
 
-### 901. Online Stock Span
+# 901. Online Stock Span
 
 ```rust
 struct StockSpanner {
@@ -319,7 +318,7 @@ impl StockSpanner {
 }
 ```
 
-### 1047. Remove All Adjacent Duplicates In String
+# 1047. Remove All Adjacent Duplicates In String
 
 ```rust
 impl Solution {
@@ -337,7 +336,7 @@ impl Solution {
 }
 ```
 
-### 26. Remove Duplicates from Sorted Array
+# 26. Remove Duplicates from Sorted Array
 
 ```rust
 impl Solution {
@@ -355,7 +354,7 @@ impl Solution {
 }
 ```
 
-### 295. Find Median from Data Stream
+# 295. Find Median from Data Stream
 
 ```rust
 use std::cmp::{Ordering, Reverse};
@@ -393,7 +392,7 @@ impl MedianFinder {
 }
 ```
 
-### 151. Reverse Words in a String
+# 151. Reverse Words in a String
 
 ```rust
 impl Solution {
@@ -407,7 +406,7 @@ impl Solution {
 }
 ```
 
-### 947. Most Stones Removed with Same Row or Column
+# 947. Most Stones Removed with Same Row or Column
 
 ```rust
 struct UnionFind {
@@ -477,7 +476,7 @@ impl Solution {
 }
 ```
 
-### 222. Count Complete Tree Nodes
+# 222. Count Complete Tree Nodes
 
 ```rust
 use std::rc::Rc;
@@ -495,7 +494,7 @@ impl Solution {
 }
 ```
 
-### 374. Guess Number Higher or Lower
+# 374. Guess Number Higher or Lower
 
 ```rust
 impl Solution {
@@ -517,7 +516,7 @@ impl Solution {
 }
 ```
 
-### 223. Rectangle Area
+# 223. Rectangle Area
 
 ```rust
 impl Solution {
@@ -550,7 +549,7 @@ impl Solution {
 }
 ```
 
-### 263. Ugly Number
+# 263. Ugly Number
 
 ```rust
 impl Solution {
@@ -576,7 +575,7 @@ impl Solution {
 }
 ```
 
-### 587. Erect the Fence
+# 587. Erect the Fence
 
 ```rust
 impl Solution {
@@ -636,7 +635,7 @@ fn orientation(p0: &[i32], p1: &[i32], p2: &[i32]) -> i32 {
 }
 ```
 
-### 224. Basic Calculator
+# 224. Basic Calculator
 
 ```rust
 impl Solution {
@@ -726,7 +725,7 @@ impl Calculator {
 }
 ```
 
-### 1926. Nearest Exit from Entrance in Maze
+# 1926. Nearest Exit from Entrance in Maze
 
 ```rust
 use std::collections::VecDeque;
@@ -772,7 +771,7 @@ impl Solution {
 }
 ```
 
-### 279. Perfect Squares
+# 279. Perfect Squares
 
 ```rust
 use std::collections::VecDeque;
@@ -813,7 +812,7 @@ impl Solution {
 }
 ```
 
-### 36. Valid Sudoku
+# 36. Valid Sudoku
 
 ```rust
 impl Solution {
@@ -845,7 +844,7 @@ impl Solution {
 }
 ```
 
-### 79. Word Search
+# 79. Word Search
 
 ```rust
 const DIRS: [[i32; 2]; 4] = [[0, 1], [1, 0], [0, -1], [-1, 0]];
@@ -902,7 +901,7 @@ impl Solution {
 }
 ```
 
-### 1235. Maximum Profit in Job Scheduling
+# 1235. Maximum Profit in Job Scheduling
 
 ```rust
 struct Job {
@@ -955,7 +954,7 @@ impl Solution {
 }
 ```
 
-### 446. Arithmetic Slices II - Subsequence
+# 446. Arithmetic Slices II - Subsequence
 
 ```rust
 use std::collections::HashMap;
@@ -1007,7 +1006,7 @@ impl Solution {
 }
 ```
 
-### 2225. Find Players With Zero or One Losses
+# 2225. Find Players With Zero or One Losses
 
 ```rust
 impl Solution {
@@ -1040,7 +1039,7 @@ impl Solution {
 }
 ```
 
-### 380. Insert Delete GetRandom O(1)
+# 380. Insert Delete GetRandom O(1)
 
 ```rust
 use std::collections::HashMap;
@@ -1092,7 +1091,7 @@ impl RandomizedSet {
 }
 ```
 
-### 1207. Unique Number of Occurrences
+# 1207. Unique Number of Occurrences
 
 ```rust
 impl Solution {

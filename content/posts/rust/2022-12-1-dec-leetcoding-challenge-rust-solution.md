@@ -1,7 +1,6 @@
 +++
 title = "Dec LeetCoding Challenge Rust Solution"
 date = "2022-12-01T10:00:00+08:00"
-author = "ikws4"
 cover = ""
 tags = ["leetcode", "algorithm"]
 Toc = true
@@ -9,7 +8,7 @@ Toc = true
 
 <!--more-->
 
-### 1704. Determine if String Halves Are Alike
+# 1704. Determine if String Halves Are Alike
 
 ```rust
 impl Solution {
@@ -33,7 +32,7 @@ impl Solution {
 }
 ```
 
-### 1657. Determine if Two Strings Are Close
+# 1657. Determine if Two Strings Are Close
 
 ```rust
 impl Solution {
@@ -68,7 +67,7 @@ impl Solution {
 }
 ```
 
-### 451. Sort Characters By Frequency
+# 451. Sort Characters By Frequency
 
 ```rust
 impl Solution {
@@ -95,7 +94,7 @@ impl Solution {
 }
 ```
 
-### 2256. Minimum Average Difference
+# 2256. Minimum Average Difference
 
 ```rust
 impl Solution {
@@ -127,7 +126,7 @@ impl Solution {
 }
 ```
 
-### 876. Middle of the Linked List
+# 876. Middle of the Linked List
 
 ```rust
 impl Solution {
@@ -145,7 +144,7 @@ impl Solution {
 }
 ```
 
-### 328. Odd Even Linked List
+# 328. Odd Even Linked List
 
 ```rust
 impl Solution {
@@ -177,7 +176,7 @@ impl Solution {
 }
 ```
 
-### 938. Range Sum of BST
+# 938. Range Sum of BST
 
 ```rust
 use std::cell::RefCell;
@@ -210,7 +209,7 @@ impl Solution {
 }
 ```
 
-### 872. Leaf-Similar Trees
+# 872. Leaf-Similar Trees
 
 ```rust
 use std::cell::RefCell;
@@ -243,7 +242,7 @@ impl Solution {
 }
 ```
 
-### 1026. Maximum Difference Between Node and Ancestor
+# 1026. Maximum Difference Between Node and Ancestor
 
 ```rust
 use std::cell::RefCell;
@@ -271,7 +270,7 @@ impl Solution {
 }
 ```
 
-### 1339. Maximum Product of Splitted Binary Tree
+# 1339. Maximum Product of Splitted Binary Tree
 
 ```rust
 use std::cell::RefCell;
@@ -313,7 +312,7 @@ impl Solution {
 }
 ```
 
-### 124. Binary Tree Maximum Path Sum
+# 124. Binary Tree Maximum Path Sum
 
 ```rust
 use std::cell::RefCell;
@@ -350,7 +349,7 @@ impl Solution {
 }
 ```
 
-### 70. Climbing Stairs
+# 70. Climbing Stairs
 
 ```rust
 impl Solution {
@@ -367,7 +366,7 @@ impl Solution {
 }
 ```
 
-### 931. Minimum Falling Path Sum
+# 931. Minimum Falling Path Sum
 
 ```rust
 struct Env {
@@ -409,7 +408,7 @@ impl Solution {
 }
 ```
 
-### 198. House Robber
+# 198. House Robber
 
 ```rust
 impl Solution {
@@ -430,7 +429,7 @@ impl Solution {
 }
 ```
 
-### 1143. Longest Common Subsequence
+# 1143. Longest Common Subsequence
 
 ```rust
 impl Solution {
@@ -454,7 +453,7 @@ impl Solution {
 }
 ```
 
-### 232. Implement Queue using Stacks
+# 232. Implement Queue using Stacks
 
 ```rust
 struct MyQueue {
@@ -503,7 +502,7 @@ impl MyQueue {
 }
 ```
 
-### 150. Evaluate Reverse Polish Notation
+# 150. Evaluate Reverse Polish Notation
 
 ```rust
 use std::ops::{Add, Div, Mul, Sub};
@@ -533,7 +532,7 @@ impl Solution {
 }
 ```
 
-### 739. Daily Temperatures
+# 739. Daily Temperatures
 
 ```rust
 impl Solution {
@@ -559,7 +558,7 @@ impl Solution {
 }
 ```
 
-### 1971. Find if Path Exists in Graph
+# 1971. Find if Path Exists in Graph
 
 ```rust
 struct UnionFind {
@@ -617,7 +616,7 @@ impl Solution {
 }
 ```
 
-### 841. Keys and Rooms
+# 841. Keys and Rooms
 
 ```rust
 use std::collections::HashSet;
@@ -642,7 +641,7 @@ impl Solution {
 }
 ```
 
-### 886. Possible Bipartition
+# 886. Possible Bipartition
 
 ```rust
 struct UnionFind {
@@ -717,7 +716,7 @@ impl Solution {
 }
 ```
 
-### 834. Sum of Distances in Tree
+# 834. Sum of Distances in Tree
 
 ```rust
 struct Env {
@@ -770,7 +769,7 @@ impl Solution {
 }
 ```
 
-### 309. Best Time to Buy and Sell Stock with Cooldown
+# 309. Best Time to Buy and Sell Stock with Cooldown
 
 ```rust
 impl Solution {
@@ -790,7 +789,7 @@ impl Solution {
 }
 ```
 
-### 790. Domino and Tromino Tiling
+# 790. Domino and Tromino Tiling
 
 ```rust
 impl Solution {
@@ -812,7 +811,7 @@ impl Solution {
 }
 ```
 
-### 2389. Longest Subsequence With Limited Sum
+# 2389. Longest Subsequence With Limited Sum
 
 ```rust
 impl Solution {
@@ -847,7 +846,7 @@ impl Solution {
 }
 ```
 
-### 55. Jump Game
+# 55. Jump Game
 
 ```rust
 impl Solution {
@@ -870,7 +869,7 @@ impl Solution {
 }
 ```
 
-### 2279. Maximum Bags With Full Capacity of Rocks
+# 2279. Maximum Bags With Full Capacity of Rocks
 
 ```rust
 impl Solution {
@@ -896,7 +895,7 @@ impl Solution {
 }
 ```
 
-### 1962. Remove Stones to Minimize the Total
+# 1962. Remove Stones to Minimize the Total
 
 ```rust
 use std::collections::BinaryHeap;
@@ -915,7 +914,7 @@ impl Solution {
 }
 ```
 
-### 1834. Single-Threaded CPU
+# 1834. Single-Threaded CPU
 
 ```rust
 use std::{collections::BinaryHeap, cmp::Ordering};
@@ -985,7 +984,7 @@ impl Solution {
 }
 ```
 
-### 797. All Paths From Source to Target
+# 797. All Paths From Source to Target
 
 ```rust
 impl Solution {
@@ -1013,7 +1012,7 @@ impl Solution {
 }
 ```
 
-### 980. Unique Paths III
+# 980. Unique Paths III
 
 ```rust
 const DIRS: [[i32; 2]; 4] = [[0, 1], [1, 0], [0, -1], [-1, 0]];

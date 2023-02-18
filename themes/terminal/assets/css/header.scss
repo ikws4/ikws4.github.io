@@ -17,13 +17,13 @@
     display: flex;
     flex: 1;
 
-    &:after {
-      content: '';
-      background: repeating-linear-gradient(90deg, $accent, $accent 2px, transparent 0, transparent 10px);
-      display: block;
-      width: 100%;
-      right: 10px;
-    }
+    // &:after {
+    //   content: '';
+    //   background: repeating-linear-gradient(90deg, $accent, $accent 2px, transparent 0, transparent 10px);
+    //   display: block;
+    //   width: 100%;
+    //   right: 10px;
+    // }
 
     a {
       flex: 0 0 auto;

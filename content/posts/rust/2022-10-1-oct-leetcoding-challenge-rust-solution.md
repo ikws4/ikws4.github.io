@@ -1,7 +1,6 @@
 +++
 title = "Oct LeetCoding Challenge Rust Solution"
 date = "2022-10-01T10:00:00+08:00"
-author = "ikws4"
 cover = ""
 tags = ["algorithm", "templates"]
 showFullContent = false
@@ -11,7 +10,7 @@ Toc = true
 
 <!--more-->
 
-### 91. Decode Ways
+# 91. Decode Ways
 
 ```rust
 impl Solution {
@@ -43,7 +42,7 @@ impl Solution {
 }
 ```
 
-### 1155. Number of Dice Rolls With Target Sum
+# 1155. Number of Dice Rolls With Target Sum
 
 ```rust
 struct Env {
@@ -83,7 +82,7 @@ impl Solution {
 }
 ```
 
-### 1578. Minimum Time to Make Rope Colorful
+# 1578. Minimum Time to Make Rope Colorful
 
 ```rust
 impl Solution {
@@ -118,7 +117,7 @@ impl Solution {
 }
 ```
 
-### 112. Path Sum
+# 112. Path Sum
 
 ```rust
 use std::cell::RefCell;
@@ -147,7 +146,7 @@ impl Solution {
 }
 ```
 
-### 623. Add One Row to Tree
+# 623. Add One Row to Tree
 
 ```rust
 use std::cell::RefCell;
@@ -182,7 +181,7 @@ impl Solution {
 }
 ```
 
-### 981. Time Based Key-Value Store
+# 981. Time Based Key-Value Store
 
 ```rust
 use std::collections::{BTreeMap, HashMap};
@@ -211,7 +210,7 @@ impl TimeMap {
 }
 ```
 
-### 732. My Calendar III
+# 732. My Calendar III
 
 ```rust
 use std::collections::BTreeMap;
@@ -243,7 +242,7 @@ impl MyCalendarThree {
 }
 ```
 
-### 16. 3Sum Closest
+# 16. 3Sum Closest
 
 ```rust
 impl Solution {
@@ -279,7 +278,7 @@ impl Solution {
 }
 ```
 
-### 653. Two Sum IV - Input is a BST
+# 653. Two Sum IV - Input is a BST
 
 ```rust
 use std::cell::RefCell;
@@ -307,7 +306,7 @@ impl Solution {
 }
 ```
 
-### 1328. Break a Palindrome
+# 1328. Break a Palindrome
 
 ```rust
 impl Solution {
@@ -331,7 +330,7 @@ impl Solution {
 }
 ```
 
-### 334. Increasing Triplet Subsequence
+# 334. Increasing Triplet Subsequence
 
 ```rust
 impl Solution {
@@ -354,7 +353,7 @@ impl Solution {
 }
 ```
 
-### 976. Largest Perimeter Triangle
+# 976. Largest Perimeter Triangle
 
 ```rust
 impl Solution {
@@ -372,7 +371,7 @@ impl Solution {
 }
 ```
 
-### 237. Delete Node in a Linked List
+# 237. Delete Node in a Linked List
 
 ```rust
 impl Solution {
@@ -386,7 +385,7 @@ impl Solution {
 }
 ```
 
-### 2095. Delete the Middle Node of a Linked List
+# 2095. Delete the Middle Node of a Linked List
 
 ```rust
 type Node = Option<Box<ListNode>>;
@@ -418,7 +417,7 @@ impl Solution {
 }
 ```
 
-### 1531. String Compression II
+# 1531. String Compression II
 
 ```rust
 struct Env<'a> {
@@ -475,7 +474,7 @@ impl Solution {
 }
 ```
 
-### 1335. Minimum Difficulty of a Job Schedule
+# 1335. Minimum Difficulty of a Job Schedule
 
 ```rust
 struct Env {
@@ -539,7 +538,7 @@ impl Solution {
 }
 ```
 
-### 1832. Check if the Sentence Is Pangram
+# 1832. Check if the Sentence Is Pangram
 
 ```rust
 impl Solution {
@@ -562,7 +561,7 @@ impl Solution {
 }
 ```
 
-### 38. Count and Say
+# 38. Count and Say
 
 ```rust
 impl Solution {
@@ -590,7 +589,7 @@ impl Solution {
 }
 ```
 
-### 692. Top K Frequent Words
+# 692. Top K Frequent Words
 
 ```rust
 use std::collections::HashMap;
@@ -630,7 +629,7 @@ impl Solution {
 }
 ```
 
-### 12. Integer to Roman
+# 12. Integer to Roman
 
 ```rust
 impl Solution {
@@ -651,7 +650,7 @@ impl Solution {
 }
 ```
 
-### 219. Contains Duplicate II
+# 219. Contains Duplicate II
 
 ```rust
 use std::collections::HashMap;
@@ -675,7 +674,7 @@ impl Solution {
 }
 ```
 
-### 76. Minimum Window Substring
+# 76. Minimum Window Substring
 
 ```rust
 use std::collections::HashMap;
@@ -730,7 +729,7 @@ impl Solution {
 }
 ```
 
-### 645. Set Mismatch
+# 645. Set Mismatch
 
 ```rust
 use std::collections::HashSet;
@@ -760,7 +759,7 @@ impl Solution {
 }
 ```
 
-### 1239. Maximum Length of a Concatenated String with Unique Characters
+# 1239. Maximum Length of a Concatenated String with Unique Characters
 
 ```rust
 impl Solution {
@@ -797,7 +796,7 @@ impl Solution {
 }
 ```
 
-### 1662. Check If Two String Arrays are Equivalent
+# 1662. Check If Two String Arrays are Equivalent
 
 ```rust
 impl Solution {
@@ -814,7 +813,7 @@ impl Solution {
 }
 ```
 
-### 523. Continuous Subarray Sum
+# 523. Continuous Subarray Sum
 
 ```rust
 use std::collections::HashMap;
@@ -843,7 +842,7 @@ impl Solution {
 }
 ```
 
-### 835. Image Overlap
+# 835. Image Overlap
 
 ```rust
 impl Solution {
@@ -875,7 +874,7 @@ impl Solution {
 }
 ```
 
-### 49. Group Anagrams
+# 49. Group Anagrams
 
 ```rust
 use std::collections::HashMap;
@@ -900,7 +899,7 @@ impl Solution {
 }
 ```
 
-### 2136. Earliest Possible Day of Full Bloom
+# 2136. Earliest Possible Day of Full Bloom
 
 ```rust
 impl Solution {
@@ -923,7 +922,7 @@ impl Solution {
 }
 ```
 
-### 1293. Shortest Path in a Grid with Obstacles Elimination
+# 1293. Shortest Path in a Grid with Obstacles Elimination
 
 ```rust
 use std::{cmp::Reverse, collections::BinaryHeap};
@@ -978,7 +977,7 @@ impl Solution {
 }
 ```
 
-### 766. Toeplitz Matrix
+# 766. Toeplitz Matrix
 
 ```rust
 impl Solution {
