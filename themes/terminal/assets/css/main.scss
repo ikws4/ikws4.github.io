@@ -354,6 +354,16 @@ sup {
  line-height: 0;
 }
 
+.footnote-ref {
+  &::before {
+    content: '[';
+  }
+
+  &::after {
+    content: ']';
+  }
+}
+
 // li a {
 //   color: $text;
 //
@@ -367,3 +377,4 @@ sup {
   background: transparentize($accent, 0.9) !important;
   color: $accent !important;
 }
+
