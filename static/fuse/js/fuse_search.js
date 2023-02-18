@@ -2,7 +2,7 @@ window.onload = function () {
   var div = document.createElement("div");
   div.id = "fastSearch";
   div.innerHTML =
-    '<input id="searchInput" tabindex="0"/><ul id="searchResults"></ul>';
+    '<input autocomplete="off" readonly onfocus="this.removeAttribute(\'readonly\');" id="searchInput" tabindex="0"/><ul id="searchResults"></ul>';
   document.body.appendChild(div);
 
   var fuse; // holds our search engine
@@ -37,6 +37,24 @@ window.onload = function () {
     }
   }
 
+  // hide search box if you click outside of it
+  document.addEventListener("click", function (event) {
+    if (searchVisible) {
+      if (!(event.target.closest("#fastSearch") || event.target.closest("#search"))) {
+        document.getElementById("fastSearch").style.visibility = "hidden";
+        document.activeElement.blur();
+        // clear input
+        document.getElementById("searchInput").value = "";
+        executeSearch("");
+        searchVisible = false;
+      }
+    } else {
+      if (event.target.closest("#search")) {
+        search();
+      }
+    }
+  });
+
   document.addEventListener("keydown", function (event) {
     // CMD-/ to show / hide Search
     if (event.metaKey && event.which === 191) {
@@ -48,6 +66,9 @@ window.onload = function () {
       if (searchVisible) {
         document.getElementById("fastSearch").style.visibility = "hidden";
         document.activeElement.blur();
+        // clear input 
+        document.getElementById("searchInput").value = "";
+        executeSearch("");
         searchVisible = false;
       }
     }
