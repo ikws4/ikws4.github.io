@@ -74,7 +74,9 @@
   /* one line*/
 }
 
-#searchResults li a:hover, li a:active, li a:focus {
+#searchResults li a:hover, 
+#searchResults li a:active,
+#searchResults li a:focus {
   outline: 0px;
   background: rgba(196, 167, 231, 0.1) !important;
   color: #c4a7e7 !important;
