@@ -3,7 +3,7 @@
     {{ if or $.Site.Params.showMenuItems ( eq .Site.Params.showMenuItems 0 ) }}
       {{ range first $.Site.Params.showMenuItems $.Site.Menus.main }}
         {{ if not .HasChildren }}
-          {{ if eq $.RelPermalink .URL }}
+          {{ if (hasPrefix $.RelPermalink .URL) }}
             <li><a class="menu-item-active" href="{{ .URL }}">{{ .Name }}</a></li>
           {{ else }}
             <li><a href="{{ .URL }}">{{ .Name }}</a></li>
