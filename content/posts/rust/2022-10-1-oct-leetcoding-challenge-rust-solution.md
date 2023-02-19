@@ -2,7 +2,7 @@
 title = "Oct LeetCoding Challenge Rust Solution"
 date = "2022-10-01T10:00:00+08:00"
 cover = ""
-tags = ["algorithm", "templates"]
+tags = ["algorithm"]
 showFullContent = false
 readingTime = false
 Toc = true
