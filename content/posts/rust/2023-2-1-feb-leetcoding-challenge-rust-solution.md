@@ -550,3 +550,39 @@ impl Solution {
     }
 }
 ```
+
+# 103. Binary Tree Zigzag Level Order Traversal
+
+```rust
+use std::rc::Rc;
+use std::cell::RefCell;
+
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+impl Solution {
+    pub fn zigzag_level_order(root: Node) -> Vec<Vec<i32>> {
+        fn f(root: &Node, depth: usize, ret: &mut Vec<Vec<i32>>) {
+            if let Some(root) = root {
+                let root = root.borrow();
+
+                if ret.len() <= depth {
+                    ret.push(vec![]);
+                }
+                ret[depth].push(root.val);
+                
+                f(&root.left, depth + 1, ret);
+                f(&root.right, depth + 1, ret);
+            }
+        }
+
+        let mut ret = vec![];
+        f(&root, 0,&mut ret);
+        for (d, e) in ret.iter_mut().enumerate() {
+            if d & 1 == 1 {
+                e.reverse();
+            }
+        }
+        ret
+    }
+}
+```
