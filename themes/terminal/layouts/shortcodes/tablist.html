@@ -1,0 +1,21 @@
+{{ $id := delimit (shuffle (seq 1 9)) "" }}
+
+<div class="tablist">
+  <div id="tabs-{{ $id }}" class="tabs">
+    {{ range $index, $element := .Params }}
+      <div class="tab {{ if eq $index 0 }}{{ "active" }}{{ end }}" onclick="switchTab({{ $id }}, {{ $index }})">{{ $element }}</div>
+    {{ end }}
+  </div>
+  <div id="tabcontent-{{ $id }}" class="tabcontent">
+    {{ .Inner }}
+  </div>
+  <script>
+    (function() {
+      let items = document.getElementById("tabcontent-" + {{ $id }}).children;
+      for (let item of items) {
+        item.style.display = "none";
+      }
+      items[0].style.display = "block";
+    })();
+  </script>
+</div>

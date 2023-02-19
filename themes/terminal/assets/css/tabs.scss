@@ -1,0 +1,30 @@
+.tablist .tabs {
+  display: flex;
+  // border: 2px solid $border-color;
+  // border-bottom: 2px solid $border-color;;
+  // margin-bottom: 6px;
+  gap: 8px;
+  margin-left: 12px;
+  // margin-bottom: -2px;
+
+  .tab {
+    padding: 6px 28px;
+    // border: 2px solid $border-color;
+    // border-bottom: none;
+    background: $background;
+    color: $text;
+    cursor: pointer;
+    border-radius: 4px 4px 0 0;
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+      background: transparentize($overlay, 0.7);
+      color: $text;
+    }
+
+    &.active {
+      background: $overlay;
+      color: $text;
+    }
+  }
+}

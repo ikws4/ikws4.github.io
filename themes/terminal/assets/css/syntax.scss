@@ -191,10 +191,11 @@ pre[class*="language-"] {
 }
 
 .code-toolbar {
-  $code-margin: 40px;
+  // $code-margin: 40px;
 	position: relative;
-	margin: $code-margin 0;
-	padding: 20px;
+	// margin: $code-margin 0;
+	padding: 8px 10px;
+  // padding: 0px 0px;
 	// border: 1px solid rgba(255, 255, 255, .1);
   border: 2px solid $border-color;
   border-radius: 5px !important;
@@ -202,8 +203,8 @@ pre[class*="language-"] {
 	+ .code-toolbar,
 	+ .highlight,
 	+ .highlight .code-toolbar {
-		border-top: 0;
-		margin-top: calc(-1 * $code-margin);
+		// border-top: 0;
+		// margin-top: calc(-1 * $code-margin);
 	}
 
 	pre, code {

@@ -881,7 +881,8 @@ class UnionFind {
 
 ## Segment tree
 
-```java
+{{< tablist 1 2 >}}
+{{< code language="java" >}}
 class SegmentTree {
   class Node {
     int val, l, r;
@@ -960,8 +961,8 @@ class SegmentTree {
     return left + right;
   }
 }
-```
-```java
+{{< /code >}}
+{{< code language="java" >}}
 class SegmentTree {
   private int[] tree;
   private int[] leaf;
@@ -1073,7 +1074,8 @@ class SegmentTree {
     int combine(int a, int b);
   }
 }
-```
+{{< /code >}}
+{{< /tablist >}}
 
 **Exercises**:
 
@@ -1916,7 +1918,8 @@ void f(int[][] updates) {
 
 ## Count smaller/greater before/after self (Merge sort or [FenwickTree](#fenwick-tree))
 
-```java
+{{< tablist "MergeSort" "FenwickTree" >}}
+{{< code language="java" >}}
 int[] nums;
 int[] temp;
 int[] smallerAfterSelf;
@@ -1950,9 +1953,8 @@ void sort(int[] sorted, int l, int r) {
     sorted[i] = temp[j];
   }
 }
-```
-
-```java
+{{< /code >}}
+{{< code language="java" >}}
 void f(int[] nums) {
   int[] map = new int[n];
 
@@ -1969,7 +1971,8 @@ void f(int[] nums) {
     prevSmaller[i] = bit.sumOfRange(0, a - 1);
   }
 }
-```
+{{< /code >}}
+{{< /tablist >}}
 
 **Exercises**:
 
@@ -2006,7 +2009,8 @@ void f(int[] nums, int n) {
 
 # Parentheses
 
-```java
+{{< tablist 1 2 >}}
+{{< code language="java" >}}
 class Solution {
   public int minAddToMakeValid(String s) {
     int stack = 0;
@@ -2033,9 +2037,9 @@ class Solution {
     return cnt + stack;
   }
 }
-```
+{{< /code >}}
 
-```java
+{{< code language="java" >}}
 class Solution {
   public boolean checkValidString(String s) {
     int min = 0, max = 0;
@@ -2060,7 +2064,8 @@ class Solution {
     return min == 0;
   }
 }
-```
+{{< /code >}}
+{{< /tablist >}}
 
 **Exercises**:
 
