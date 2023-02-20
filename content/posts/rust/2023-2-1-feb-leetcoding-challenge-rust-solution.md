@@ -586,3 +586,13 @@ impl Solution {
     }
 }
 ```
+
+# 35. Search Insert Position 
+
+```rust
+impl Solution {
+    pub fn search_insert(nums: Vec<i32>, target: i32) -> i32 {
+        nums.partition_point(|num| num < &target) as i32
+    }
+}
+```
