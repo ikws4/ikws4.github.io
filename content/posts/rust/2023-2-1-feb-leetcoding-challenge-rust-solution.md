@@ -596,3 +596,31 @@ impl Solution {
     }
 }
 ```
+
+# 540. Single Element in a Sorted Array
+
+```rust
+impl Solution {
+    pub fn single_non_duplicate(nums: Vec<i32>) -> i32 {
+        let n = nums.len();
+        let mut l = 0;
+        let mut r = n;
+        while l < r {
+            let m = l + (r - l) / 2;
+            // 1 1 2 2 3 3 
+            //       ^
+            // 1 1 2 2 3 3 
+            //         ^
+            // -----------
+            // 0 1 2 3 4 5 (index)
+            if (m as i32 - 1) >= 0 && m & 1 == 1 && nums[m] == nums[m - 1] ||
+                m + 1          < n && m & 1 == 0 && nums[m] == nums[m + 1] {
+                l = m + 1;
+            } else {
+                r = m;
+            }
+        }
+        nums[l]
+    }
+}
+```
