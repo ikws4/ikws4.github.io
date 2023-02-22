@@ -1548,6 +1548,7 @@ int lowerBound(int l, int r, int x) {
 - [LC 2300.Successful Pairs of Spells and Potions](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/)
 - [LC 374.Guess Number Higher or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/)
 - [LC 2476.Closest Nodes Queries in a Binary Search Tree](https://leetcode.com/problems/closest-nodes-queries-in-a-binary-search-tree/)
+- [LC 1011.Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
 
 ### Upper Bound
 
