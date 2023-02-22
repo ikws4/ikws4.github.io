@@ -624,3 +624,42 @@ impl Solution {
     }
 }
 ```
+
+# 1011. Capacity To Ship Packages Within D Days
+
+```rust
+impl Solution {
+    pub fn ship_within_days(weights: Vec<i32>, days: i32) -> i32 {
+        let mut l = 0;
+        let mut r = i32::MAX;
+
+        fn check(weights: &[i32], mut days: i32, m: i32) -> bool {
+            let mut s = 0;
+            for &w in weights {
+                s += w;
+
+                if s > m {
+                    s = w;
+                    days -= 1;
+                }
+
+                if s > m {
+                    return false;
+                }
+            }
+            days > 0
+        }
+
+        while l < r {
+            let m = l + (r - l) / 2;
+            if check(&weights, days, m as i32) == false {
+                l = m + 1;
+            } else {
+                r = m;
+            }
+        }
+
+        l as i32
+    }
+}
+```
