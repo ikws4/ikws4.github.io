@@ -1,0 +1,13 @@
+{{ if .Get "name" }}
+<style>
+  #{{ .Get "name" }} {
+    border: 2px solid #393552;
+    margin: 12px 0;
+    position: relative;
+  }
+</style>
+
+<div id="{{ .Get "name" }}"></div>
+
+<script type="module" src="/threejs/{{ .Get "name" }}.js"></script>
+{{ end }}
