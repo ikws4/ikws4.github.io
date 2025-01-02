@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to C# Class Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            color: #24292e;
+        }
+        .title-bar {
+            background-color: #f6f8fa;
+            padding: 15px;
+            padding-left: 20px;
+            text-align: left;
+            font-size: 24px;
+            color: #24292e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e1e4e8;
+            font-weight: bold;
+        }
+        .close-button {
+            background-color: transparent;
+            border: none;
+            color: #24292e;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+        }
+        .column {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        textarea, pre {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            font-size: 14px;
+            resize: none;
+            background-color: #ffffff;
+            color: #24292e;
+            outline: none; /* Remove active border color */
+        }
+        textarea::-webkit-scrollbar, pre::-webkit-scrollbar {
+            width: 12px;
+        }
+        textarea::-webkit-scrollbar-thumb, pre::-webkit-scrollbar-thumb {
+            background-color: #d1d5da;
+            border-radius: 6px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover, pre::-webkit-scrollbar-thumb:hover {
+            background-color: #b1b5ba;
+        }
+        pre {
+            overflow-x: auto;
+        }
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 0px;
+            padding: 10px;
+        }
+        button {
+            padding: 12px 24px;
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="title-bar">
+        JSON to C# Class Converter
+        <button class="close-button" onclick="window.history.back();">&times;</button>
+        <style>
+            .close-button {
+            border-radius: 50%;
+            width: 36px;
+            padding: 0px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            }
+            .close-button:hover {
+            background-color: #d1d5da;
+            }
+        </style>
+    </div>
+    <div class="container">
+        <div class="column" style="padding-right: 10px;">
+            <textarea id="jsonInput" placeholder="Enter JSON here" spellcheck="false"></textarea>
+        </div>
+        <div class="column" style="padding-left: 10px;">
+            <pre id="csharpOutput" style="margin: 0px"></pre>
+        </div>
+    </div>
+    <div class="button-group">
+        <button id="convertButton">Convert to C# Class</button>
+        <button id="copyButton">Copy to Clipboard</button>
+    </div>
+
+    <script>
+        document.getElementById('convertButton').addEventListener('click', function() {
+            const jsonInput = document.getElementById('jsonInput').value;
+            if (!jsonInput) {
+                alert('Please enter valid JSON.');
+                return;
+            }
+
+            try {
+                const jsonObject = JSON.parse(jsonInput);
+                const csharpClass = jsonToCSharp(jsonObject);
+                const formattedCsharpClass = formatCSharpClass(csharpClass);
+                document.getElementById('csharpOutput').textContent = formattedCsharpClass;
+                localStorage.setItem('jsonInput', jsonInput);
+            } catch (error) {
+                alert('Invalid JSON format.');
+            }
+        });
+
+        function formatCSharpClass(csharpClass) {
+            return csharpClass.split('\n')
+                .filter(line => line.length > 0)
+                .join('\n')
+                .split('public class')
+                .join('\npublic class')
+                .trim();
+        }
+
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const csharpOutput = document.getElementById('csharpOutput').textContent;
+            navigator.clipboard.writeText(csharpOutput).then(() => {
+                const copyButton = document.getElementById('copyButton');
+                copyButton.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyButton.textContent = 'Copy to Clipboard';
+                }, 1000);
+            }).catch(err => {
+                alert('Failed to copy text: ', err);
+            });
+        });
+
+        window.addEventListener('load', function() {
+            const savedJsonInput = localStorage.getItem('jsonInput');
+            if (savedJsonInput) {
+                document.getElementById('jsonInput').value = savedJsonInput;
+            }
+        });
+
+        function jsonToCSharp(jsonObject, className = 'Root') {
+            let csharpClass = `public class ${className} \n{`;
+            let nestedClasses = '';
+
+            for (const key in jsonObject) {
+                if (jsonObject.hasOwnProperty(key)) {
+                    const value = jsonObject[key];
+                    const type = typeof value;
+                    let csharpType;
+
+                    if (type === 'string') {
+                        csharpType = 'string';
+                    } else if (type === 'number') {
+                        csharpType = Number.isInteger(value) ? 'int' : 'float';
+                    } else if (type === 'boolean') {
+                        csharpType = 'bool';
+                    } else if (type === 'object') {
+                        if (Array.isArray(value)) {
+                            const elementType = typeof value[0];
+                            if (elementType === 'string') {
+                                csharpType = 'List<string>';
+                            } else if (elementType === 'number') {
+                                csharpType = Number.isInteger(value[0]) ? 'List<int>' : 'List<float>';
+                            } else if (elementType === 'boolean') {
+                                csharpType = 'List<bool>';
+                            } else if (elementType === 'object') {
+                                const nestedClassName = key.charAt(0).toUpperCase() + key.slice(1);
+                                csharpType = `List<${nestedClassName}>`;
+                                nestedClasses += jsonToCSharp(value[0], nestedClassName).trim() + '\n';
+                            } else {
+                                csharpType = 'List<object>';
+                            }
+                        } else {
+                            const nestedClassName = key.charAt(0).toUpperCase() + key.slice(1);
+                            csharpType = nestedClassName;
+                            nestedClasses += jsonToCSharp(value, nestedClassName) + '\n';
+                        }
+                    } else {
+                        csharpType = 'object';
+                    }
+
+                    csharpClass += `    public ${csharpType} ${key.charAt(0).toUpperCase() + key.slice(1)} { get; set; }\n`;
+                }
+            }
+
+            csharpClass += '}\n\n' + nestedClasses;
+            return csharpClass;
+        }
+    </script>
+</body>
+</html>

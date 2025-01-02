@@ -28,7 +28,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         input {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ddd;
@@ -58,12 +58,33 @@
 </head>
 <body>
     <div class="container">
-        <h1>GitHub Repo Stats</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>GitHub Repo Stats</h1>
+            <button class="close-button" onclick="window.history.back();">&times;</button>
+        </div>
         <input type="text" id="repoInput" placeholder="Enter GitHub Repo (e.g., username/repo)">
         <button id="fetchButton">Get Repo Stats</button>
-        
         <div class="stats" id="repoStats"></div>
     </div>
+    <style>
+        .close-button {
+            background-color: transparent;
+            border: none;
+            color: #333;
+            padding: 0px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-button:hover {
+            background-color: #d1d5da;
+        }
+    </style>
 
     <script>
         document.getElementById('fetchButton').addEventListener('click', function() {
