@@ -174,7 +174,7 @@
         });
 
         function jsonToCSharp(jsonObject, className = 'Root') {
-            let csharpClass = `public class ${className} \n{`;
+            let csharpClass = `public class ${className} \n{\n`;
             let nestedClasses = '';
 
             for (const key in jsonObject) {
