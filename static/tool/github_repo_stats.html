@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repo Stats</title>
+    <style>
+        h1 {
+            color: #333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            height: 100vh; /* Ensure body takes the full height of the viewport */
+            display: flex; /* Enable flexbox layout */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            background-color: #f0f0f0; /* Optional background color */
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%; /* Make container responsive */
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .stats {
+            margin-top: 20px;
+        }
+        .stat {
+            margin: 10px 0;
+        }
+        .stat span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GitHub Repo Stats</h1>
+        <input type="text" id="repoInput" placeholder="Enter GitHub Repo (e.g., username/repo)">
+        <button id="fetchButton">Get Repo Stats</button>
+        
+        <div class="stats" id="repoStats"></div>
+    </div>
+
+    <script>
+        document.getElementById('fetchButton').addEventListener('click', function() {
+            const repoInput = document.getElementById('repoInput').value;
+            if (!repoInput) {
+                alert('Please enter a valid repository link.');
+                return;
+            }
+
+            const [username, repo] = repoInput.split('/');
+            if (!username || !repo) {
+                alert('Invalid GitHub repo format.');
+                return;
+            }
+
+            fetch(`https://api.github.com/repos/${username}/${repo}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === 'Not Found') {
+                        alert('Repository not found.');
+                        return;
+                    }
+
+                    const statsDiv = document.getElementById('repoStats');
+                    statsDiv.innerHTML = `
+                        <div class="stat"><span>Stars:</span> ${data.stargazers_count}</div>
+                        <div class="stat"><span>Forks:</span> ${data.forks_count}</div>
+                        <div class="stat"><span>Open Issues:</span> ${data.open_issues_count}</div>
+                        <div class="stat"><span>Watchers:</span> ${data.watchers_count}</div>
+                    `;
+
+                    // Fetch release downloads if available
+                    fetch(`https://api.github.com/repos/${username}/${repo}/releases`)
+                        .then(releases => releases.json())
+                        .then(releaseData => {
+                            if (releaseData.length > 0) {
+                                const latestRelease = releaseData[0];
+                                statsDiv.innerHTML += `
+                                    <div class="stat"><span>Latest Release:</span> ${latestRelease.name}</div>
+                                    <div class="stat"><span>Release Downloads:</span> ${latestRelease.assets.reduce((total, asset) => total + asset.download_count, 0)}</div>
+                                `;
+                            } else {
+                                statsDiv.innerHTML += `<div class="stat"><span>No releases found.</span></div>`;
+                            }
+                        });
+                })
+                .catch(error => {
+                    console.error('Error fetching repo data:', error);
+                    alert('Error fetching repo data.');
+                });
+        });
+    </script>
+</body>
+</html>

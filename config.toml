@@ -112,16 +112,23 @@ paginate = 5
         [languages.en.menu.main.params]
           align = 'left'
       [[languages.en.menu.main]]
+        identifier = "tool"
+        name = "Tool"
+        url = "/posts/tool/"
+        Weight = 4
+        [languages.en.menu.main.params]
+          align = 'left'
+      [[languages.en.menu.main]]
         identifier = "tags"
         name = "Tags"
         url = "/tags/"
-        Weight = 4
+        Weight = 5
         [languages.en.menu.main.params]
           align = 'right'
       [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
         url = "/posts/about/"
-        Weight = 5
+        Weight = 6
         [languages.en.menu.main.params]
           align = 'right'
