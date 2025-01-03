@@ -114,7 +114,7 @@ paginate = 5
       [[languages.en.menu.main]]
         identifier = "tool"
         name = "Tool"
-        url = "https://nfifyocgcq9c0rkm.vercel.app/"
+        url = "https://ikws4.github.io/toolbox/"
         Weight = 4
         [languages.en.menu.main.params]
           align = 'left'
