@@ -114,7 +114,7 @@ paginate = 5
       [[languages.en.menu.main]]
         identifier = "tool"
         name = "Tool"
-        url = "/posts/tool/"
+        url = "https://nfifyocgcq9c0rkm.vercel.app/"
         Weight = 4
         [languages.en.menu.main.params]
           align = 'left'
